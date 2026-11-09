@@ -114,6 +114,26 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.10 Selección de grupos durante la reinscripción
+
+**Decisión confirmada:** se utilizará el modelo de selección por el alumno. El alumno podrá consultar los grupos disponibles y elegir las materias/grupos y horarios que desea cursar, respetando el cupo disponible.
+
+**Reglas funcionales confirmadas para el proyecto:**
+- El alumno solo podrá seleccionar grupos que estén publicados/disponibles para el periodo correspondiente.
+- El sistema deberá consultar y validar el cupo del grupo antes de confirmar la inscripción.
+- Un grupo que haya alcanzado su cupo no aceptará nuevas inscripciones.
+- La disponibilidad debe actualizarse correctamente después de cada inscripción o baja autorizada.
+
+**Reglas pendientes de definición/verificación institucional:**
+- Cómo se determinan las materias que el alumno puede cursar de acuerdo con su plan.
+- Seriación y requisitos académicos (materias previas, créditos, situación académica).
+- Prevención de choques de horario entre grupos seleccionados.
+- Fechas de apertura/cierre, cambios de grupo, bajas y lista de espera.
+- Capacidad y excepciones autorizadas por coordinación.
+
+**Consideración técnica para la futura base de datos distribuida:** la validación de cupo y la creación de la inscripción deberán formar parte de una operación transaccional consistente, para evitar que dos solicitudes simultáneas ocupen el último lugar disponible. La estrategia concreta se definirá al diseñar e implementar la base de datos y se demostrará con pruebas concurrentes.
+
 ### 6.9 Oferta de materias por grupos
 
 **Decisión confirmada:** una misma materia podrá ofertarse en varios grupos durante un periodo escolar. Cada grupo tendrá su propio profesor asignado, horario y lista de alumnos inscritos.
@@ -194,6 +214,7 @@ Resolver antes de aprobar el modelo definitivo:
 6. **Respondida:** se utilizará una estructura semestral de referencia: enero–junio y agosto–diciembre, permitiendo registrar también periodos extraordinarios o de verano. Las fechas exactas se configurarán por periodo y deberán verificarse con los calendarios vigentes del ITP.
 7. **Respondida:** se separarán el ingreso del alumno a una carrera/plan, su reinscripción por periodo y la inscripción a materias/grupos. Después se registrarán calificaciones y se conservará el historial académico. Las reglas concretas de carga, seriación, créditos, bajas y regularización deben verificarse con el ITP.
 8. **Respondida:** una misma materia podrá abrirse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista. La inscripción del alumno apuntará al grupo específico que cursa.
+9. **Respondida:** el alumno seleccionará los grupos, materias y horarios disponibles durante la reinscripción. El sistema deberá impedir confirmar una inscripción cuando el grupo haya alcanzado su cupo. Las reglas de seriación, choques de horario, fechas y bajas quedan pendientes de definición/verificación.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -275,6 +296,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-009 | El sistema manejará periodos semestrales ordinarios (enero–junio y agosto–diciembre) y permitirá registrar periodos extraordinarios o de verano. | Aprobación expresa del usuario. Las fechas exactas se configurarán por ciclo y se validarán con el calendario vigente del ITP. | 2026-11-09 | Aprobada |
 | D-010 | El sistema distinguirá el ingreso del alumno a una carrera/plan, la reinscripción por periodo y la inscripción a materias/grupos. | Aprobación expresa del usuario. Reglas académicas específicas pendientes de validación institucional. | 2026-11-09 | Aprobada |
 | D-011 | Una materia podrá ofertarse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista de alumnos. | Aprobación expresa del usuario. Reglas de cupo, cambios de grupo y choques de horario quedan pendientes. | 2026-11-09 | Aprobada |
+| D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; el sistema bloqueará inscripciones cuando el grupo alcance su cupo. | Aprobación expresa del usuario. Las reglas de seriación, choques de horario, cambios y bajas quedan pendientes. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
