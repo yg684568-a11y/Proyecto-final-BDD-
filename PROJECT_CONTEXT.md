@@ -111,6 +111,17 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.7 Periodos escolares
+
+**Decisión confirmada:** el sistema manejará periodos escolares semestrales. Como estructura de referencia se contemplan dos periodos ordinarios: enero–junio y agosto–diciembre. También se permitirá registrar periodos extraordinarios o de verano cuando correspondan.
+
+**Implicaciones para el futuro modelo (pendientes de diseño):**
+- Los periodos deben ser registros configurables, no fechas rígidas incrustadas en el código.
+- Cada periodo tendrá identificador, nombre/ciclo, fechas de inicio y fin, tipo (ordinario, extraordinario o verano) y estado, sujeto al diseño final.
+- Grupos, oferta de materias e inscripciones deberán asociarse al periodo correspondiente.
+- Las fechas y reglas oficiales de cada ciclo deberán verificarse con los calendarios y avisos vigentes del ITP.
+
 ### 6.6 Versionamiento de planes de estudio
 
 **Decisión confirmada:** cada carrera podrá conservar varias versiones de su plan de estudios (vigentes y anteriores). Cada alumno deberá quedar asociado al plan de estudios que le corresponda, y los planes anteriores se conservarán aunque dejen de estar vigentes, para poder consultar correctamente su trayectoria e historial académico.
@@ -153,6 +164,7 @@ Resolver antes de aprobar el modelo definitivo:
 3. **Respondida:** se aprueban 12 módulos iniciales: usuarios y roles; alumnos; profesores; departamentos y carreras; materias; periodos escolares; grupos; inscripciones; horarios; calificaciones; kárdex; y listas escolares. Los flujos y reglas de negocio detallados quedan pendientes.
 4. **Respondida:** el diseño abarcará todas las carreras del ITP y permitirá administrar sus planes de estudio; para pruebas se utilizará un conjunto reducido de datos. El catálogo activo y las claves/planes vigentes deberán verificarse antes de cargar datos.
 5. **Respondida:** se conservarán varias versiones de planes por carrera, incluidos planes anteriores. Cada alumno quedará asociado al plan que le corresponda. Las reglas institucionales para cambios de plan y equivalencias se investigarán antes de implementarlas.
+6. **Respondida:** se utilizará una estructura semestral de referencia: enero–junio y agosto–diciembre, permitiendo registrar también periodos extraordinarios o de verano. Las fechas exactas se configurarán por periodo y deberán verificarse con los calendarios vigentes del ITP.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -231,6 +243,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario a la propuesta de módulos. Los flujos y reglas detallados quedan pendientes. | 2026-11-09 | Aprobada |
 | D-007 | El diseño del catálogo abarcará todas las carreras del ITP y sus planes de estudio; se utilizará un conjunto limitado de datos de prueba. | Confirmación del usuario mediante selección de la opción recomendada. El catálogo vigente se verificará con fuentes institucionales antes de cargar datos. | 2026-11-09 | Aprobada |
 | D-008 | Cada carrera podrá conservar varias versiones de planes de estudio, y los alumnos permanecerán asociados al plan que les corresponda, incluyendo planes anteriores no vigentes. | Aprobación expresa del usuario. Las reglas de cambios de plan/equivalencias quedan pendientes de verificación institucional. | 2026-11-09 | Aprobada |
+| D-009 | El sistema manejará periodos semestrales ordinarios (enero–junio y agosto–diciembre) y permitirá registrar periodos extraordinarios o de verano. | Aprobación expresa del usuario. Las fechas exactas se configurarán por ciclo y se validarán con el calendario vigente del ITP. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
