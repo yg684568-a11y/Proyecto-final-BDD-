@@ -125,7 +125,7 @@ Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos d
 Resolver antes de aprobar el modelo definitivo:
 
 1. **Respondida:** el sistema será para el Instituto Tecnológico de Puebla (ITP) y se basará en su funcionamiento académico. Las reglas institucionales específicas aún deben recopilarse y verificarse.
-2. ¿Qué perfiles lo utilizarán: administrador, control escolar, profesores, alumnos u otros?
+2. **Respondida:** se aprueban cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. Sus responsabilidades generales son las descritas en este documento; los permisos detallados por módulo se definirán durante el diseño funcional.
 3. ¿Qué funciones se implementarán exactamente: alumnos, profesores, cursos, grupos, inscripciones, horarios, calificaciones, kárdex, listas, autenticación y permisos?
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
@@ -163,12 +163,25 @@ Completar cuando se defina la infraestructura. No inventar IPs ni contraseñas.
 
 Solo registrar aquí decisiones confirmadas por el equipo. Incluir motivo y fecha.
 
+### Roles confirmados
+
+| Rol | Responsabilidad general aprobada |
+|---|---|
+| Administrador | Gestionar cuentas, roles y permisos. |
+| Servicios Escolares | Gestionar alumnos, inscripciones y expedientes académicos. |
+| Coordinador académico | Gestionar carreras, grupos, cargas académicas y horarios. |
+| Profesor | Consultar listas y registrar calificaciones. |
+| Alumno | Consultar materias, horarios, calificaciones y kárdex. |
+
+Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja) se detallarán por módulo en la matriz de acceso. No asumir permisos adicionales hasta aprobar esa matriz.
+
 | ID | Decisión | Motivo / evidencia | Fecha | Estado |
 |---|---|---|---|---|
 | D-001 | Gemini será la IA principal; Claude revisará; ChatGPT asesorará; Antigravity apoyará la implementación. | Acuerdo inicial del equipo. | 2026-11-09 | Aprobada |
 | D-002 | El equipo se compone de Yosef (nodo 1), Andrés (nodo 2) y Leonardo (nodo 3). | Información proporcionada por el equipo. | 2026-11-09 | Confirmada |
 | D-003 | Motor de base de datos y topología del clúster. | Pendiente de evaluación y validación del profesor/equipo. | — | Pendiente |
 | D-004 | El sistema estará basado en el funcionamiento académico del Instituto Tecnológico de Puebla (ITP). | Confirmación del usuario. Las reglas académicas concretas deben verificarse con fuentes institucionales o con el equipo. | 2026-11-09 | Aprobada |
+| D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario sobre los roles y responsabilidades generales propuestos. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -198,7 +211,8 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Definir el tipo de institución: instituto.
 - [x] Definir la institución de referencia: Instituto Tecnológico de Puebla (ITP).
 - [ ] Recopilar y verificar las reglas académicas del ITP que afecten el sistema.
-- [ ] Definir perfiles de usuarios y sus permisos considerando Servicios Escolares, División de Estudios Profesionales/coordinaciones, docentes y estudiantes como candidatos sujetos a confirmación.
+- [x] Definir los cinco perfiles generales del sistema.
+- [ ] Elaborar y aprobar la matriz detallada de permisos por módulo.
 - [ ] Responder las demás preguntas de requerimientos de la sección 7.
 - [ ] Confirmar el alcance real de la escuela y las reglas de inscripción/cursos.
 - [ ] Revisar y aprobar el modelo E-R corregido.
