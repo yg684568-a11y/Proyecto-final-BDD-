@@ -115,6 +115,31 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.11 Evaluación y calificaciones por unidades
+
+**Decisión confirmada:** el profesor registrará varias calificaciones por unidad durante el semestre y el sistema calculará la calificación final de la materia.
+
+**Alcance aprobado:**
+- Registrar calificaciones de cada alumno por unidad y por grupo/materia cursada.
+- Permitir consultar el avance por unidad.
+- Calcular y conservar el resultado final de la materia.
+
+**Reglas pendientes antes de implementar el cálculo:**
+- Número de unidades: confirmar si cambia según la materia/curso.
+- Ponderación: definir si las unidades tienen el mismo peso o si cada materia puede tener ponderaciones distintas.
+- Escala, precisión decimal, redondeo y calificación mínima aprobatoria: verificar con la normatividad y políticas docentes vigentes.
+- Evaluaciones de recuperación, segunda oportunidad, regularización y otros casos: verificar reglas del TecNM/ITP aplicables.
+- Definir si una calificación puede modificarse después de publicada y qué rol puede autorizar el cambio; conservar trazabilidad.
+
+**Criterio de diseño provisional:** no codificar un número fijo de unidades ni asumir ponderaciones iguales. El modelo deberá soportar la configuración de unidades y criterios de evaluación por materia/grupo o la estructura que resulte de la instrumentación didáctica autorizada.
+
+**Fuentes normativas de referencia por validar para el ITP:**
+- Lineamiento para el Proceso de Evaluación y Acreditación de Asignaturas del TecNM (documento publicado en un campus TecNM): https://www.culiacan.tecnm.mx/wp-content/uploads/2016/01/LINEAMIENTO-PARA-LA-EVALUACION-Y-ACREDITACION-DE-ASIGNATURAS-AGOSTO-2015.pdf
+- La documentación institucional de gestión de curso del TecNM incluye listas de calificaciones por unidad y remite al lineamiento vigente aplicable: https://www.tecomatlan.tecnm.mx/wp-content/uploads/2023/02/TecNM-CA-MC-001-A05-PLAN-DE-CALIDAD-DEL-SERVICIO-EDUCATIVO.pdf
+
+Estas fuentes orientan la revisión, pero no confirman por sí solas todas las reglas actualmente aplicables en el ITP. Verificar la versión vigente con el plantel o el profesor antes de implementar porcentajes, escalas o oportunidades.
+
 ### 6.10 Selección de grupos durante la reinscripción
 
 **Decisión confirmada:** se utilizará el modelo de selección por el alumno. El alumno podrá consultar los grupos disponibles y elegir las materias/grupos y horarios que desea cursar, respetando el cupo disponible.
@@ -215,6 +240,7 @@ Resolver antes de aprobar el modelo definitivo:
 7. **Respondida:** se separarán el ingreso del alumno a una carrera/plan, su reinscripción por periodo y la inscripción a materias/grupos. Después se registrarán calificaciones y se conservará el historial académico. Las reglas concretas de carga, seriación, créditos, bajas y regularización deben verificarse con el ITP.
 8. **Respondida:** una misma materia podrá abrirse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista. La inscripción del alumno apuntará al grupo específico que cursa.
 9. **Respondida:** el alumno seleccionará los grupos, materias y horarios disponibles durante la reinscripción. El sistema deberá impedir confirmar una inscripción cuando el grupo haya alcanzado su cupo. Las reglas de seriación, choques de horario, fechas y bajas quedan pendientes de definición/verificación.
+10. **Respondida:** se registrarán varias calificaciones por unidad durante el semestre y el sistema calculará la calificación final de la materia. El número de unidades, ponderaciones, escala, redondeo, mínimo aprobatorio y oportunidades de recuperación quedan pendientes de verificación con las reglas vigentes del TecNM/ITP.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -297,6 +323,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-010 | El sistema distinguirá el ingreso del alumno a una carrera/plan, la reinscripción por periodo y la inscripción a materias/grupos. | Aprobación expresa del usuario. Reglas académicas específicas pendientes de validación institucional. | 2026-11-09 | Aprobada |
 | D-011 | Una materia podrá ofertarse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista de alumnos. | Aprobación expresa del usuario. Reglas de cupo, cambios de grupo y choques de horario quedan pendientes. | 2026-11-09 | Aprobada |
 | D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; el sistema bloqueará inscripciones cuando el grupo alcance su cupo. | Aprobación expresa del usuario. Las reglas de seriación, choques de horario, cambios y bajas quedan pendientes. | 2026-11-09 | Aprobada |
+| D-013 | El profesor registrará varias calificaciones por unidad y el sistema calculará la calificación final de la materia. | Aprobación expresa del usuario. Número de unidades y fórmula/ponderaciones sujetos a validación con la instrumentación didáctica y normativa vigente del TecNM/ITP. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
