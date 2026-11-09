@@ -117,6 +117,17 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.13 Validación automática de choques de horario
+
+**Decisión confirmada:** antes de confirmar una selección de grupos, el sistema verificará que los horarios del alumno no se traslapen. Si dos grupos seleccionados tienen sesiones que coinciden en día y horario, la selección conflictiva no podrá confirmarse.
+
+**Implicaciones para el futuro modelo y reglas:**
+- Los horarios deberán registrar al menos día de la semana, hora de inicio y hora de fin.
+- La validación debe considerar todas las sesiones de los grupos seleccionados dentro del periodo.
+- Definir posteriormente manejo de sesiones extraordinarias, cambios de horario, zonas horarias (si aplicara) y excepciones autorizadas.
+- El cupo y los choques de horario deben validarse dentro del flujo transaccional de inscripción para que no queden selecciones inválidas.
+
 ### 6.12 Configuración de unidades y ponderaciones por materia
 
 **Decisión confirmada:** el número de unidades y sus ponderaciones serán configurables por materia/asignatura, de acuerdo con la instrumentación didáctica que corresponda. No se impondrá una cantidad fija de unidades ni ponderaciones iguales para todas las materias.
@@ -261,7 +272,7 @@ Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 
 
 ### 7.2 Requerimientos funcionales todavía por precisar
 
-1. ¿El sistema debe bloquear la selección de grupos con horarios traslapados para el mismo alumno?
+1. **Respondida:** el sistema debe impedir confirmar una selección de grupos si existen horarios traslapados para el mismo alumno.
 2. ¿Qué datos debe mostrar cada horario (día, hora de inicio, hora de fin, aula, modalidad u otros)?
 3. ¿El cupo será obligatorio para todos los grupos? ¿Quién podrá autorizar excepciones?
 4. ¿Se permitirán cambios de grupo, bajas parciales y listas de espera? ¿En qué ventanas de tiempo?
@@ -363,6 +374,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; el sistema bloqueará inscripciones cuando el grupo alcance su cupo. | Aprobación expresa del usuario. Las reglas de seriación, choques de horario, cambios y bajas quedan pendientes. | 2026-11-09 | Aprobada |
 | D-013 | El profesor registrará varias calificaciones por unidad y el sistema calculará la calificación final de la materia. | Aprobación expresa del usuario. Número de unidades y fórmula/ponderaciones sujetos a validación con la instrumentación didáctica y normativa vigente del TecNM/ITP. | 2026-11-09 | Aprobada |
 | D-014 | El número de unidades y sus ponderaciones serán configurables por materia, según la instrumentación didáctica aplicable. | Aprobación expresa del usuario. Fórmula y restricciones concretas pendientes de validación con las reglas vigentes. | 2026-11-09 | Aprobada |
+| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. La estructura de sesiones/horarios y posibles excepciones se detallará posteriormente. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
