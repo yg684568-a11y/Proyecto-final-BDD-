@@ -109,6 +109,17 @@ Como hipótesis de trabajo, revisar esta estructura:
 
 con cursos asociados a grupos, profesores asignados según las reglas académicas y horarios vinculados al grupo. Es solo una propuesta que depende de las respuestas sobre el funcionamiento real de la escuela.
 
+### 6.4 Referencias institucionales verificadas (ITP)
+
+Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos datos sirven para orientar el levantamiento; no sustituyen reglamentos, procedimientos completos ni validación del equipo:
+
+- **Servicios Escolares:** su página institucional atribuye al departamento la coordinación de inscripción, reinscripción, cambios y traslados; procesos de regularización, acreditación, certificación y titulación; y trámites de convalidación, revisión, revalidación, equivalencia y constancias. Fuente: https://www.puebla.tecnm.mx/servicios-escolares/
+- **División de Estudios Profesionales:** su página institucional describe funciones relacionadas con carreras, planes y programas de estudio, cargas académicas, seguimiento académico-administrativo, captura de horarios y optimización de espacios educativos; también menciona asesoría para asignación de carga y reinscripción mediante coordinadores de carrera. Fuente: https://www.puebla.tecnm.mx/division-de-estudios-profesionales/
+- **Portal estudiantil AMBAR:** el sitio institucional incluye el acceso AMBAR Estudiantes. Un documento oficial de preguntas frecuentes de 2025 indica que el estudiante consulta calificaciones/boleta, kárdex, pagos y horario mediante su usuario. Debe verificarse el alcance vigente antes de replicar funciones. Fuente: https://www.puebla.tecnm.mx/ y https://www.puebla.tecnm.mx/wp-content/archivos/DesAcademico/archivos/prefuntas_frecuentes_2025C.pdf
+- **Reinscripciones:** el sitio publica avisos y procesos por periodo, por lo que la aplicación de clase puede modelar periodos escolares y procesos de reinscripción, pero sus reglas concretas deben obtenerse de los avisos/reglamentos aplicables. Fuente: https://www.puebla.tecnm.mx/reinscripciones/
+
+**Implicación para el proyecto:** los perfiles potenciales a evaluar son personal de Servicios Escolares, personal de División de Estudios Profesionales/coordinaciones de carrera, docentes y estudiantes. No asumir que todos requieren acceso ni que el sistema escolar del proyecto reemplazará los sistemas oficiales del ITP.
+
 ## 7. Preguntas pendientes de requerimientos
 
 Resolver antes de aprobar el modelo definitivo:
@@ -187,7 +198,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Definir el tipo de institución: instituto.
 - [x] Definir la institución de referencia: Instituto Tecnológico de Puebla (ITP).
 - [ ] Recopilar y verificar las reglas académicas del ITP que afecten el sistema.
-- [ ] Definir perfiles de usuarios y sus permisos.
+- [ ] Definir perfiles de usuarios y sus permisos considerando Servicios Escolares, División de Estudios Profesionales/coordinaciones, docentes y estudiantes como candidatos sujetos a confirmación.
 - [ ] Responder las demás preguntas de requerimientos de la sección 7.
 - [ ] Confirmar el alcance real de la escuela y las reglas de inscripción/cursos.
 - [ ] Revisar y aprobar el modelo E-R corregido.
