@@ -113,6 +113,18 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.9 Oferta de materias por grupos
+
+**Decisión confirmada:** una misma materia podrá ofertarse en varios grupos durante un periodo escolar. Cada grupo tendrá su propio profesor asignado, horario y lista de alumnos inscritos.
+
+**Implicaciones para el futuro modelo (pendientes de diseño):**
+- Diferenciar la materia del plan de estudios de su oferta concreta en un periodo.
+- El grupo debe pertenecer a una oferta/curso impartido en un periodo y plan/carrera cuando corresponda.
+- La asignación del profesor y el horario deben asociarse al grupo/oferta, no directamente al registro general de materia.
+- La inscripción del alumno debe apuntar al grupo específico que cursará.
+- Definir posteriormente reglas para cambios de grupo, cupo, choques de horario, grupos compartidos entre carreras y grupos sin profesor asignado.
+
 ### 6.8 Flujo académico de ingreso, reinscripción e inscripción a materias
 
 **Decisión confirmada:** se diferenciarán estos procesos:
@@ -181,6 +193,7 @@ Resolver antes de aprobar el modelo definitivo:
 5. **Respondida:** se conservarán varias versiones de planes por carrera, incluidos planes anteriores. Cada alumno quedará asociado al plan que le corresponda. Las reglas institucionales para cambios de plan y equivalencias se investigarán antes de implementarlas.
 6. **Respondida:** se utilizará una estructura semestral de referencia: enero–junio y agosto–diciembre, permitiendo registrar también periodos extraordinarios o de verano. Las fechas exactas se configurarán por periodo y deberán verificarse con los calendarios vigentes del ITP.
 7. **Respondida:** se separarán el ingreso del alumno a una carrera/plan, su reinscripción por periodo y la inscripción a materias/grupos. Después se registrarán calificaciones y se conservará el historial académico. Las reglas concretas de carga, seriación, créditos, bajas y regularización deben verificarse con el ITP.
+8. **Respondida:** una misma materia podrá abrirse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista. La inscripción del alumno apuntará al grupo específico que cursa.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -261,6 +274,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-008 | Cada carrera podrá conservar varias versiones de planes de estudio, y los alumnos permanecerán asociados al plan que les corresponda, incluyendo planes anteriores no vigentes. | Aprobación expresa del usuario. Las reglas de cambios de plan/equivalencias quedan pendientes de verificación institucional. | 2026-11-09 | Aprobada |
 | D-009 | El sistema manejará periodos semestrales ordinarios (enero–junio y agosto–diciembre) y permitirá registrar periodos extraordinarios o de verano. | Aprobación expresa del usuario. Las fechas exactas se configurarán por ciclo y se validarán con el calendario vigente del ITP. | 2026-11-09 | Aprobada |
 | D-010 | El sistema distinguirá el ingreso del alumno a una carrera/plan, la reinscripción por periodo y la inscripción a materias/grupos. | Aprobación expresa del usuario. Reglas académicas específicas pendientes de validación institucional. | 2026-11-09 | Aprobada |
+| D-011 | Una materia podrá ofertarse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista de alumnos. | Aprobación expresa del usuario. Reglas de cupo, cambios de grupo y choques de horario quedan pendientes. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
