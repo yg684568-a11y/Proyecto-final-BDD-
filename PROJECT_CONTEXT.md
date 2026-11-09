@@ -112,6 +112,21 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.8 Flujo académico de ingreso, reinscripción e inscripción a materias
+
+**Decisión confirmada:** se diferenciarán estos procesos:
+
+1. **Ingreso/alta del alumno:** registrar al alumno en una carrera y asociarlo con el plan de estudios que le corresponde.
+2. **Reinscripción por periodo:** registrar su continuidad académica en cada periodo escolar.
+3. **Inscripción a materias/grupos:** durante el periodo, asociar al alumno con las materias ofertadas en grupos concretos.
+4. **Evaluación:** registrar las calificaciones correspondientes al periodo y a las materias cursadas.
+5. **Historial académico/kárdex:** conservar la trayectoria del alumno a lo largo de los periodos, de acuerdo con su plan de estudios.
+
+**Regla de diseño:** no confundir el alta o ingreso institucional del alumno con sus reinscripciones por periodo ni con la inscripción a cada materia/grupo. La estructura exacta de entidades, restricciones y cardinalidades se definirá en la fase de modelo de datos.
+
+**Validación institucional pendiente:** revisar las reglas vigentes del ITP para carga académica, materias permitidas, seriación, créditos, bajas, repetición, regularización y límites de inscripción. No implementar estas reglas por suposición.
+
 ### 6.7 Periodos escolares
 
 **Decisión confirmada:** el sistema manejará periodos escolares semestrales. Como estructura de referencia se contemplan dos periodos ordinarios: enero–junio y agosto–diciembre. También se permitirá registrar periodos extraordinarios o de verano cuando correspondan.
@@ -165,6 +180,7 @@ Resolver antes de aprobar el modelo definitivo:
 4. **Respondida:** el diseño abarcará todas las carreras del ITP y permitirá administrar sus planes de estudio; para pruebas se utilizará un conjunto reducido de datos. El catálogo activo y las claves/planes vigentes deberán verificarse antes de cargar datos.
 5. **Respondida:** se conservarán varias versiones de planes por carrera, incluidos planes anteriores. Cada alumno quedará asociado al plan que le corresponda. Las reglas institucionales para cambios de plan y equivalencias se investigarán antes de implementarlas.
 6. **Respondida:** se utilizará una estructura semestral de referencia: enero–junio y agosto–diciembre, permitiendo registrar también periodos extraordinarios o de verano. Las fechas exactas se configurarán por periodo y deberán verificarse con los calendarios vigentes del ITP.
+7. **Respondida:** se separarán el ingreso del alumno a una carrera/plan, su reinscripción por periodo y la inscripción a materias/grupos. Después se registrarán calificaciones y se conservará el historial académico. Las reglas concretas de carga, seriación, créditos, bajas y regularización deben verificarse con el ITP.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -244,6 +260,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-007 | El diseño del catálogo abarcará todas las carreras del ITP y sus planes de estudio; se utilizará un conjunto limitado de datos de prueba. | Confirmación del usuario mediante selección de la opción recomendada. El catálogo vigente se verificará con fuentes institucionales antes de cargar datos. | 2026-11-09 | Aprobada |
 | D-008 | Cada carrera podrá conservar varias versiones de planes de estudio, y los alumnos permanecerán asociados al plan que les corresponda, incluyendo planes anteriores no vigentes. | Aprobación expresa del usuario. Las reglas de cambios de plan/equivalencias quedan pendientes de verificación institucional. | 2026-11-09 | Aprobada |
 | D-009 | El sistema manejará periodos semestrales ordinarios (enero–junio y agosto–diciembre) y permitirá registrar periodos extraordinarios o de verano. | Aprobación expresa del usuario. Las fechas exactas se configurarán por ciclo y se validarán con el calendario vigente del ITP. | 2026-11-09 | Aprobada |
+| D-010 | El sistema distinguirá el ingreso del alumno a una carrera/plan, la reinscripción por periodo y la inscripción a materias/grupos. | Aprobación expresa del usuario. Reglas académicas específicas pendientes de validación institucional. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
