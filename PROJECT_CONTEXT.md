@@ -1,0 +1,238 @@
+# PROJECT_CONTEXT — Sistema de gestión escolar en clúster
+
+> **Documento central de contexto.** Este archivo registra únicamente información confirmada, requisitos de la materia, propuestas pendientes y decisiones aprobadas. Debe mantenerse actualizado en el repositorio GitHub y compartirse con Gemini, Claude, ChatGPT y Antigravity para evitar repetir contexto.
+>
+> **Estado inicial:** borrador — levantamiento de requerimientos.  
+> **Última actualización:** 2026-11-09.  
+> **Regla:** ninguna propuesta tecnológica o modificación del modelo se considera aprobada hasta que el equipo la valide.
+
+---
+
+## 1. Resumen del proyecto
+
+Desarrollar un sistema de gestión escolar que permita administrar información académica (por ejemplo, alumnos, profesores, cursos, horarios, inscripciones, calificaciones e historial académico) y que utilice una **base de datos distribuida en clúster de tres nodos**.
+
+El alcance funcional definitivo todavía está pendiente de confirmación. También está pendiente aclarar si el sistema representará a un instituto tecnológico con semestres y grupos, una escuela de cursos o una solución escolar genérica.
+
+## 2. Equipo y nodos
+
+| Integrante | Identificación | Responsabilidad conocida | Configuración / datos técnicos |
+|---|---|---|---|
+| Yosef | Nodo 1 | Coordinador del equipo; descrito inicialmente como nodo central | IP, hostname, SO y función técnica exacta: **PENDIENTE** |
+| Andrés | Nodo 2 | Integrante responsable del nodo 2 | IP, hostname, SO y función técnica: **PENDIENTE** |
+| Leonardo | Nodo 3 | Integrante responsable del nodo 3 | IP, hostname, SO y función técnica: **PENDIENTE** |
+
+**Importante:** “Nodo central” describe por ahora la organización del equipo. No significa que el nodo 1 sea necesariamente un maestro exclusivo de la base de datos. La topología y el rol técnico de cada nodo deben definirse después de elegir el motor y el tipo de clúster.
+
+## 3. Organización de herramientas
+
+| Herramienta | Papel acordado para el proyecto |
+|---|---|
+| Gemini | IA principal: conducir las fases, analizar documentos y proponer diseños y procedimientos. |
+| Claude | Revisor técnico: auditar modelo de datos, SQL, arquitectura, seguridad y propuestas de Gemini. |
+| ChatGPT | Asesor y contraste técnico: resolver dudas, revisar decisiones y ayudar con redes, Linux, SQL y documentación. |
+| Antigravity | Entorno/agente de implementación: trabajar con archivos, código, terminal y pruebas, bajo revisión del equipo. |
+
+Las IA no deben aceptar automáticamente el trabajo de otra IA. Las decisiones deben contrastarse con documentación oficial, requisitos del profesor y pruebas reales.
+
+## 4. Requisitos confirmados por la guía del proyecto
+
+La guía del proyecto final de **Bases de Datos Distribuidas** solicita:
+
+- Diseñar y configurar una solución de base de datos para control y consulta de historiales académicos o kárdex, distribución de horarios y gestión de listas.
+- Documentar introducción, planteamiento del problema, objetivo general y objetivos específicos.
+- Describir la arquitectura tecnológica seleccionada y las tecnologías utilizadas, incluidas máquinas virtuales y SGBD.
+- Documentar el desarrollo, componentes arquitectónicos, configuraciones y modelo de datos (diagrama E-R o modelo lógico).
+- Definir requerimientos funcionales y no funcionales.
+- Integrar y probar operaciones `INSERT`, `DELETE` y `UPDATE`, así como transacciones `COMMIT` y `ROLLBACK`.
+- Describir escenarios de prueba, comparar resultados esperados y obtenidos e incluir evidencias.
+- Redactar conclusiones y bibliografía en formato APA 7.
+- La guía destaca el uso de borrado lógico y la conservación de registros históricos frente al borrado físico.
+
+**Nota de alcance:** la guía menciona un contexto del Instituto Tecnológico de Puebla (ITP) en el ejemplo del planteamiento del problema. Se debe confirmar si el sistema se construirá específicamente para el ITP o si ese texto es solo una referencia del profesor.
+
+## 5. Tecnologías: estado de selección
+
+Ninguna tecnología está aprobada definitivamente todavía.
+
+| Componente | Opción por evaluar | Estado | Observaciones |
+|---|---|---|---|
+| Virtualización | VirtualBox / VMware / alternativa | **PENDIENTE** | Confirmar software disponible y dónde se alojarán las VMs. |
+| Sistema operativo | Ubuntu Server | **CANDIDATO** | Confirmar versión y requisitos de recursos. |
+| Motor de base de datos | MariaDB + Galera Cluster | **CANDIDATO** | Validar compatibilidad, requisitos y si cumple lo que pide el profesor. |
+| Alternativa de base de datos | MySQL InnoDB Cluster u otra | **POR COMPARAR** | Elegir solo después de comparar requisitos y complejidad. |
+| Backend | PHP + Laravel | **CANDIDATO** | Confirmar con el alcance y conocimientos del equipo. |
+| Frontend | Blade + Bootstrap | **CANDIDATO** | Angular u otra opción solo si existe una necesidad concreta. |
+| Control de versiones | Git + GitHub | **PROPUESTO** | Repositorio compartido del equipo. |
+| Comunicación entre equipos/nodos | LAN / VPN (por ejemplo, Radmin VPN) | **PENDIENTE** | Confirmar topología y conectividad disponible. |
+
+No instalar ni configurar estas tecnologías hasta registrar la elección y sus versiones en este documento.
+
+## 6. Diagrama E-R recibido: inventario inicial
+
+El diagrama entregado contiene las siguientes entidades y atributos visibles. Este inventario describe el diagrama actual; **no significa que el modelo ya esté validado**.
+
+### 6.1 Entidades principales
+
+- **Alumnos:** `id_alumno`, nombre, segundo nombre, primer apellido, segundo apellido y estado.
+- **Datos_contacto_a:** `fk_id_alumno`, teléfono, segundo teléfono, correo y segundo correo.
+- **Profesores:** `id_profesor`, nombre, segundo nombre, apellidos, grado académico, fecha de ingreso y `fk_id_departamento`.
+- **Datos_contacto_p:** `fk_id_profesor`, teléfono, segundo teléfono, correo y segundo correo.
+- **Departamentos:** `id_departamento`, nombre y descripción.
+- **Cursos:** `id_curso`, nombre, `fk_id_profesor`, `fk_categoria`, descripción, nivel, duración en horas, estado, fecha de inicio y fecha de fin.
+- **Categorias:** `id_categoria`, nombre y descripción.
+- **Modulos:** `id_modulo`, título, descripción y `fk_id_curso`.
+- **Horarios:** `id_horario`, `fk_id_curso`, día de la semana y `hora_fin` (según lo visible en la imagen; verificar si hay atributos recortados).
+- **Historiales:** `id_inscripcion`, `fk_id_alumno`, `fk_id_curso`, calificación, fecha de inscripción, fecha fin, intento y estado.
+- **Calf_modulos:** `id_calificación`, `fk_id_inscripcion`, `fk_id_modulo`, calificación del módulo y estado.
+
+### 6.2 Observaciones para revisar en el rediseño
+
+1. **Historiales / inscripciones:** por los campos `id_inscripcion`, alumno, curso, fecha de inscripción, intento y estado, la entidad parece representar una inscripción o intento de inscripción. Evaluar renombrarla a `inscripciones` y definir cómo se construirá el kárdex sin duplicar información.
+2. **Grupos:** el modelo no muestra una entidad explícita de grupos/secciones. Si un curso puede impartirse a varios grupos, conviene modelar los grupos y asociar a ellos profesor y horarios.
+3. **Periodos escolares:** no aparece una entidad para ciclos o periodos (por ejemplo, semestre o periodo). Confirmar si se necesitan y cómo se identifican.
+4. **Horarios:** el diagrama muestra `hora_fin`, pero no se observa `hora_inicio`. Revisar también si el horario debe relacionarse con el grupo en vez de directamente con el curso.
+5. **Aulas:** no aparece una entidad de aulas/salones. Agregarla solo si el sistema debe asignar espacios físicos.
+6. **Profesor en Cursos:** `Cursos` contiene `fk_id_profesor`. Confirmar si un curso tiene un único profesor siempre o si cada grupo puede tener un profesor distinto. En el segundo caso, la relación probablemente debe trasladarse a grupos.
+7. **Calificaciones de módulos:** revisar nombre de `Calf_modulos`, tipo de dato de la calificación, escala permitida y diferencia entre estado de entrega y resultado (pendiente/entregado frente a aprobado/reprobado).
+8. **Datos de contacto:** confirmar si `Datos_contacto_a` y `Datos_contacto_p` son relaciones 1:1 obligatorias u opcionales y si sus claves foráneas también son claves primarias.
+9. **Estados y borrado lógico:** definir estados válidos y una política de baja lógica/auditoría coherente con la guía. No hacer borrado físico de información académica sin una regla explícita.
+10. **Restricciones:** revisar PK, FK, `UNIQUE`, `NOT NULL`, cardinalidades, índices y reglas para evitar inscripciones duplicadas o calificaciones repetidas indebidamente.
+11. **Usuarios y permisos:** no se observan tablas de acceso, cuentas o roles. Confirmar si la aplicación requiere inicio de sesión para alumnos, profesores y administradores antes de incorporarlas.
+12. **Convenciones:** definir nombres consistentes para tablas y columnas (por ejemplo, minúsculas y `snake_case`, sin espacios ni acentos) al aprobar el nuevo modelo.
+
+### 6.3 Modelo propuesto, todavía no aprobado
+
+Como hipótesis de trabajo, revisar esta estructura:
+
+`periodos_escolares → grupos → inscripciones → calificaciones`
+
+con cursos asociados a grupos, profesores asignados según las reglas académicas y horarios vinculados al grupo. Es solo una propuesta que depende de las respuestas sobre el funcionamiento real de la escuela.
+
+## 7. Preguntas pendientes de requerimientos
+
+Resolver antes de aprobar el modelo definitivo:
+
+1. ¿El sistema será para un instituto con semestres y grupos, una escuela de cursos o un sistema escolar general?
+2. ¿Qué perfiles lo utilizarán: administrador, control escolar, profesores, alumnos u otros?
+3. ¿Qué funciones se implementarán exactamente: alumnos, profesores, cursos, grupos, inscripciones, horarios, calificaciones, kárdex, listas, autenticación y permisos?
+4. ¿El profesor exige un motor o tecnología específica para el clúster?
+5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
+6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
+7. ¿Qué virtualizador utilizarán y cómo se comunicarán las VMs (LAN, VPN u otra red)?
+8. ¿Qué lenguaje/framework prefiere o domina el equipo?
+9. ¿Se evaluará también una aplicación web funcional o principalmente la base de datos distribuida?
+10. ¿Cuál es la fecha de entrega y qué hitos intermedios existen?
+
+Registrar aquí las respuestas y su fecha cuando el equipo las confirme.
+
+## 8. Direccionamiento y configuración de nodos
+
+Completar cuando se defina la infraestructura. No inventar IPs ni contraseñas.
+
+| Parámetro | Nodo 1 — Yosef | Nodo 2 — Andrés | Nodo 3 — Leonardo |
+|---|---|---|---|
+| Hostname | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Dirección IP | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Máscara / prefijo | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Gateway | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Sistema operativo y versión | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| CPU / RAM / disco de VM | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Motor y versión | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Rol dentro del clúster | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Estado de configuración | No iniciado | No iniciado | No iniciado |
+
+### Registro de configuración
+
+| Fecha | Nodo(s) | Configuración / comando aplicado | Resultado observado | Evidencia / archivo |
+|---|---|---|---|---|
+| — | — | Aún no se han registrado configuraciones | — | — |
+
+## 9. Registro de decisiones aprobadas
+
+Solo registrar aquí decisiones confirmadas por el equipo. Incluir motivo y fecha.
+
+| ID | Decisión | Motivo / evidencia | Fecha | Estado |
+|---|---|---|---|---|
+| D-001 | Gemini será la IA principal; Claude revisará; ChatGPT asesorará; Antigravity apoyará la implementación. | Acuerdo inicial del equipo. | 2026-11-09 | Aprobada |
+| D-002 | El equipo se compone de Yosef (nodo 1), Andrés (nodo 2) y Leonardo (nodo 3). | Información proporcionada por el equipo. | 2026-11-09 | Confirmada |
+| D-003 | Motor de base de datos y topología del clúster. | Pendiente de evaluación y validación del profesor/equipo. | — | Pendiente |
+
+## 10. Registro de errores y soluciones
+
+| ID | Fecha | Nodo / componente | Error y mensaje exacto | Causa confirmada | Solución aplicada | Verificación |
+|---|---|---|---|---|---|---|
+| — | — | — | Aún no hay errores registrados. | — | — | — |
+
+No registrar una causa como confirmada si solo es una hipótesis. Añadir comandos y salidas relevantes, ocultando contraseñas, tokens y datos privados.
+
+## 11. Fases y seguimiento
+
+| Fase | Actividad | Estado | Criterio para darla por terminada |
+|---|---|---|---|
+| 1 | Levantamiento de requerimientos y alcance | **EN CURSO** | Preguntas respondidas y alcance validado por el equipo. |
+| 2 | Rediseño E-R, normalización y modelo relacional | Pendiente | Diagrama, cardinalidades, PK/FK y restricciones aprobados. |
+| 3 | Diseño de arquitectura del clúster | Pendiente | Motor, topología, roles, red y requisitos definidos. |
+| 4 | Preparación de máquinas virtuales | Pendiente | Tres VMs conectadas y documentadas. |
+| 5 | Instalación y configuración del clúster | Pendiente | Los tres nodos forman el clúster según pruebas verificables. |
+| 6 | Pruebas de replicación, disponibilidad y recuperación | Pendiente | Escenarios y resultados documentados. |
+| 7 | Desarrollo de la aplicación escolar | Pendiente | Funciones acordadas implementadas. |
+| 8 | Integración aplicación–clúster | Pendiente | Operaciones de la aplicación verificadas contra el clúster. |
+| 9 | Pruebas de transacciones y reglas de negocio | Pendiente | INSERT/UPDATE/DELETE, COMMIT/ROLLBACK y escenarios definidos probados. |
+| 10 | Reporte y evidencias finales | Pendiente | Documento final, capturas, resultados y bibliografía completos. |
+
+### Próximas tareas inmediatas
+
+- [ ] Responder las 10 preguntas de requerimientos de la sección 7.
+- [ ] Confirmar el alcance real de la escuela y las reglas de inscripción/cursos.
+- [ ] Revisar y aprobar el modelo E-R corregido.
+- [ ] Elegir el motor y arquitectura de clúster con base en los requisitos del profesor.
+- [ ] Completar direcciones IP y características de las VMs cuando se conozcan.
+
+## 12. Reglas para las IA y colaboradores
+
+Al recibir este archivo:
+
+1. Léelo antes de proponer cambios o generar código.
+2. Respeta los estados **APROBADO**, **PENDIENTE**, **CANDIDATO** y **POR VALIDAR**.
+3. No conviertas una propuesta en decisión aprobada por tu cuenta.
+4. No inventes IPs, versiones instaladas, resultados, errores ni evidencias.
+5. Trabaja únicamente en la fase actual salvo que el equipo solicite explícitamente otra cosa.
+6. Responde de forma concisa y evita repetir el contexto que ya aparece aquí.
+7. Si detectas una contradicción, señala el apartado y propone una corrección; espera validación antes de cambiar una decisión aprobada.
+8. Al finalizar una sesión, entrega un bloque breve de cambios sugeridos para actualizar este archivo: decisiones, configuraciones, errores, resultados y siguiente tarea.
+9. No incluyas contraseñas, claves privadas, tokens, archivos `.env` ni datos personales reales en este documento o en GitHub.
+
+## 13. Archivos del proyecto
+
+Mantener una estructura sencilla en el repositorio; adaptar cuando el equipo lo necesite:
+
+```text
+sistema-gestion-escolar/
+├── PROJECT_CONTEXT.md
+├── README.md
+├── docs/
+│   ├── requisitos/
+│   ├── modelo-datos/
+│   ├── arquitectura/
+│   ├── configuracion-nodos/
+│   ├── pruebas/
+│   └── evidencias/
+├── database/
+│   ├── schema/
+│   ├── seeds/
+│   └── procedures/
+├── app/
+└── .gitignore
+```
+
+No subir respaldos de máquinas virtuales, archivos pesados innecesarios, credenciales ni datos reales de alumnos.
+
+---
+
+## Fuentes base
+
+- `Diagrama E-R sistema de escuela`: imagen del modelo proporcionada por el equipo. Se debe conservar el original en `docs/modelo-datos/`.
+- `REPORTE FINAL BDD.pdf`: guía del proyecto final de Bases de Datos Distribuidas proporcionada por el equipo. Se debe conservar una copia en `docs/requisitos/`.
+
+Este archivo es un resumen operativo, no sustituye los documentos originales ni la validación del profesor.
