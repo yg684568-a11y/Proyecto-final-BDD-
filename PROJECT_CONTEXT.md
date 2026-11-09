@@ -10,9 +10,9 @@
 
 ## 1. Resumen del proyecto
 
-Desarrollar un sistema de gestión escolar que permita administrar información académica (por ejemplo, alumnos, profesores, cursos, horarios, inscripciones, calificaciones e historial académico) y que utilice una **base de datos distribuida en clúster de tres nodos**.
+Desarrollar un sistema de gestión escolar para un **instituto**, que permita administrar información académica (por ejemplo, alumnos, profesores, cursos, horarios, inscripciones, calificaciones e historial académico) y que utilice una **base de datos distribuida en clúster de tres nodos**.
 
-El alcance funcional definitivo todavía está pendiente de confirmación. También está pendiente aclarar si el sistema representará a un instituto tecnológico con semestres y grupos, una escuela de cursos o una solución escolar genérica.
+**Tipo de institución confirmado:** instituto. Aún falta confirmar si se trata específicamente del Instituto Tecnológico de Puebla (ITP) o de un instituto ficticio/genérico para el proyecto. El alcance funcional definitivo está pendiente.
 
 ## 2. Equipo y nodos
 
@@ -113,7 +113,7 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 Resolver antes de aprobar el modelo definitivo:
 
-1. ¿El sistema será para un instituto con semestres y grupos, una escuela de cursos o un sistema escolar general?
+1. **Respondida:** el sistema será para un instituto. Falta confirmar si será específicamente para el ITP o un instituto genérico.
 2. ¿Qué perfiles lo utilizarán: administrador, control escolar, profesores, alumnos u otros?
 3. ¿Qué funciones se implementarán exactamente: alumnos, profesores, cursos, grupos, inscripciones, horarios, calificaciones, kárdex, listas, autenticación y permisos?
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
@@ -157,6 +157,7 @@ Solo registrar aquí decisiones confirmadas por el equipo. Incluir motivo y fech
 | D-001 | Gemini será la IA principal; Claude revisará; ChatGPT asesorará; Antigravity apoyará la implementación. | Acuerdo inicial del equipo. | 2026-11-09 | Aprobada |
 | D-002 | El equipo se compone de Yosef (nodo 1), Andrés (nodo 2) y Leonardo (nodo 3). | Información proporcionada por el equipo. | 2026-11-09 | Confirmada |
 | D-003 | Motor de base de datos y topología del clúster. | Pendiente de evaluación y validación del profesor/equipo. | — | Pendiente |
+| D-004 | El sistema será para un instituto. | Confirmación del usuario. Falta precisar si será específicamente el ITP o un instituto genérico. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -183,7 +184,10 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 
 ### Próximas tareas inmediatas
 
-- [ ] Responder las 10 preguntas de requerimientos de la sección 7.
+- [x] Definir el tipo de institución: instituto.
+- [ ] Confirmar si será específicamente el ITP o un instituto genérico.
+- [ ] Definir perfiles de usuarios y sus permisos.
+- [ ] Responder las demás preguntas de requerimientos de la sección 7.
 - [ ] Confirmar el alcance real de la escuela y las reglas de inscripción/cursos.
 - [ ] Revisar y aprobar el modelo E-R corregido.
 - [ ] Elegir el motor y arquitectura de clúster con base en los requisitos del profesor.
