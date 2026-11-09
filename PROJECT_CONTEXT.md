@@ -242,29 +242,52 @@ Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos d
 
 **Implicación para el proyecto:** los perfiles potenciales a evaluar son personal de Servicios Escolares, personal de División de Estudios Profesionales/coordinaciones de carrera, docentes y estudiantes. No asumir que todos requieren acceso ni que el sistema escolar del proyecto reemplazará los sistemas oficiales del ITP.
 
-## 7. Preguntas pendientes de requerimientos
+## 7. Estado del levantamiento de requerimientos
 
-Resolver antes de aprobar el modelo definitivo:
+### 7.1 Decisiones funcionales confirmadas
 
-1. **Respondida:** el sistema será para el Instituto Tecnológico de Puebla (ITP) y se basará en su funcionamiento académico. Las reglas institucionales específicas aún deben recopilarse y verificarse.
-2. **Respondida:** se aprueban cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. Sus responsabilidades generales son las descritas en este documento; los permisos detallados por módulo se definirán durante el diseño funcional.
-3. **Respondida:** se aprueban 12 módulos iniciales: usuarios y roles; alumnos; profesores; departamentos y carreras; materias; periodos escolares; grupos; inscripciones; horarios; calificaciones; kárdex; y listas escolares. Los flujos y reglas de negocio detallados quedan pendientes.
-4. **Respondida:** el diseño abarcará todas las carreras del ITP y permitirá administrar sus planes de estudio; para pruebas se utilizará un conjunto reducido de datos. El catálogo activo y las claves/planes vigentes deberán verificarse antes de cargar datos.
-5. **Respondida:** se conservarán varias versiones de planes por carrera, incluidos planes anteriores. Cada alumno quedará asociado al plan que le corresponda. Las reglas institucionales para cambios de plan y equivalencias se investigarán antes de implementarlas.
-6. **Respondida:** se utilizará una estructura semestral de referencia: enero–junio y agosto–diciembre, permitiendo registrar también periodos extraordinarios o de verano. Las fechas exactas se configurarán por periodo y deberán verificarse con los calendarios vigentes del ITP.
-7. **Respondida:** se separarán el ingreso del alumno a una carrera/plan, su reinscripción por periodo y la inscripción a materias/grupos. Después se registrarán calificaciones y se conservará el historial académico. Las reglas concretas de carga, seriación, créditos, bajas y regularización deben verificarse con el ITP.
-8. **Respondida:** una misma materia podrá abrirse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista. La inscripción del alumno apuntará al grupo específico que cursa.
-9. **Respondida:** el alumno seleccionará los grupos, materias y horarios disponibles durante la reinscripción. El sistema deberá impedir confirmar una inscripción cuando el grupo haya alcanzado su cupo. Las reglas de seriación, choques de horario, fechas y bajas quedan pendientes de definición/verificación.
-10. **Respondida:** se registrarán varias calificaciones por unidad durante el semestre y el sistema calculará la calificación final. El número de unidades y sus ponderaciones serán configurables por materia. La fórmula concreta, escala, redondeo, mínimo aprobatorio y oportunidades de recuperación quedan pendientes de verificación con las reglas vigentes del TecNM/ITP.
-4. ¿El profesor exige un motor o tecnología específica para el clúster?
-5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
-6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
-7. ¿Qué virtualizador utilizarán y cómo se comunicarán las VMs (LAN, VPN u otra red)?
-8. ¿Qué lenguaje/framework prefiere o domina el equipo?
-9. ¿Se evaluará también una aplicación web funcional o principalmente la base de datos distribuida?
-10. ¿Cuál es la fecha de entrega y qué hitos intermedios existen?
+Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 6.12 y en el registro de decisiones. En resumen:
 
-Registrar aquí las respuestas y su fecha cuando el equipo las confirme.
+- Institución objetivo: Instituto Tecnológico de Puebla (ITP).
+- Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
+- Doce módulos iniciales aprobados.
+- Catálogo de todas las carreras del ITP; datos de prueba limitados.
+- Versiones históricas de planes de estudio y asociación del alumno con su plan.
+- Periodos semestrales ordinarios y periodos extraordinarios/verano.
+- Separación entre ingreso, reinscripción por periodo e inscripción a materias/grupos.
+- Una materia puede abrirse en varios grupos; cada grupo tiene profesor, horario y lista propios.
+- El alumno selecciona grupos y horarios; el sistema valida cupo.
+- Calificaciones por unidades con número de unidades y ponderaciones configurables por materia.
+
+### 7.2 Requerimientos funcionales todavía por precisar
+
+1. ¿El sistema debe bloquear la selección de grupos con horarios traslapados para el mismo alumno?
+2. ¿Qué datos debe mostrar cada horario (día, hora de inicio, hora de fin, aula, modalidad u otros)?
+3. ¿El cupo será obligatorio para todos los grupos? ¿Quién podrá autorizar excepciones?
+4. ¿Se permitirán cambios de grupo, bajas parciales y listas de espera? ¿En qué ventanas de tiempo?
+5. ¿Qué reglas de seriación, créditos y materias permitidas se deben aplicar al seleccionar materias?
+6. ¿Qué datos y procesos exactos se incluirán en el expediente, kárdex y lista escolar?
+7. ¿Qué reglas del ITP aplican a la captura, modificación, publicación y cálculo de calificaciones?
+
+### 7.3 Requerimientos de infraestructura y desarrollo pendientes
+
+8. ¿El profesor exige un motor o tecnología específica para el clúster?
+9. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
+10. ¿Las tres máquinas virtuales estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
+11. ¿Qué virtualizador utilizarán y cómo se comunicarán las VMs (LAN, VPN u otra red)?
+12. ¿Qué lenguaje/framework prefiere o domina el equipo?
+13. ¿Se evaluará también una aplicación web funcional o principalmente la base de datos distribuida?
+14. ¿Cuál es la fecha de entrega y qué hitos intermedios existen?
+
+### 7.4 Validación institucional pendiente
+
+- Obtener/confirmar el catálogo oficial vigente de carreras, niveles, modalidades y planes del ITP.
+- Verificar calendarios, periodos y reglas institucionales de inscripción/reinscripción.
+- Verificar seriación, créditos, bajas, repetición, regularización y equivalencias.
+- Verificar el lineamiento vigente de evaluación, escala, ponderaciones, redondeo y oportunidades.
+- Distinguir las funciones que el sistema académico del proyecto debe simular de aquellas que corresponden a plataformas institucionales existentes.
+
+Registrar las respuestas y su fecha cuando el equipo las confirme. No asumir reglas institucionales no documentadas.
 
 ## 8. Direccionamiento y configuración de nodos
 
