@@ -110,6 +110,17 @@ Como hipótesis de trabajo, revisar esta estructura:
 con cursos asociados a grupos, profesores asignados según las reglas académicas y horarios vinculados al grupo. Es solo una propuesta que depende de las respuestas sobre el funcionamiento real de la escuela.
 
 
+
+### 6.6 Versionamiento de planes de estudio
+
+**Decisión confirmada:** cada carrera podrá conservar varias versiones de su plan de estudios (vigentes y anteriores). Cada alumno deberá quedar asociado al plan de estudios que le corresponda, y los planes anteriores se conservarán aunque dejen de estar vigentes, para poder consultar correctamente su trayectoria e historial académico.
+
+**Implicaciones para el futuro modelo (pendientes de diseño):**
+- Una carrera podrá tener uno o varios planes de estudio.
+- Un plan de estudios tendrá su propia versión/identificador y datos de vigencia por definir.
+- Las materias/asignaturas deberán asociarse al plan correspondiente, evitando que cambios de un plan alteren el historial de alumnos de otro.
+- La regla para asignar o cambiar de plan a un alumno (por ejemplo, equivalencias o cambio de plan) debe definirse con el procedimiento institucional del ITP; no asumir migraciones automáticas.
+
 ### 6.5 Alcance del catálogo de carreras
 
 **Decisión confirmada por el equipo:** el diseño deberá permitir registrar todas las carreras del ITP y administrar sus respectivos planes de estudio. Para el desarrollo y las demostraciones se utilizará un conjunto limitado de datos de prueba, sin limitar el diseño a una sola carrera.
@@ -141,6 +152,7 @@ Resolver antes de aprobar el modelo definitivo:
 2. **Respondida:** se aprueban cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. Sus responsabilidades generales son las descritas en este documento; los permisos detallados por módulo se definirán durante el diseño funcional.
 3. **Respondida:** se aprueban 12 módulos iniciales: usuarios y roles; alumnos; profesores; departamentos y carreras; materias; periodos escolares; grupos; inscripciones; horarios; calificaciones; kárdex; y listas escolares. Los flujos y reglas de negocio detallados quedan pendientes.
 4. **Respondida:** el diseño abarcará todas las carreras del ITP y permitirá administrar sus planes de estudio; para pruebas se utilizará un conjunto reducido de datos. El catálogo activo y las claves/planes vigentes deberán verificarse antes de cargar datos.
+5. **Respondida:** se conservarán varias versiones de planes por carrera, incluidos planes anteriores. Cada alumno quedará asociado al plan que le corresponda. Las reglas institucionales para cambios de plan y equivalencias se investigarán antes de implementarlas.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -218,6 +230,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario sobre los roles y responsabilidades generales propuestos. | 2026-11-09 | Aprobada |
 | D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario a la propuesta de módulos. Los flujos y reglas detallados quedan pendientes. | 2026-11-09 | Aprobada |
 | D-007 | El diseño del catálogo abarcará todas las carreras del ITP y sus planes de estudio; se utilizará un conjunto limitado de datos de prueba. | Confirmación del usuario mediante selección de la opción recomendada. El catálogo vigente se verificará con fuentes institucionales antes de cargar datos. | 2026-11-09 | Aprobada |
+| D-008 | Cada carrera podrá conservar varias versiones de planes de estudio, y los alumnos permanecerán asociados al plan que les corresponda, incluyendo planes anteriores no vigentes. | Aprobación expresa del usuario. Las reglas de cambios de plan/equivalencias quedan pendientes de verificación institucional. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -252,6 +265,8 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [ ] Responder las demás preguntas de requerimientos de la sección 7.
 - [x] Definir que el modelo debe soportar todas las carreras del ITP y sus planes de estudio.
 - [ ] Confirmar el catálogo activo de carreras, modalidad, nivel y planes vigentes para el ciclo de referencia.
+- [x] Definir que se conservarán planes de estudio anteriores y la asociación del alumno con su plan correspondiente.
+- [ ] Verificar reglas del ITP para cambios de plan, equivalencias y transición entre versiones.
 - [ ] Confirmar el alcance real de las reglas de inscripción/reinscripción y evaluación.
 - [ ] Revisar y aprobar el modelo E-R corregido.
 - [ ] Elegir el motor y arquitectura de clúster con base en los requisitos del profesor.
