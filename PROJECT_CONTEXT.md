@@ -109,6 +109,19 @@ Como hipótesis de trabajo, revisar esta estructura:
 
 con cursos asociados a grupos, profesores asignados según las reglas académicas y horarios vinculados al grupo. Es solo una propuesta que depende de las respuestas sobre el funcionamiento real de la escuela.
 
+
+### 6.5 Alcance del catálogo de carreras
+
+**Decisión confirmada por el equipo:** el diseño deberá permitir registrar todas las carreras del ITP y administrar sus respectivos planes de estudio. Para el desarrollo y las demostraciones se utilizará un conjunto limitado de datos de prueba, sin limitar el diseño a una sola carrera.
+
+**Validación pendiente antes de cargar el catálogo:**
+- La página institucional de la División de Estudios Profesionales describe la gestión de carreras, planes/programas de estudio, cargas académicas y horarios, y publica coordinaciones y retículas por programa: https://www.puebla.tecnm.mx/division-de-estudios-profesionales/
+- El sitio institucional del ITP presenta su oferta académica: https://www.puebla.tecnm.mx/
+- El catálogo central de TecNM consultado muestra al Instituto Tecnológico de Puebla con un conteo de 9 carreras: https://www.tecnm.mx/index.php?vista=Licenciaturas
+- Las páginas pueden presentar diferencias de actualización o de agrupación de programas. Antes de insertar datos reales, confirmar el listado activo, nivel (licenciatura/posgrado), modalidad y planes vigentes correspondientes al ciclo que abarcará el sistema. No completar nombres o claves faltantes por inferencia.
+
+**Alcance de datos de prueba:** crear inicialmente registros ficticios/representativos para pocas carreras y planes seleccionados; la estructura debe soportar todas las carreras. No utilizar datos personales reales de estudiantes o docentes.
+
 ### 6.4 Referencias institucionales verificadas (ITP)
 
 Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos datos sirven para orientar el levantamiento; no sustituyen reglamentos, procedimientos completos ni validación del equipo:
@@ -127,6 +140,7 @@ Resolver antes de aprobar el modelo definitivo:
 1. **Respondida:** el sistema será para el Instituto Tecnológico de Puebla (ITP) y se basará en su funcionamiento académico. Las reglas institucionales específicas aún deben recopilarse y verificarse.
 2. **Respondida:** se aprueban cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. Sus responsabilidades generales son las descritas en este documento; los permisos detallados por módulo se definirán durante el diseño funcional.
 3. **Respondida:** se aprueban 12 módulos iniciales: usuarios y roles; alumnos; profesores; departamentos y carreras; materias; periodos escolares; grupos; inscripciones; horarios; calificaciones; kárdex; y listas escolares. Los flujos y reglas de negocio detallados quedan pendientes.
+4. **Respondida:** el diseño abarcará todas las carreras del ITP y permitirá administrar sus planes de estudio; para pruebas se utilizará un conjunto reducido de datos. El catálogo activo y las claves/planes vigentes deberán verificarse antes de cargar datos.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -203,6 +217,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-004 | El sistema estará basado en el funcionamiento académico del Instituto Tecnológico de Puebla (ITP). | Confirmación del usuario. Las reglas académicas concretas deben verificarse con fuentes institucionales o con el equipo. | 2026-11-09 | Aprobada |
 | D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario sobre los roles y responsabilidades generales propuestos. | 2026-11-09 | Aprobada |
 | D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario a la propuesta de módulos. Los flujos y reglas detallados quedan pendientes. | 2026-11-09 | Aprobada |
+| D-007 | El diseño del catálogo abarcará todas las carreras del ITP y sus planes de estudio; se utilizará un conjunto limitado de datos de prueba. | Confirmación del usuario mediante selección de la opción recomendada. El catálogo vigente se verificará con fuentes institucionales antes de cargar datos. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -235,7 +250,9 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Definir los cinco perfiles generales del sistema.
 - [ ] Elaborar y aprobar la matriz detallada de permisos por módulo.
 - [ ] Responder las demás preguntas de requerimientos de la sección 7.
-- [ ] Confirmar el alcance real de la escuela y las reglas de inscripción/cursos.
+- [x] Definir que el modelo debe soportar todas las carreras del ITP y sus planes de estudio.
+- [ ] Confirmar el catálogo activo de carreras, modalidad, nivel y planes vigentes para el ciclo de referencia.
+- [ ] Confirmar el alcance real de las reglas de inscripción/reinscripción y evaluación.
 - [ ] Revisar y aprobar el modelo E-R corregido.
 - [ ] Elegir el motor y arquitectura de clúster con base en los requisitos del profesor.
 - [ ] Completar direcciones IP y características de las VMs cuando se conozcan.
