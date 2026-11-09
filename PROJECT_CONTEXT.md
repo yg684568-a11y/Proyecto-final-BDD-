@@ -126,7 +126,7 @@ Resolver antes de aprobar el modelo definitivo:
 
 1. **Respondida:** el sistema será para el Instituto Tecnológico de Puebla (ITP) y se basará en su funcionamiento académico. Las reglas institucionales específicas aún deben recopilarse y verificarse.
 2. **Respondida:** se aprueban cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. Sus responsabilidades generales son las descritas en este documento; los permisos detallados por módulo se definirán durante el diseño funcional.
-3. ¿Qué funciones se implementarán exactamente: alumnos, profesores, cursos, grupos, inscripciones, horarios, calificaciones, kárdex, listas, autenticación y permisos?
+3. **Respondida:** se aprueban 12 módulos iniciales: usuarios y roles; alumnos; profesores; departamentos y carreras; materias; periodos escolares; grupos; inscripciones; horarios; calificaciones; kárdex; y listas escolares. Los flujos y reglas de negocio detallados quedan pendientes.
 4. ¿El profesor exige un motor o tecnología específica para el clúster?
 5. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
 6. ¿Las tres VMs estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
@@ -163,6 +163,26 @@ Completar cuando se defina la infraestructura. No inventar IPs ni contraseñas.
 
 Solo registrar aquí decisiones confirmadas por el equipo. Incluir motivo y fecha.
 
+
+### Módulos aprobados (alcance funcional inicial)
+
+El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. Su desarrollo todavía no ha comenzado; los flujos, reglas de negocio y permisos detallados se especificarán en fases posteriores.
+
+| # | Módulo | Funcionalidad prevista |
+|---:|---|---|
+| 1 | Usuarios y roles | Inicio de sesión y permisos. |
+| 2 | Alumnos | Expedientes y datos personales. |
+| 3 | Profesores | Información y asignaciones docentes. |
+| 4 | Departamentos y carreras | Organización académica. |
+| 5 | Materias | Catálogo de asignaturas y planes de estudio. |
+| 6 | Periodos escolares | Semestres y ciclos escolares. |
+| 7 | Grupos | Asignación de alumnos y profesores. |
+| 8 | Inscripciones | Inscripción y reinscripción. |
+| 9 | Horarios | Distribución de clases. |
+| 10 | Calificaciones | Captura y consulta de evaluaciones. |
+| 11 | Kárdex | Historial académico del alumno. |
+| 12 | Listas escolares | Listas de alumnos por grupo. |
+
 ### Roles confirmados
 
 | Rol | Responsabilidad general aprobada |
@@ -182,6 +202,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-003 | Motor de base de datos y topología del clúster. | Pendiente de evaluación y validación del profesor/equipo. | — | Pendiente |
 | D-004 | El sistema estará basado en el funcionamiento académico del Instituto Tecnológico de Puebla (ITP). | Confirmación del usuario. Las reglas académicas concretas deben verificarse con fuentes institucionales o con el equipo. | 2026-11-09 | Aprobada |
 | D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario sobre los roles y responsabilidades generales propuestos. | 2026-11-09 | Aprobada |
+| D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario a la propuesta de módulos. Los flujos y reglas detallados quedan pendientes. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
