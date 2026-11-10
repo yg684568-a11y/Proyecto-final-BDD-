@@ -159,6 +159,9 @@ erDiagram
     AULA ||--o{ HORARIO_GRUPO : ocupa
     GRUPO_PLAN_MATERIA ||--o{ INSCRIPCION : permite
     ALUMNO ||--o{ INSCRIPCION : realiza
+    INSCRIPCION ||--o{ MOVIMIENTO_INSCRIPCION : historial
+    GRUPO ||--o{ MOVIMIENTO_INSCRIPCION : origen
+    GRUPO ||--o{ MOVIMIENTO_INSCRIPCION : destino
     GRUPO ||--o| LISTA_ESPERA : puede_tener
     LISTA_ESPERA ||--o{ ENTRADA_LISTA_ESPERA : contiene
     ALUMNO ||--o{ ENTRADA_LISTA_ESPERA : solicita
@@ -219,6 +222,19 @@ erDiagram
         int numero_intento
         decimal calificacion_final "nullable"
         string estado
+    }
+    MOVIMIENTO_INSCRIPCION {
+        int id_movimiento PK
+        int id_inscripcion FK
+        int id_grupo_origen FK
+        int id_grupo_destino FK "nullable"
+        int id_usuario_solicita FK
+        int id_usuario_autoriza FK "nullable"
+        string tipo
+        string motivo
+        string estado
+        datetime fecha_solicitud
+        datetime fecha_resolucion "nullable"
     }
     LISTA_ESPERA {
         int id_lista PK
