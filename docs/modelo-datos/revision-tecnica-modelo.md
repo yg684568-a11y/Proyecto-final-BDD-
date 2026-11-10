@@ -39,7 +39,7 @@ Las correcciones se aplicaron en conjunto para conservar la correspondencia entr
 
 Estas reglas no quedan garantizadas únicamente por las cardinalidades del E-R:
 
-1. Que cada oferta se cree junto con su notificación y no se confirme sin ella.
+1. Que cada oferta se cree junto con su notificación, que el destinatario sea la cuenta del alumno de la entrada y que no se confirme sin ella.
 2. Que el correo institucional sea obligatorio para alumno/profesor, pero pueda quedar NULL para otros perfiles.
 3. Que un empleado no se registre simultáneamente como profesor y personal.
 4. Que el origen de un movimiento corresponda al grupo vigente al solicitarlo y que la secuencia de movimientos sea continua.
