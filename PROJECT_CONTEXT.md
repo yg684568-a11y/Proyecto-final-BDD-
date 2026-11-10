@@ -120,6 +120,18 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.16 Cambios de grupo y bajas de materias
+
+**Decisión confirmada:** se combinará una ventana de movimientos con un flujo de autorización para excepciones:
+- Durante una ventana de fechas establecida para cada periodo, el alumno podrá solicitar o realizar cambios de grupo y bajas de materias conforme a las reglas que se definan.
+- Fuera de esa ventana, los cambios o bajas requerirán autorización de Servicios Escolares o de coordinación académica, según el tipo de movimiento.
+- Los movimientos deberán conservar trazabilidad: alumno, inscripción afectada, tipo de movimiento, fecha, motivo cuando corresponda, estado de la solicitud y usuario que autorizó o rechazó.
+
+**Regla de conservación:** no borrar físicamente la inscripción original para representar un cambio o una baja. Mantener el registro histórico y registrar el estado/movimiento correspondiente, de acuerdo con el diseño final.
+
+**Pendiente de definición/verificación:** fechas y duración de ventanas, qué movimientos puede hacer directamente el alumno, qué autoridad aprueba cada excepción, causales, plazos y efectos académicos/administrativos de las bajas.
+
 ### 6.15 Cupo de grupos y capacidad de aulas
 
 **Decisión confirmada:** el sistema manejará dos valores independientes:
@@ -308,6 +320,7 @@ Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 
 1. **Respondida:** el sistema debe impedir confirmar una selección de grupos si existen horarios traslapados para el mismo alumno.
 2. **Respondida:** el horario tendrá día, hora de inicio y fin, aula, edificio y modalidad; se administrará un catálogo de aulas y se impedirá asignar la misma aula a dos grupos en el mismo horario.
 3. **Respondida:** el cupo del grupo y la capacidad del aula serán valores independientes; el cupo del grupo no podrá superar la capacidad del aula asignada.
+4. **Respondida:** se permitirán cambios de grupo y bajas durante una ventana establecida; fuera de ella se requerirá autorización de Servicios Escolares o coordinación académica. Los movimientos conservarán trazabilidad y no se borrarán físicamente.
 2. ¿Qué datos debe mostrar cada horario (día, hora de inicio, hora de fin, aula, modalidad u otros)?
 3. ¿El cupo será obligatorio para todos los grupos? ¿Quién podrá autorizar excepciones?
 4. ¿Se permitirán cambios de grupo, bajas parciales y listas de espera? ¿En qué ventanas de tiempo?
@@ -409,7 +422,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; el sistema bloqueará inscripciones cuando el grupo alcance su cupo. | Aprobación expresa del usuario. Las reglas de seriación, choques de horario, cambios y bajas quedan pendientes. | 2026-11-09 | Aprobada |
 | D-013 | El profesor registrará varias calificaciones por unidad y el sistema calculará la calificación final de la materia. | Aprobación expresa del usuario. Número de unidades y fórmula/ponderaciones sujetos a validación con la instrumentación didáctica y normativa vigente del TecNM/ITP. | 2026-11-09 | Aprobada |
 | D-014 | El número de unidades y sus ponderaciones serán configurables por materia, según la instrumentación didáctica aplicable. | Aprobación expresa del usuario. Fórmula y restricciones concretas pendientes de validación con las reglas vigentes. | 2026-11-09 | Aprobada |
-| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. La estructura de sesiones/horarios y posibles excepciones se detallará posteriormente. | 2026-11-09 | Aprobada |\n| D-016 | Los horarios registrarán día, inicio, fin, aula, edificio y modalidad; habrá catálogo de aulas y validación para impedir que un aula se asigne a dos grupos en el mismo horario. | Aprobación expresa del usuario. Capacidad, tipos de espacios, recursos y modalidades se detallarán posteriormente. | 2026-11-09 | Aprobada |\n| D-017 | El cupo del grupo no podrá superar la capacidad del aula asignada. El cupo del grupo y la capacidad del aula se administrarán por separado. | Aprobación expresa del usuario. Excepciones y tratamiento de modalidades sin aula física quedan pendientes. | 2026-11-09 | Aprobada |
+| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. La estructura de sesiones/horarios y posibles excepciones se detallará posteriormente. | 2026-11-09 | Aprobada |\n| D-016 | Los horarios registrarán día, inicio, fin, aula, edificio y modalidad; habrá catálogo de aulas y validación para impedir que un aula se asigne a dos grupos en el mismo horario. | Aprobación expresa del usuario. Capacidad, tipos de espacios, recursos y modalidades se detallarán posteriormente. | 2026-11-09 | Aprobada |\n| D-017 | El cupo del grupo no podrá superar la capacidad del aula asignada. El cupo del grupo y la capacidad del aula se administrarán por separado. | Aprobación expresa del usuario. Excepciones y tratamiento de modalidades sin aula física quedan pendientes. | 2026-11-09 | Aprobada |\n| D-018 | Los cambios de grupo y bajas podrán realizarse durante una ventana establecida; fuera de ella requerirán autorización de Servicios Escolares o coordinación académica. Los movimientos conservarán trazabilidad, sin borrar físicamente el registro original. | Aprobación expresa del usuario. Ventanas, autorizaciones específicas y efectos académicos quedan pendientes de definición/verificación. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
