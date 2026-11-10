@@ -14,6 +14,10 @@ Desarrollar un sistema de gestión escolar para un **instituto**, que permita ad
 
 **Tipo de institución confirmado:** Instituto Tecnológico de Puebla (ITP). El sistema se basará en su funcionamiento académico. Las reglas concretas de inscripción/reinscripción, grupos, periodos, evaluación, horarios, kárdex y permisos deben documentarse con fuentes institucionales o confirmación del equipo; no se asumirán.
 
+**Entrega final:** 18 de noviembre de 2026.
+
+**Alcance de desarrollo confirmado:** se requiere una aplicación web funcional conectada a la base de datos distribuida MariaDB con Galera Cluster.
+
 ## 2. Equipo y nodos
 
 | Integrante | Identificación | Responsabilidad conocida | Configuración / datos técnicos |
@@ -53,20 +57,19 @@ La guía del proyecto final de **Bases de Datos Distribuidas** solicita:
 
 ## 5. Tecnologías: estado de selección
 
-Ninguna tecnología está aprobada definitivamente todavía.
+Las tecnologías base de infraestructura y base de datos quedan seleccionadas. La pila de desarrollo web todavía está pendiente.
 
-| Componente | Opción por evaluar | Estado | Observaciones |
+| Componente | Opción seleccionada / candidata | Estado | Observaciones |
 |---|---|---|---|
-| Virtualización | VirtualBox / VMware / alternativa | **PENDIENTE** | Confirmar software disponible y dónde se alojarán las VMs. |
-| Sistema operativo | Ubuntu Server | **CANDIDATO** | Confirmar versión y requisitos de recursos. |
-| Motor de base de datos | MariaDB + Galera Cluster | **CANDIDATO** | Validar compatibilidad, requisitos y si cumple lo que pide el profesor. |
-| Alternativa de base de datos | MySQL InnoDB Cluster u otra | **POR COMPARAR** | Elegir solo después de comparar requisitos y complejidad. |
-| Backend | PHP + Laravel | **CANDIDATO** | Confirmar con el alcance y conocimientos del equipo. |
-| Frontend | Blade + Bootstrap | **CANDIDATO** | Angular u otra opción solo si existe una necesidad concreta. |
+| Virtualización | VirtualBox | **APROBADO** | Una máquina virtual por integrante, alojada en su propia computadora. |
+| Sistema operativo | Ubuntu o Lubuntu | **SELECCIÓN GENERAL APROBADA** | Falta definir distribución y versión exacta para cada nodo. |
+| Motor de base de datos | MariaDB + Galera Cluster | **APROBADO** | Clúster distribuido de tres nodos. |
+| Backend | PHP + Laravel | **CANDIDATO** | Falta confirmar la tecnología para la aplicación web. |
+| Frontend | Blade + Bootstrap | **CANDIDATO** | Falta confirmar la tecnología para la interfaz. |
 | Control de versiones | Git + GitHub | **PROPUESTO** | Repositorio compartido del equipo. |
-| Comunicación entre equipos/nodos | LAN / VPN (por ejemplo, Radmin VPN) | **PENDIENTE** | Confirmar topología y conectividad disponible. |
+| Comunicación entre equipos/nodos | Radmin VPN | **APROBADO** | Comunicación entre las VMs alojadas en las computadoras de los integrantes. |
 
-No instalar ni configurar estas tecnologías hasta registrar la elección y sus versiones en este documento.
+No instalar ni configurar hasta registrar las versiones y parámetros concretos de cada nodo.
 
 ## 6. Diagrama E-R recibido: inventario inicial
 
@@ -334,12 +337,15 @@ Si el alumno cambia de carrera o de plan de estudios:
 
 **Confirmación de la vacante aprobada:** cuando el alumno acepte dentro de las 24 horas, el sistema lo inscribirá automáticamente en el grupo. Si rechaza la oferta o vence el plazo sin respuesta, el sistema ofrecerá la vacante al siguiente alumno elegible según el orden FIFO.
 
+**Restricción durante una oferta pendiente:** mientras el alumno tenga una oferta de vacante pendiente, no podrá realizar otro movimiento sobre esa misma materia hasta aceptar, rechazar o dejar vencer la oferta. Sus demás materias no se verán afectadas.
+
 **Pendiente de definición:** presentación de notificaciones dentro del sistema (bandeja, contador, estado leído/no leído), qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo.
 
 ### 6.16 Cambios de grupo y bajas de materias
 
 **Decisión confirmada:** se combinará una ventana de movimientos con un flujo de autorización para excepciones:
-- Durante una ventana de fechas establecida para cada periodo, el alumno podrá solicitar o realizar cambios de grupo y bajas de materias conforme a las reglas que se definan.
+- Durante la ventana configurada para cada periodo, el alumno podrá realizar directamente cambios de grupo y bajas de materias.
+- Antes de confirmar el movimiento, el sistema validará cupo disponible, choques de horario y los demás requisitos académicos aplicables.
 - El coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas de materias para cada periodo escolar.
 - Fuera de esa ventana, los cambios o bajas requerirán autorización de Servicios Escolares o de coordinación académica, según el tipo de movimiento.
 - Los movimientos deberán conservar trazabilidad: alumno, inscripción afectada, tipo de movimiento, fecha, motivo cuando corresponda, estado de la solicitud y usuario que autorizó o rechazó.
@@ -358,7 +364,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 
 **Ejemplo ilustrativo:** un grupo con cupo de 30 alumnos puede asignarse a un aula con capacidad de 35, pero no a un aula con capacidad de 25.
 
-**Pendiente de definición:** si la capacidad considera solamente alumnos o también al profesor; tratamiento de grupos sin aula física y de sesiones en línea; excepciones autorizadas.
+**Regla aprobada:** para validar la capacidad del aula, se contará únicamente a los alumnos; el profesor no se incluirá en ese cupo. La primera versión manejará grupos presenciales con aula asignada.
 
 ### 6.14 Horarios, aulas y espacios educativos
 
@@ -368,7 +374,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Hora de fin.
 - Aula.
 - Edificio.
-- Modalidad (por ejemplo, presencial; las modalidades válidas se definirán después).
+- Modalidad presencial (única modalidad incluida en la primera versión).
 
 Se mantendrá un catálogo de aulas/espacios para evitar registrar repetidamente la información de un mismo salón.
 
@@ -377,7 +383,7 @@ Se mantendrá un catálogo de aulas/espacios para evitar registrar repetidamente
 - Un aula no podrá estar asignada a dos grupos distintos en el mismo día y horario.
 - La validación de disponibilidad del aula se realizará al crear o modificar la programación del grupo.
 
-**Pendiente de definición:** capacidad de cada aula, tipos de espacio (salón, laboratorio, taller), recursos disponibles, modalidades admitidas y tratamiento de clases en línea o sesiones extraordinarias.
+**Pendiente de definición:** capacidad de cada aula, tipos de espacio (salón, laboratorio, taller) y recursos disponibles. Las clases en línea y otras modalidades no presenciales quedan fuera de la primera versión.
 
 ### 6.13 Validación automática de choques de horario
 
@@ -644,11 +650,12 @@ El sistema impedirá registrar departamentos con nombres o claves/códigos dupli
 **Decisión confirmada:**
 - Un profesor podrá impartir varias materias.
 - Un profesor podrá estar asignado a varios grupos durante un periodo escolar.
-- Cada grupo tendrá un profesor responsable.
+- Cada grupo tendrá un único profesor responsable.
+- En la primera versión no se manejarán profesores auxiliares ni sustitutos; los cambios de profesor serán gestionados por coordinación académica.
 
 **Implicación para el modelo:** la asignación docente se realizará en la oferta/grupo del periodo, no directamente en la definición general de la materia. De este modo, la misma materia puede abrir varios grupos con profesores distintos y un profesor puede atender varios grupos.
 
-**Pendiente de definición:** si se permitirán dos o más profesores responsables o docentes auxiliares en un mismo grupo; si existe límite de carga docente; y cómo se registra la asignación temporal o sustitución de un profesor.
+**Pendiente de definición:** si existe un límite de carga docente. Los docentes auxiliares y sustitutos no forman parte del alcance inicial.
 
 ### 6.35 Inscripción única por materia en el mismo periodo
 
@@ -755,6 +762,17 @@ El sistema impedirá registrar departamentos con nombres o claves/códigos dupli
 
 **Decisión confirmada:** el profesor podrá consultar los grupos que tiene asignados, sus horarios y listas de alumnos. También podrá capturar y publicar las calificaciones de sus propios grupos, siguiendo el flujo de validación, publicación y corrección autorizado. No podrá gestionar grupos que no tenga asignados.
 
+### 6.47 Distribución general de permisos por perfil
+
+**Decisión confirmada:** los permisos generales se distribuirán así:
+- **Administrador:** gestión de cuentas, usuarios, roles y permisos.
+- **Servicios Escolares:** expedientes de alumnos e inscripciones.
+- **Coordinador académico:** carreras, planes de estudio, materias, profesores, departamentos, periodos y grupos.
+- **Profesor:** consulta y gestión de sus propios grupos, horarios, listas y calificaciones.
+- **Alumno:** consulta de su expediente, materias, horarios, calificaciones y kárdex.
+
+Los permisos detallados por acción se desarrollarán durante el diseño funcional y de la aplicación.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
@@ -771,8 +789,8 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Materias reutilizables en diferentes planes; cada plan tiene su estructura curricular.
 - Una materia puede ofertarse en varios grupos; cada grupo tiene profesor, horario y lista propios.
 - El alumno selecciona grupos; se valida cupo, choque de horario, prerrequisitos, carga académica y que no mantenga otra inscripción activa a la misma materia o a una materia equivalente en el periodo.
-- Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
-- Cambios y bajas durante una ventana configurada por el coordinador académico para cada periodo; fuera de ella requieren autorización y trazabilidad.
+- Clases presenciales con aulas y horarios; la capacidad del aula se valida contando únicamente a los alumnos y el cupo del grupo no puede superarla.
+- Cambios y bajas que el alumno puede realizar directamente durante la ventana configurada por coordinación académica, con validación de cupo, horario y requisitos; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación; al aceptar, el alumno queda inscrito automáticamente y, ante rechazo o vencimiento, se ofrece al siguiente elegible.
 - Antes de ofrecer una vacante, el sistema revalidará que el siguiente alumno FIFO todavía cumpla los requisitos académicos de inscripción.
 - Si un alumno no es elegible al revalidar, no recibirá la oferta; se registrará el motivo, conservará su posición en la lista y el sistema continuará con el siguiente alumno FIFO.
@@ -785,7 +803,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Las notificaciones se conservarán sin fecha de vencimiento y el historial se mostrará de forma paginada, con filtros básicos por fecha o tipo.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
-- El profesor consulta sus grupos, horarios y listas, y captura/publica calificaciones únicamente de sus propios grupos.
+- El profesor consulta sus grupos, horarios y listas, y captura/publica calificaciones únicamente de sus propios grupos; cada grupo tendrá un único docente responsable, sin auxiliares ni sustitutos en la primera versión.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
 - El coordinador académico administra carreras, planes de estudio y catálogo de materias; Servicios Escolares los utiliza sin modificar su estructura.
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
@@ -815,21 +833,24 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Las cuentas se bloquearán temporalmente después de varios intentos fallidos; el administrador podrá desbloquearlas.
 - Las sesiones se cerrarán automáticamente después de un periodo de inactividad.
 - No se implementará verificación en dos pasos en la versión inicial.
+- Los permisos generales se organizarán por perfil: administrador, Servicios Escolares, coordinación académica, profesor y alumno.
+- La aplicación web funcional estará conectada a la base de datos distribuida MariaDB con Galera Cluster.
+- La infraestructura utilizará tres VMs en VirtualBox, una por integrante, conectadas mediante Radmin VPN y con Ubuntu o Lubuntu; las versiones exactas siguen pendientes.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
 1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan; el alumno consulta su expediente, actualiza directamente su teléfono y solicita a Servicios Escolares correcciones de los demás datos institucionales. También consulta materias inscritas, horarios, calificaciones publicadas y kárdex, sin modificarlos directamente desde estas consultas. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
-2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
+2. **Parcialmente respondida:** se aprobaron los permisos generales de los cinco perfiles. Los permisos detallados por acción (consultar, crear, modificar, autorizar y desactivar) se precisarán durante el diseño de la aplicación.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
-4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera, la revalidación antes de ofrecer una vacante, la inscripción automática al aceptar y el paso al siguiente alumno FIFO ante rechazo o vencimiento. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
-5. **Parcialmente respondida:** el coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas para cada periodo. Falta determinar las fechas concretas de cada periodo y qué tipos de movimiento puede realizar directamente el alumno o requieren autorización.
-6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
+4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera, la revalidación antes de ofrecer una vacante, la inscripción automática al aceptar, el paso al siguiente alumno FIFO ante rechazo o vencimiento y la restricción de movimientos sobre la misma materia mientras exista una oferta pendiente.
+5. **Parcialmente respondida:** el coordinador académico configurará la ventana para cada periodo. Durante ella el alumno podrá realizar directamente cambios de grupo y bajas, con validación del sistema; fuera de ella requerirá autorización. Las fechas concretas y la autoridad para cada excepción se determinarán según el calendario y las reglas del ITP.
+6. **Respondida para la primera versión:** solo se manejarán clases presenciales, con día, hora de inicio/fin, edificio y aula. Para la capacidad del aula solo se contarán alumnos; no se incluirán clases remotas.
 7. **Parcialmente respondida:** el kárdex mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; también calificaciones por unidad publicadas e intentos anteriores. Falta definir formato final, promedios, avance curricular y créditos acumulados según reglas del ITP. Las listas escolares mostrarán número de control, nombre, carrera, grupo y estado de inscripción; podrán exportarse a PDF y Excel. Falta definir permisos de consulta/descarga y filtros.
 8. Definir flujo de corrección de calificaciones publicadas en casos excepcionales y plazos de autorización.
 9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
 10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
 11. **Respondida:** se permitirán grupos compartidos entre carreras/planes cuando la materia sea equivalente y el ITP permita esa oferta común. El grupo se registrará una sola vez y las inscripciones conservarán la carrera/plan del alumno.
-12. **Parcialmente respondida:** un profesor podrá impartir varias materias y estar asignado a varios grupos por periodo; cada grupo tendrá un profesor responsable. El profesor consulta sus grupos, horarios y listas, y captura/publica sus calificaciones. Queda por decidir si se permitirán docentes auxiliares o sustitutos.
+12. **Respondida para la primera versión:** cada grupo tendrá un único profesor responsable. El profesor consulta sus grupos, horarios y listas, y captura/publica sus calificaciones. No habrá auxiliares ni sustitutos; los cambios de profesor serán gestionados por coordinación académica.
 13. Definir cómo se documenta y valida oficialmente la equivalencia de materias para grupos compartidos.
 
 ### 7.3 Validación institucional pendiente
@@ -842,13 +863,19 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 
 ### 7.4 Infraestructura y desarrollo pendientes
 
-1. ¿El profesor exige un motor o tecnología específica para el clúster?
-2. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
-3. ¿Las tres máquinas virtuales estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
-4. ¿Qué virtualizador utilizarán y cómo se comunicarán las VMs (LAN, VPN u otra red)?
-5. ¿Qué lenguaje/framework prefiere o domina el equipo?
-6. ¿Se evaluará también una aplicación web funcional o principalmente la base de datos distribuida?
-7. ¿Cuál es la fecha de entrega y qué hitos intermedios existen?
+**Confirmado:**
+- Motor de base de datos: MariaDB con Galera Cluster.
+- Tres máquinas virtuales, una por integrante, alojadas en las computadoras de cada integrante.
+- VirtualBox como virtualizador.
+- Radmin VPN para la comunicación entre nodos.
+- Sistema operativo: Ubuntu o Lubuntu; la distribución y versión exactas se definirán por nodo.
+- Se requiere una aplicación web funcional conectada a la base de datos.
+- Fecha de entrega final: 18 de noviembre de 2026.
+
+**Pendiente:**
+1. ¿Qué función técnica tendrá el nodo 1 de Yosef: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
+2. ¿Qué lenguaje y framework utilizará el equipo para backend y frontend?
+3. Confirmar recursos de hardware de cada computadora y asignación de CPU, RAM y disco a cada VM.
 
 No asumir reglas institucionales ni decisiones técnicas todavía pendientes. Registrar las respuestas y su fecha cuando el equipo las confirme.
 
@@ -862,7 +889,7 @@ Completar cuando se defina la infraestructura. No inventar IPs ni contraseñas.
 | Dirección IP | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
 | Máscara / prefijo | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
 | Gateway | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
-| Sistema operativo y versión | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
+| Sistema operativo y versión | Ubuntu o Lubuntu; versión pendiente | Ubuntu o Lubuntu; versión pendiente | Ubuntu o Lubuntu; versión pendiente |
 | CPU / RAM / disco de VM | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
 | Motor y versión | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
 | Rol dentro del clúster | **PENDIENTE** | **PENDIENTE** | **PENDIENTE** |
@@ -914,7 +941,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 |---|---|---|---|---|
 | D-001 | Gemini será la IA principal; Claude revisará; ChatGPT asesorará; Antigravity apoyará la implementación. | Acuerdo inicial del equipo. | 2026-11-09 | Aprobada |
 | D-002 | El equipo se compone de Yosef (nodo 1), Andrés (nodo 2) y Leonardo (nodo 3). | Información proporcionada por el equipo. | 2026-11-09 | Confirmada |
-| D-003 | Motor de base de datos y topología del clúster. | Pendiente de evaluación y validación del profesor/equipo. | — | Pendiente |
+| D-003 | El motor de base de datos y la topología del clúster serán MariaDB con Galera Cluster, con tres nodos. | Selección expresa del usuario/equipo. | 2026-11-10 | Aprobada |
 | D-004 | El sistema estará basado en el funcionamiento académico del Instituto Tecnológico de Puebla (ITP). | Confirmación del usuario; reglas institucionales concretas por verificar. | 2026-11-09 | Aprobada |
 | D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario. | 2026-11-09 | Aprobada |
 | D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario; flujos detallados pendientes. | 2026-11-09 | Aprobada |
@@ -1003,6 +1030,15 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-084 | El coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas de materias para cada periodo escolar. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-085 | El alumno podrá consultar desde su perfil sus materias inscritas, horarios, calificaciones publicadas y kárdex. Estas consultas serán de solo lectura y no permitirán modificar calificaciones ni inscripciones. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-086 | El profesor podrá consultar los grupos que tiene asignados, sus horarios y listas de alumnos, además de capturar y publicar calificaciones de sus propios grupos conforme al flujo de validación y publicación aprobado. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-087 | Los permisos generales serán: administrador (cuentas, usuarios, roles y permisos); Servicios Escolares (expedientes de alumnos e inscripciones); coordinación académica (carreras, planes, materias, profesores, departamentos, periodos y grupos); profesor (sus grupos, horarios, listas y calificaciones); alumno (su expediente, materias, horarios, calificaciones y kárdex). | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-088 | Durante la ventana configurada para cada periodo, el alumno podrá realizar directamente cambios de grupo y bajas, siempre que el sistema valide cupo, horarios y requisitos. Fuera de la ventana requerirá autorización. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-089 | Mientras tenga una oferta de vacante pendiente, el alumno no podrá realizar otro movimiento sobre esa misma materia hasta aceptar, rechazar o dejar vencer la oferta; sus demás materias no se verán afectadas. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-090 | La primera versión manejará únicamente clases presenciales con día, hora de inicio y fin, edificio y aula. Para validar la capacidad del aula se contará únicamente a los alumnos, sin incluir al profesor. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-091 | Cada grupo tendrá un único profesor responsable. La primera versión no manejará profesores auxiliares ni sustitutos; los cambios de docente serán gestionados por coordinación académica. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-092 | El motor de base de datos seleccionado para el clúster distribuido de tres nodos será MariaDB con Galera Cluster. | Selección expresa del usuario/equipo. | 2026-11-10 | Aprobada |
+| D-093 | Se utilizarán tres máquinas virtuales, una por integrante y alojada en su respectiva computadora, con VirtualBox, Radmin VPN y Ubuntu o Lubuntu como sistema operativo. Las versiones y configuraciones exactas quedan pendientes. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-094 | El proyecto incluirá una aplicación web funcional conectada a la base de datos distribuida. | Requisito confirmado por el usuario. | 2026-11-10 | Aprobada |
+| D-095 | La fecha de entrega del proyecto final será el 18 de noviembre de 2026. | Fecha confirmada por el usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -1016,8 +1052,8 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 
 | Fase | Actividad | Estado | Criterio para darla por terminada |
 |---|---|---|---|
-| 1 | Levantamiento de requerimientos y alcance | **EN CURSO** | Preguntas respondidas y alcance validado por el equipo. |
-| 2 | Rediseño E-R, normalización y modelo relacional | Pendiente | Diagrama, cardinalidades, PK/FK y restricciones aprobados. |
+| 1 | Levantamiento de requerimientos y alcance inicial | **COMPLETADO** | Alcance funcional y decisiones principales registrados; reglas institucionales se validarán en paralelo. |
+| 2 | Rediseño E-R, normalización y modelo relacional | **EN CURSO** | Diagrama, cardinalidades, PK/FK y restricciones aprobados. |
 | 3 | Diseño de arquitectura del clúster | Pendiente | Motor, topología, roles, red y requisitos definidos. |
 | 4 | Preparación de máquinas virtuales | Pendiente | Tres VMs conectadas y documentadas. |
 | 5 | Instalación y configuración del clúster | Pendiente | Los tres nodos forman el clúster según pruebas verificables. |
