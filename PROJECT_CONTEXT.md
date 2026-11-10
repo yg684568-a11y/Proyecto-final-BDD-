@@ -132,6 +132,20 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.28 Grupos compartidos entre carreras y planes
+
+**Decisión confirmada:** se permitirá que alumnos de distintas carreras se inscriban en un mismo grupo cuando la materia sea equivalente en sus respectivos planes de estudio y el ITP permita compartir esa oferta académica.
+
+**Reglas de diseño:**
+- El grupo/oferta se registra una sola vez, con un profesor, horario, aula y cupo comunes.
+- Los alumnos de las carreras/planes autorizados podrán inscribirse al mismo grupo.
+- Se deberá verificar que la materia corresponda o sea equivalente en el plan del alumno.
+- La inscripción debe conservar la carrera y el plan del alumno al momento de cursar, para mantener el historial académico correcto.
+- La lista del grupo integrará alumnos de las distintas carreras sin duplicar la definición del grupo.
+
+**Pendiente de validación institucional:** criterios oficiales de equivalencia, autorización para grupos multi-carrera, claves de materias compartidas y reglas de reconocimiento de la asignatura en cada plan. No asumir equivalencia solamente porque los nombres de las materias sean iguales.
+
 ### 6.27 Validación de carga académica y créditos
 
 **Decisión confirmada:** el sistema calculará automáticamente la carga académica seleccionada por el alumno durante un periodo, sumando los créditos de las materias elegidas y comparándolos con el límite configurado para ese periodo.
@@ -519,7 +533,8 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.27 y resu
 8. Definir flujo de corrección de calificaciones publicadas en casos excepcionales y plazos de autorización.
 9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
 10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
-11. Definir si una oferta/grupo puede compartirse entre carreras o planes diferentes, cuando la misma materia sea común.
+11. **Respondida:** se permitirán grupos compartidos entre carreras/planes cuando la materia sea equivalente y el ITP permita esa oferta común. El grupo se registrará una sola vez y las inscripciones conservarán la carrera/plan del alumno.
+12. Definir cómo se documenta y valida oficialmente la equivalencia de materias para grupos compartidos.
 
 ### 7.3 Validación institucional pendiente
 
@@ -634,7 +649,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-031 | Las correcciones de calificaciones publicadas deberán ser solicitadas por el profesor con motivo y autorizadas por el coordinador académico. Se conservarán valores anterior y nuevo, motivo, solicitante, autorizador y fecha/hora. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-032 | Cada plan de estudios tendrá su estructura curricular; cada materia registrará clave, nombre, créditos, semestre recomendado y prerrequisitos cuando correspondan. Una misma materia podrá reutilizarse en varios planes sin duplicar su definición. | Aprobación expresa; catálogo y reglas curriculares por verificar con el ITP. | 2026-11-10 | Aprobada |
 | D-033 | El sistema validará automáticamente los prerrequisitos; bloqueará la inscripción si no se cumplen y permitirá excepciones solo cuando la normativa lo permita, con autorización de coordinación y auditoría. | Aprobación expresa; tipos y reglas exactas por verificar con el ITP. | 2026-11-10 | Aprobada |
-| D-034 | El sistema calculará los créditos seleccionados por el alumno y validará su carga contra el límite configurado para el periodo; bloqueará excesos y admitirá excepciones autorizadas cuando la normativa lo permita. | Aprobación expresa; máximos, mínimos y variantes por verificar con ITP/TecNM. | 2026-11-10 | Aprobada |
+| D-034 | El sistema calculará los créditos seleccionados por el alumno y validará su carga contra el límite configurado para el periodo; bloqueará excesos y admitirá excepciones autorizadas cuando la normativa lo permita. | Aprobación expresa; máximos, mínimos y variantes por verificar con ITP/TecNM. | 2026-11-10 | Aprobada |\n| D-035 | Se permitirán grupos compartidos entre carreras/planes cuando la materia sea equivalente y el ITP autorice la oferta común. El grupo se registra una sola vez y las inscripciones conservan la carrera/plan del alumno. | Aprobación expresa del usuario. Criterios oficiales de equivalencia y autorización pendientes de verificación con el ITP. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -671,6 +686,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
 - [x] Aprobar validación de prerrequisitos y carga académica.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
+- [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM.
 - [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
 - [ ] Revisar y aprobar el modelo E-R corregido.
