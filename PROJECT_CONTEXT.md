@@ -313,6 +313,8 @@ Si el alumno cambia de carrera o de plan de estudios:
 
 **Plazo aprobado:** el alumno tendrá 24 horas para aceptar la vacante. Si no responde dentro del plazo, perderá esa oportunidad y el sistema ofrecerá el lugar al siguiente alumno según el orden FIFO. El plazo será configurable por periodo escolar.
 
+**Revalidación aprobada:** justo antes de enviar una oferta de vacante, el sistema volverá a comprobar que el siguiente alumno de la lista todavía cumpla los requisitos académicos de inscripción: prerrequisitos, ausencia de choques de horario, límite de créditos e inscripción única por materia/equivalencia. La entrada previa a la lista no garantiza que siga siendo elegible si su situación académica cambió.
+
 **Canal aprobado:** la notificación de una vacante se mostrará dentro del sistema (notificación interna al iniciar sesión). El correo electrónico no forma parte del alcance inicial para este aviso.
 
 **Inicio del plazo aprobado:** las 24 horas comienzan desde la fecha y hora en que el sistema genera la notificación, independientemente de que el alumno inicie sesión o la lea.
@@ -611,11 +613,17 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Implicación para el sistema:** antes de agregar al alumno a la lista de espera, se ejecutarán las mismas validaciones académicas aplicables a la inscripción. Esta regla complementa el orden FIFO y el plazo de aceptación de 24 horas ya aprobados.
 
+### 6.37 Revalidación al liberar una vacante
+
+**Decisión confirmada:** inmediatamente antes de ofrecer una vacante, el sistema volverá a validar que el siguiente alumno en el orden FIFO todavía cumpla los requisitos académicos de inscripción definidos para la lista de espera.
+
+**Pendiente de definición:** qué sucede con un alumno que ya no cumple los requisitos al momento de la revalidación (por ejemplo, si se omite temporalmente, se retira de la lista o se notifica para corregir su situación). La aprobación actual confirma la revalidación, no el tratamiento posterior de los casos no elegibles.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.36 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.37 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -630,6 +638,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.36 y resu
 - Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
 - Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
+- Antes de ofrecer una vacante, el sistema revalidará que el siguiente alumno FIFO todavía cumpla los requisitos académicos de inscripción.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
@@ -780,6 +789,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-042 | Un profesor podrá impartir varias materias y estar asignado a varios grupos durante un periodo; cada grupo tendrá un profesor responsable. La asignación docente se realizará en el grupo/oferta del periodo. | Aprobación expresa del usuario. Docentes auxiliares, sustituciones y límites de carga quedan pendientes. | 2026-11-10 | Aprobada |
 | D-043 | Un alumno no podrá tener dos inscripciones activas a la misma materia —ni a materias equivalentes según el catálogo aplicable— dentro del mismo periodo. Los cambios de grupo se harán mediante el procedimiento autorizado y conservarán la trazabilidad; la materia podrá cursarse de nuevo en periodos posteriores como otro intento. | Aprobación expresa del usuario. La validación concreta de equivalencias depende del catálogo académico que se confirme. | 2026-11-10 | Aprobada |
 | D-044 | Para ingresar a la lista de espera de un grupo lleno, el alumno deberá cumplir los prerrequisitos, no tener choques de horario, no exceder el límite de créditos y no estar inscrito en la misma materia o una equivalente durante el periodo. | Aprobación expresa del usuario. La regla complementa la lista de espera FIFO y el plazo de 24 horas ya aprobados. | 2026-11-10 | Aprobada |
+| D-045 | Antes de ofrecer una vacante, el sistema volverá a validar que el siguiente alumno de la lista FIFO todavía cumpla los requisitos académicos de inscripción. | Aprobación expresa del usuario. Queda pendiente definir el tratamiento de quienes ya no sean elegibles al momento de la revalidación. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -823,6 +833,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que un profesor pueda impartir varias materias y grupos, con un profesor responsable por grupo.
 - [x] Aprobar inscripción única por materia (considerando equivalencias) para cada alumno en un mismo periodo.
 - [x] Aprobar los requisitos académicos para ingresar a la lista de espera de un grupo lleno.
+- [x] Aprobar la revalidación de requisitos académicos antes de ofrecer una vacante de la lista de espera.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
