@@ -131,6 +131,20 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.27 Validación de carga académica y créditos
+
+**Decisión confirmada:** el sistema calculará automáticamente la carga académica seleccionada por el alumno durante un periodo, sumando los créditos de las materias elegidas y comparándolos con el límite configurado para ese periodo.
+
+**Flujo aprobado:**
+1. Consultar los créditos de cada materia seleccionada.
+2. Calcular la suma de créditos de la carga académica.
+3. Compararla con el máximo permitido para el alumno/periodo, según las reglas institucionales.
+4. Bloquear la selección cuando supere el límite.
+5. Permitir excepciones únicamente cuando la normativa vigente lo permita, con autorización de coordinación académica y registro de auditoría.
+
+**Pendiente de validación institucional:** máximo y mínimo de créditos, límites diferenciados por situación académica, reglas de carga reducida o especial y condiciones para autorizar excepciones. No fijar un número de créditos hasta verificar la normativa vigente del ITP/TecNM.
+
 ### 6.26 Validación de prerrequisitos académicos
 
 **Decisión confirmada:** el sistema validará automáticamente los prerrequisitos antes de permitir que un alumno seleccione/inscriba una materia.
