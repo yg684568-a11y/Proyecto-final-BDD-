@@ -601,11 +601,21 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Implicación para el modelo:** se necesitará una validación que impida inscripciones activas duplicadas por alumno, periodo y materia (o equivalencia aplicable), sin impedir que la misma materia se curse en periodos posteriores como un nuevo intento.
 
+### 6.36 Requisitos para ingresar a la lista de espera
+
+**Decisión confirmada:** un alumno solo podrá ingresar a la lista de espera de un grupo lleno cuando cumpla las reglas académicas correspondientes:
+- Tener acreditados los prerrequisitos de la materia.
+- No presentar choques de horario con sus grupos inscritos.
+- No exceder el límite de créditos permitido para el periodo.
+- No tener una inscripción activa en la misma materia ni en una materia equivalente durante ese periodo.
+
+**Implicación para el sistema:** antes de agregar al alumno a la lista de espera, se ejecutarán las mismas validaciones académicas aplicables a la inscripción. Esta regla complementa el orden FIFO y el plazo de aceptación de 24 horas ya aprobados.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.35 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.36 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -620,6 +630,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.35 y resu
 - Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
 - Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
+- Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
 - Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
@@ -768,6 +779,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 
 | D-042 | Un profesor podrá impartir varias materias y estar asignado a varios grupos durante un periodo; cada grupo tendrá un profesor responsable. La asignación docente se realizará en el grupo/oferta del periodo. | Aprobación expresa del usuario. Docentes auxiliares, sustituciones y límites de carga quedan pendientes. | 2026-11-10 | Aprobada |
 | D-043 | Un alumno no podrá tener dos inscripciones activas a la misma materia —ni a materias equivalentes según el catálogo aplicable— dentro del mismo periodo. Los cambios de grupo se harán mediante el procedimiento autorizado y conservarán la trazabilidad; la materia podrá cursarse de nuevo en periodos posteriores como otro intento. | Aprobación expresa del usuario. La validación concreta de equivalencias depende del catálogo académico que se confirme. | 2026-11-10 | Aprobada |
+| D-044 | Para ingresar a la lista de espera de un grupo lleno, el alumno deberá cumplir los prerrequisitos, no tener choques de horario, no exceder el límite de créditos y no estar inscrito en la misma materia o una equivalente durante el periodo. | Aprobación expresa del usuario. La regla complementa la lista de espera FIFO y el plazo de 24 horas ya aprobados. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -810,6 +822,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Definir que cada profesor pertenecerá a un único departamento.
 - [x] Aprobar que un profesor pueda impartir varias materias y grupos, con un profesor responsable por grupo.
 - [x] Aprobar inscripción única por materia (considerando equivalencias) para cada alumno en un mismo periodo.
+- [x] Aprobar los requisitos académicos para ingresar a la lista de espera de un grupo lleno.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
