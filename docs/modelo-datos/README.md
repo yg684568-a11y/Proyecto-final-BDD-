@@ -35,7 +35,7 @@ El diagrama actual incluye las entidades `Cursos`, `Horarios`, `Categorias`, `Pr
 6. **Revisar `Modulos` y `Calf_modulos`.** Por su relación actual, parecen representar unidades o módulos evaluables y sus calificaciones. Si se confirma esa interpretación, conviene usar nombres claros como `UnidadEvaluacion` y `CalificacionUnidad`. El atributo `Estado` mezcla estados de entrega (`pendiente`, `entregado`) con resultados académicos (`aprobado`, `reprobado`); deben separarse o definirse con precisión.
 7. **Incorporar carrera y plan de estudios.** Hacen falta `Carrera`, `PlanEstudio`, la relación de materias que integran cada plan y el historial de carrera/plan del alumno.
 8. **Incorporar entidades de gestión.** El alcance aprobado también requiere cuentas/roles, lista de espera y sus ofertas, notificaciones, auditoría, prerrequisitos, reconocimiento de materias y solicitudes de corrección de calificaciones.
-9. **Completar identificadores y restricciones.** El expediente del alumno necesita número de control obligatorio y único; el del profesor, número de empleado obligatorio y único. Los correos institucionales deben ser obligatorios y únicos en el sistema. Si los contactos permanecen separados, la relación 1:1 requiere una restricción `UNIQUE` en la FK del contacto y debe definirse si el registro de contacto es obligatorio u opcional.
+9. **Completar identificadores y restricciones.** El expediente del alumno necesita número de control obligatorio y único; el del profesor, número de empleado obligatorio y único. El correo institucional debe ser obligatorio y único para alumnos y profesores (D-065); se centraliza en `Persona` para evitar duplicados entre ambos tipos. Para otros perfiles puede ser NULL si no se confirma su obligatoriedad.
 10. **Revisar el catálogo `Categorias`.** El diagrama no permite determinar qué representan las categorías ni qué regla académica dependen de ellas. No se eliminarán ni se conservarán automáticamente hasta aclarar su función.
 
 ### Cardinalidades observadas y destino propuesto
@@ -111,11 +111,11 @@ Estas relaciones se desprenden del alcance aprobado; sus cardinalidades y restri
 - Un alumno puede tener varias asignaciones históricas de carrera/plan, pero solo una vigente a la vez.
 - Un departamento puede tener varios profesores adscritos; el historial se conserva mediante `ProfesorDepartamento`.
 - Un periodo escolar puede ofrecer varios grupos.
-- Cada grupo corresponde a una materia, tiene un único profesor responsable y puede contar con uno o varios registros de horario por validar.
+- Cada grupo tiene un único profesor responsable y ofrece una o más materias de plan mediante `GrupoPlanMateria`; tendrá uno o varios bloques de horario presencial antes de abrir inscripciones.
 - Un alumno puede tener varias inscripciones históricas; cada inscripción corresponde a un alumno y un grupo.
 - Un grupo puede tener varias inscripciones, limitadas por el cupo establecido.
 - Una lista de espera corresponde a un grupo y contiene entradas ordenadas FIFO.
-- Una entrada de lista de espera puede generar una o más ofertas a lo largo de la historia, según las reglas de revalidación y vacantes.
+- Una entrada recibe como máximo una oferta. Si no cumple requisitos se conserva su posición y se revalida antes de generar una oferta; si acepta, rechaza o vence una oferta, se cierra su participación conforme a las reglas aprobadas.
 - Una inscripción puede tener calificaciones de varias unidades de evaluación.
 - Las notificaciones pertenecen a un usuario y las acciones relevantes generan registros de auditoría.
 
@@ -136,10 +136,10 @@ Estas relaciones se desprenden del alcance aprobado; sus cardinalidades y restri
 
 La propuesta de rediseño del E-R está en [diagrama-er-propuesto.md](./diagrama-er-propuesto.md). Incluye cuatro diagramas Mermaid con las relaciones entre identidad/seguridad, estructura académica, grupos/inscripciones, lista de espera, evaluación, notificaciones y auditoría. La [matriz R01–R55](./relaciones-y-cardinalidades.md) especifica cardinalidades, opcionalidad y FKs.
 
-El documento mantiene el estado de propuesta, no de modelo final aprobado. Debe revisarse con el equipo antes de generar SQL.
+El documento mantiene el estado de propuesta lógica para revisión del equipo, no de DDL definitivo. La revisión técnica más reciente corrigió los campos no respaldados por decisiones aprobadas, reforzó FK compuestas de movimientos y reconocimientos, alineó cardinalidades mínimas y precisó la obligatoriedad de notificación por oferta. Consulta [la revisión técnica](./revision-tecnica-modelo.md) antes de generar SQL.
 
 ## Documentos de diseño
 
-
+- [Revisión técnica del modelo](./revision-tecnica-modelo.md): inconsistencias corregidas, validaciones cruzadas y pendientes antes del DDL.
 - [Modelo relacional propuesto](./modelo-relacional-propuesto.md): tablas candidatas, PK, FK, restricciones y vistas recomendadas.
 - [Matriz de relaciones y cardinalidades](./relaciones-y-cardinalidades.md): relaciones R01–R55, opcionalidades y claves foráneas de todas las entidades.
