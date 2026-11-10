@@ -30,7 +30,7 @@ erDiagram
 
     CUENTA_USUARIO ||--o{ SESION_USUARIO : inicia
     CUENTA_USUARIO ||--o{ NOTIFICACION : recibe
-    CUENTA_USUARIO ||--o{ AUDITORIA : ejecuta
+    CUENTA_USUARIO o|--o{ AUDITORIA : ejecuta
 
     CARRERA ||--o{ PLAN_ESTUDIO : tiene
     ALUMNO ||--o{ ALUMNO_PLAN : historial
@@ -46,7 +46,7 @@ erDiagram
 
     PLAN_MATERIA ||--o{ EQUIVALENCIA_MATERIA : lado_a
     PLAN_MATERIA ||--o{ EQUIVALENCIA_MATERIA : lado_b
-    CUENTA_USUARIO ||--o{ EQUIVALENCIA_MATERIA : autoriza
+    CUENTA_USUARIO o|--o{ EQUIVALENCIA_MATERIA : autoriza
 ```
 
 **Reglas del diagrama 1**
@@ -81,16 +81,16 @@ erDiagram
 
     INSCRIPCION ||--o{ MOVIMIENTO_INSCRIPCION : historial
     GRUPO ||--o{ MOVIMIENTO_INSCRIPCION : grupo_origen
-    GRUPO ||--o{ MOVIMIENTO_INSCRIPCION : grupo_destino
+    GRUPO o|--o{ MOVIMIENTO_INSCRIPCION : grupo_destino
     CUENTA_USUARIO ||--o{ MOVIMIENTO_INSCRIPCION : solicita
-    CUENTA_USUARIO ||--o{ MOVIMIENTO_INSCRIPCION : autoriza
+    CUENTA_USUARIO o|--o{ MOVIMIENTO_INSCRIPCION : autoriza
 
     GRUPO ||--o| LISTA_ESPERA : puede_tener
     LISTA_ESPERA ||--o{ ENTRADA_LISTA_ESPERA : contiene
     ALUMNO ||--o{ ENTRADA_LISTA_ESPERA : solicita
     GRUPO_PLAN_MATERIA ||--o{ ENTRADA_LISTA_ESPERA : materia_solicitada
     ENTRADA_LISTA_ESPERA ||--o| OFERTA_VACANTE : recibe
-    OFERTA_VACANTE ||--o| NOTIFICACION : genera
+    OFERTA_VACANTE o|--o| NOTIFICACION : genera
     CUENTA_USUARIO ||--o{ NOTIFICACION : destinatario
 ```
 
@@ -115,11 +115,11 @@ erDiagram
 
     CALIFICACION_UNIDAD ||--o{ CORRECCION_CALIFICACION : historial
     CUENTA_USUARIO ||--o{ CORRECCION_CALIFICACION : solicita
-    CUENTA_USUARIO ||--o{ CORRECCION_CALIFICACION : autoriza
+    CUENTA_USUARIO o|--o{ CORRECCION_CALIFICACION : autoriza
 
     ALUMNO ||--o{ RECONOCIMIENTO_MATERIA : recibe
     PLAN_MATERIA ||--o{ RECONOCIMIENTO_MATERIA : destino
-    INSCRIPCION ||--o{ RECONOCIMIENTO_MATERIA : origen
+    INSCRIPCION o|--o{ RECONOCIMIENTO_MATERIA : origen
     CUENTA_USUARIO ||--o{ RECONOCIMIENTO_MATERIA : autoriza
 ```
 
