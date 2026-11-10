@@ -81,9 +81,9 @@
 
 | ID | Relación | Cardinalidad | FK / implementación | Regla |
 |---|---|---|---|---|
-| R46 | Materia — UnidadEvaluacion | 1:N | `unidad_evaluacion.id_materia → materia.id_materia` | Cada unidad pertenece a una materia; las unidades y ponderaciones son configurables por materia. |
-| R47 | Inscripcion — CalificacionUnidad | 1:N | `calificacion_unidad.id_inscripcion → inscripcion.id_inscripcion` | Las calificaciones se registran por intento de inscripción. |
-| R48 | UnidadEvaluacion — CalificacionUnidad | 1:N | `calificacion_unidad.id_unidad → unidad_evaluacion.id_unidad` | Una unidad genera calificaciones para muchos alumnos/inscripciones. Se valida que la unidad pertenezca a la materia de la inscripción. |
+| R46 | PlanMateria — UnidadEvaluacion | 1:N | `unidad_evaluacion.id_plan_materia → plan_materia.id_plan_materia` | Cada unidad pertenece a la materia de un plan concreto; las unidades y ponderaciones se configuran para esa materia dentro de la versión de plan correspondiente. |
+| R47 | Inscripcion — CalificacionUnidad | 1:N | FK compuesta `calificacion_unidad(id_inscripcion,id_plan_materia) → inscripcion(id_inscripcion,id_plan_materia)` | Cada calificación pertenece a un intento de inscripción y conserva la materia de plan de ese intento. |
+| R48 | UnidadEvaluacion — CalificacionUnidad | 1:N | FK compuesta `calificacion_unidad(id_unidad,id_plan_materia) → unidad_evaluacion(id_unidad,id_plan_materia)` | La FK compuesta garantiza que la unidad de evaluación pertenezca a la misma materia de plan que la inscripción; no depende solo de una validación de aplicación. |
 | R49 | CalificacionUnidad — CorreccionCalificacion | 1:N | `correccion_calificacion.id_calificacion → calificacion_unidad.id_calificacion` | Se conserva el historial de solicitudes de corrección de cada calificación publicada. |
 | R50 | CuentaUsuario — CorreccionCalificacion (solicitante) | 1:N | `correccion_calificacion.id_usuario_solicita → cuenta_usuario.id_usuario` | El profesor responsable solicita la corrección. |
 | R51 | CuentaUsuario — CorreccionCalificacion (autorizador) | 1:N | `correccion_calificacion.id_usuario_autoriza → cuenta_usuario.id_usuario` nullable mientras pendiente | El coordinador académico resuelve la solicitud; se registra la cuenta que autorizó o rechazó. |
