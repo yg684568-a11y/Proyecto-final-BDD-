@@ -127,6 +127,20 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.23 Borrado lógico, bajas y conservación histórica
+
+**Decisión confirmada:** se utilizará borrado lógico para evitar eliminar físicamente información que deba conservarse por razones académicas, administrativas o de auditoría.
+
+**Aplicación general:**
+- Alumnos, profesores y cuentas: podrán marcarse como inactivos o dados de baja, conservando sus datos e historial según los permisos y procedimientos aplicables.
+- Carreras, planes, materias, grupos, aulas y catálogos: cuando ya no deban ofrecerse o utilizarse, deberán marcarse como inactivos/no vigentes, sin romper referencias históricas.
+- Inscripciones y movimientos académicos: no se eliminarán físicamente como operación ordinaria; se conservarán y se registrará su estado (por ejemplo, activa, baja, cancelada o concluida, según el catálogo de estados que se apruebe).
+- Calificaciones publicadas: no se borrarán físicamente; las correcciones seguirán el flujo controlado y auditado aprobado.
+- Los cambios de estado deberán respetar permisos y, cuando corresponda, guardar quién realizó la acción, fecha/hora y motivo.
+
+**Importante:** el borrado lógico no significa que todas las tablas deban tener exactamente una columna `deleted_at`. Cada entidad tendrá una estrategia apropiada (estado, vigencia, fecha de baja o registro de movimiento) según su naturaleza y las reglas institucionales. La eliminación física, si alguna vez fuera necesaria, requerirá una política explícita y autorización; no será el comportamiento normal de la aplicación.
+
 ### 6.22 Captura, validación y publicación de calificaciones
 
 **Decisión confirmada:** el flujo de calificaciones será:
