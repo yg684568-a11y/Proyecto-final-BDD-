@@ -498,11 +498,32 @@ Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos d
 
 **Implicación para el proyecto:** los perfiles potenciales a evaluar son personal de Servicios Escolares, personal de División de Estudios Profesionales/coordinaciones de carrera, docentes y estudiantes. No asumir que todos requieren acceso ni que el sistema escolar del proyecto reemplazará los sistemas oficiales del ITP.
 
+### 6.29 Kárdex académico acumulativo
+
+**Decisión confirmada:** el alumno podrá consultar un kárdex acumulativo que conserve su trayectoria académica completa y no sustituya intentos anteriores.
+
+**Información mínima aprobada para cada registro cursado:**
+- Carrera y plan de estudios que correspondían al alumno.
+- Periodo escolar.
+- Materia/asignatura.
+- Créditos.
+- Grupo.
+- Calificación final.
+- Número de intento.
+- Estado de la materia (por ejemplo, acreditada/no acreditada, según los estados que se definan).
+
+**Consultas adicionales aprobadas:**
+- Calificaciones por unidad de cada intento, cuando estén publicadas.
+- Intentos anteriores de una misma materia y el resultado de cada uno.
+- Trayectoria histórica aunque el alumno haya cambiado de carrera o de plan, manteniendo una sola carrera activa a la vez.
+
+**Pendiente de definición/verificación:** formato final del kárdex, promedio general y por periodo, avance curricular, créditos acumulados, equivalencias y reglas institucionales para calcularlos. No inferir cómo el ITP determina promedios o avance oficial.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.27 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.29 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -518,7 +539,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.27 y resu
 - Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
-- Intentos de materias conservados en el kárdex.
+- Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
 - Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
@@ -529,7 +550,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.27 y resu
 4. Definir reglas de elegibilidad de la lista de espera y cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
 5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
 6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
-7. Definir la información y el formato que mostrarán las listas escolares y el kárdex.
+7. **Parcialmente respondida:** el kárdex mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; también calificaciones por unidad publicadas e intentos anteriores. Falta definir formato final, promedios, avance curricular y créditos acumulados según reglas del ITP. La información exacta de las listas escolares sigue pendiente.
 8. Definir flujo de corrección de calificaciones publicadas en casos excepcionales y plazos de autorización.
 9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
 10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
@@ -651,6 +672,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-033 | El sistema validará automáticamente los prerrequisitos; bloqueará la inscripción si no se cumplen y permitirá excepciones solo cuando la normativa lo permita, con autorización de coordinación y auditoría. | Aprobación expresa; tipos y reglas exactas por verificar con el ITP. | 2026-11-10 | Aprobada |
 | D-034 | El sistema calculará los créditos seleccionados por el alumno y validará su carga contra el límite configurado para el periodo; bloqueará excesos y admitirá excepciones autorizadas cuando la normativa lo permita. | Aprobación expresa; máximos, mínimos y variantes por verificar con ITP/TecNM. | 2026-11-10 | Aprobada |\n| D-035 | Se permitirán grupos compartidos entre carreras/planes cuando la materia sea equivalente y el ITP autorice la oferta común. El grupo se registra una sola vez y las inscripciones conservan la carrera/plan del alumno. | Aprobación expresa del usuario. Criterios oficiales de equivalencia y autorización pendientes de verificación con el ITP. | 2026-11-10 | Aprobada |
 
+| D-036 | El kárdex será acumulativo y mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; permitirá consultar calificaciones por unidad publicadas e intentos anteriores. | Aprobación expresa del usuario. Promedios, avance curricular y formato oficial quedan pendientes de verificación con el ITP. | 2026-11-10 | Aprobada |
+
 ## 10. Registro de errores y soluciones
 
 | ID | Fecha | Nodo / componente | Error y mensaje exacto | Causa confirmada | Solución aplicada | Verificación |
@@ -685,6 +708,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar calificaciones por unidades configurables, publicación, corrección autorizada y conservación de intentos.
 - [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
 - [x] Aprobar validación de prerrequisitos y carga académica.
+- [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM.
