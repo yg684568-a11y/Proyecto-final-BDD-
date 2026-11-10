@@ -93,7 +93,7 @@ El diagrama entregado contiene las siguientes entidades y atributos visibles. Es
 
 El equipo compartió el diagrama original con estas entidades: `Cursos`, `Horarios`, `Categorias`, `Profesores`, `Datos_contacto_p`, `Departamentos`, `Modulos`, `Calf_modulos`, `Historiales`, `Alumnos` y `Datos_contacto_a`.
 
-**Resultado de la revisión:** se decidió conservar la base útil y rediseñarla para ajustarla al alcance escolar aprobado. La propuesta conceptual y sus tres diagramas están documentados en [docs/modelo-datos/diagrama-er-propuesto.md](docs/modelo-datos/diagrama-er-propuesto.md).
+**Resultado de la revisión:** se decidió conservar la base útil y rediseñarla para ajustarla al alcance escolar aprobado. La propuesta conceptual incluye cuatro diagramas en [docs/modelo-datos/diagrama-er-propuesto.md](docs/modelo-datos/diagrama-er-propuesto.md), el primer modelo relacional en [docs/modelo-datos/modelo-relacional-propuesto.md](docs/modelo-datos/modelo-relacional-propuesto.md) y la matriz completa R01–R55 en [docs/modelo-datos/relaciones-y-cardinalidades.md](docs/modelo-datos/relaciones-y-cardinalidades.md).
 
 Cambios principales propuestos:
 1. Dividir `Cursos` en `Materia` (catálogo) y `Grupo` (oferta por periodo); el profesor responsable, cupo y fechas pertenecen al grupo.
@@ -107,7 +107,7 @@ Cambios principales propuestos:
 9. Incorporar cuentas/roles, lista de espera, entradas y ofertas de vacante, notificaciones, auditoría, equivalencias, reconocimientos y prerrequisitos.
 10. Dejar `Categorias` fuera de la propuesta inicial hasta aclarar su función en el sistema.
 
-**Estado:** la propuesta E-R y el primer borrador relacional están documentados, pero ambos siguen siendo preliminares. Consultar [diagrama E-R propuesto](docs/modelo-datos/diagrama-er-propuesto.md) y [modelo relacional propuesto](docs/modelo-datos/modelo-relacional-propuesto.md). Falta validar atributos, cardinalidades, opcionalidades, tipos de datos, PK/FK, restricciones únicas y normalización antes de aprobar el modelo relacional y crear SQL. Las reglas institucionales de créditos, seriación, evaluación y equivalencias se verificarán con las fuentes vigentes del ITP/TecNM.
+**Estado:** el E-R, el modelo relacional y la matriz de relaciones ya están alineados en una propuesta preliminar: se documentan 36 tablas/entidades y 55 relaciones explícitas, y no se detectan entidades aisladas. Falta validar tipos/tamaños de datos, algunas restricciones implementables en MariaDB, reglas institucionales y detalles de normalización antes de aprobar el modelo y crear SQL. No se ha generado todavía DDL.
 
 ### 6.3 Modelo propuesto, todavía no aprobado
 
