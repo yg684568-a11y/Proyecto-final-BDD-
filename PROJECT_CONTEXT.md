@@ -573,11 +573,19 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Pendiente de definición:** si un profesor puede pertenecer a más de un departamento, impartir materias en diferentes carreras o tener varios datos de contacto; revisar también qué campos exige el expediente institucional del ITP.
 
+### 6.33 Relación entre profesores y departamentos
+
+**Decisión confirmada:** cada profesor pertenecerá a un solo departamento. Un departamento podrá tener varios profesores.
+
+**Implicación para el modelo relacional:** relación uno a muchos entre `departamentos` y `profesores`; la tabla de profesores tendrá una llave foránea hacia el departamento correspondiente.
+
+**Pendiente de definición:** si el departamento de un profesor puede cambiar con el tiempo y, en ese caso, si se requiere conservar el historial de adscripciones.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.32 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.33 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -598,7 +606,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.32 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Parcialmente respondida:** el expediente del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. El expediente del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. Faltan campos de otros catálogos.
+1. **Parcialmente respondida:** el expediente del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. El expediente del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
 2. Detallar permisos por acción (consultar, crear, modificar, autorizar, desactivar) para cada uno de los cinco roles.
 3. Definir el contenido exacto y la presentación de notificaciones internas (bandeja, contador, leído/no leído).
 4. Definir reglas de elegibilidad de la lista de espera y cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -735,6 +743,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 
 | D-040 | El expediente inicial del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. El departamento se relacionará mediante llave foránea. | Aprobación expresa del usuario; se evita duplicar el nombre del departamento. | 2026-11-10 | Aprobada |
 
+| D-041 | Cada profesor pertenecerá a un solo departamento; un departamento podrá tener varios profesores. La relación será uno a muchos mediante una FK en profesores. | Aprobación expresa del usuario; coincide con la estructura inicial del diagrama E-R. | 2026-11-10 | Aprobada |
+
 ## 10. Registro de errores y soluciones
 
 | ID | Fecha | Nodo / componente | Error y mensaje exacto | Causa confirmada | Solución aplicada | Verificación |
@@ -773,6 +783,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar listas escolares con campos básicos y exportación a PDF/Excel.
 - [x] Aprobar los campos iniciales del expediente del alumno y la regla de no duplicar carrera/plan.
 - [x] Aprobar los campos iniciales del expediente del profesor y la relación del departamento mediante llave foránea.
+- [x] Definir que cada profesor pertenecerá a un único departamento.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
