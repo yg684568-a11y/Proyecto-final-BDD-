@@ -51,7 +51,7 @@ erDiagram
 
 **Reglas del diagrama 1**
 
-- Cada cuenta tiene un rol. Una persona puede tener como máximo una cuenta; una cuenta administrativa puede existir sin persona asociada, porque su identificador es un nombre de usuario. El esquema actual asigna un solo rol por cuenta; la posibilidad de combinar perfiles en una misma cuenta queda pendiente de confirmación.
+- Cada cuenta tiene un rol. Una persona puede tener como máximo una cuenta; una cuenta administrativa puede existir sin persona asociada, porque su identificador es un nombre de usuario. Cada cuenta tendrá exactamente un rol asignado; no se permiten roles simultáneos en una misma cuenta, conforme a D-096.
 - `Persona` concentra nombres, apellidos, correo institucional y teléfono. El correo se conserva en un único campo para evitar duplicados entre alumnos y profesores; su obligatoriedad se valida según el tipo de perfil.
 - `Alumno` y `Empleado` son perfiles que extienden a Persona. `Empleado` se especializa como `Profesor` o `Personal` no docente (por ejemplo, Servicios Escolares o coordinación académica). En la primera versión, un empleado no se registra en ambos subtipos; la exclusión entre subtipos requiere validación de aplicación/transacción.
 - Una carrera tiene varios planes; un alumno conserva varias asignaciones históricas de plan, pero solo una vigente.
