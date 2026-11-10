@@ -118,6 +118,26 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.14 Horarios, aulas y espacios educativos
+
+**Decisión confirmada:** los horarios de los grupos deberán poder registrar:
+- Día de la semana.
+- Hora de inicio.
+- Hora de fin.
+- Aula.
+- Edificio.
+- Modalidad (por ejemplo, presencial; las modalidades válidas se definirán después).
+
+Se mantendrá un catálogo de aulas/espacios para evitar registrar repetidamente la información de un mismo salón.
+
+**Reglas de validación aprobadas:**
+- Un alumno no podrá confirmar grupos cuyos horarios se traslapen.
+- Un aula no podrá estar asignada a dos grupos distintos en el mismo día y horario.
+- La validación de disponibilidad del aula se realizará al crear o modificar la programación del grupo.
+
+**Pendiente de definición:** capacidad de cada aula, tipos de espacio (salón, laboratorio, taller), recursos disponibles, modalidades admitidas y tratamiento de clases en línea o sesiones extraordinarias.
+
 ### 6.13 Validación automática de choques de horario
 
 **Decisión confirmada:** antes de confirmar una selección de grupos, el sistema verificará que los horarios del alumno no se traslapen. Si dos grupos seleccionados tienen sesiones que coinciden en día y horario, la selección conflictiva no podrá confirmarse.
@@ -273,6 +293,7 @@ Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 
 ### 7.2 Requerimientos funcionales todavía por precisar
 
 1. **Respondida:** el sistema debe impedir confirmar una selección de grupos si existen horarios traslapados para el mismo alumno.
+2. **Respondida:** el horario tendrá día, hora de inicio y fin, aula, edificio y modalidad; se administrará un catálogo de aulas y se impedirá asignar la misma aula a dos grupos en el mismo horario.
 2. ¿Qué datos debe mostrar cada horario (día, hora de inicio, hora de fin, aula, modalidad u otros)?
 3. ¿El cupo será obligatorio para todos los grupos? ¿Quién podrá autorizar excepciones?
 4. ¿Se permitirán cambios de grupo, bajas parciales y listas de espera? ¿En qué ventanas de tiempo?
@@ -374,7 +395,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; el sistema bloqueará inscripciones cuando el grupo alcance su cupo. | Aprobación expresa del usuario. Las reglas de seriación, choques de horario, cambios y bajas quedan pendientes. | 2026-11-09 | Aprobada |
 | D-013 | El profesor registrará varias calificaciones por unidad y el sistema calculará la calificación final de la materia. | Aprobación expresa del usuario. Número de unidades y fórmula/ponderaciones sujetos a validación con la instrumentación didáctica y normativa vigente del TecNM/ITP. | 2026-11-09 | Aprobada |
 | D-014 | El número de unidades y sus ponderaciones serán configurables por materia, según la instrumentación didáctica aplicable. | Aprobación expresa del usuario. Fórmula y restricciones concretas pendientes de validación con las reglas vigentes. | 2026-11-09 | Aprobada |
-| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. La estructura de sesiones/horarios y posibles excepciones se detallará posteriormente. | 2026-11-09 | Aprobada |
+| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. La estructura de sesiones/horarios y posibles excepciones se detallará posteriormente. | 2026-11-09 | Aprobada |\n| D-016 | Los horarios registrarán día, inicio, fin, aula, edificio y modalidad; habrá catálogo de aulas y validación para impedir que un aula se asigne a dos grupos en el mismo horario. | Aprobación expresa del usuario. Capacidad, tipos de espacios, recursos y modalidades se detallarán posteriormente. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
