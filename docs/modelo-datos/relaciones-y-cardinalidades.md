@@ -115,5 +115,5 @@ Todas las entidades propuestas aparecen en al menos una relación de las seccion
 11. Las restricciones académicas de inscripción única, créditos, prerrequisitos y equivalencias se validan dentro de la transacción de inscripción.
 12. Los cruces de rol (profesor solo opera sus grupos, alumno solo sus datos) se aplican en autorización de aplicación y vistas, no solamente con FK. El esquema actual permite un rol por cuenta; la posibilidad de múltiples roles por persona debe confirmarse antes de DDL.
 13. La auditoría usa `entidad` + `id_registro` como referencia polimórfica al objeto auditado; ese par no es FK a una tabla de negocio porque puede apuntar a distintas entidades. La FK normal de auditoría es el usuario actor.
-14. Cada oferta debe crearse junto con su notificación en una única transacción; las notificaciones generales no llevan `id_oferta`.
+14. Cada oferta debe crearse junto con su notificación en una única transacción; el destinatario debe ser la cuenta del alumno de la entrada correspondiente. Las notificaciones generales no llevan `id_oferta`.
 15. El sistema conserva las notificaciones y los registros académicos; no se usa borrado físico para los movimientos académicos normales.
