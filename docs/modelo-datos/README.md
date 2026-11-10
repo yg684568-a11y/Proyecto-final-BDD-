@@ -142,3 +142,4 @@ El documento mantiene el estado de propuesta, no de modelo final aprobado. Debe 
 
 
 - [Modelo relacional propuesto](./modelo-relacional-propuesto.md): tablas candidatas, PK, FK, restricciones y vistas recomendadas.
+- [Matriz de relaciones y cardinalidades](./relaciones-y-cardinalidades.md): relaciones R01–R55, opcionalidades y claves foráneas de todas las entidades.
