@@ -302,8 +302,9 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Los permisos se asignarán según el rol del usuario.
 - Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente.
 - El administrador podrá desbloquear la cuenta cuando sea necesario.
+- El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo.
 
-**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo y política de contraseñas, sesiones, segundo factor (si se requiere), alta de cuentas del personal y auditoría de cambios de permisos.
+**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, política de contraseñas, segundo factor (si se requiere), alta de cuentas del personal y auditoría de cambios de permisos.
 
 ### 6.17 Lista de espera automática para grupos llenos
 
@@ -795,6 +796,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - El coordinador académico podrá fijar una fecha límite de inscripción por grupo; después de ella se bloquearán nuevas inscripciones y entradas a lista de espera, salvo autorización de Servicios Escolares o coordinación académica.
 - Autenticación por perfil; todos los usuarios podrán cambiar su contraseña con la actual, y el administrador podrá restablecerla mediante contraseña temporal; permisos por rol, auditoría y borrado lógico.
 - Las cuentas se bloquearán temporalmente después de varios intentos fallidos; el administrador podrá desbloquearlas.
+- Las sesiones se cerrarán automáticamente después de un periodo de inactividad.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
@@ -975,6 +977,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-076 | El alumno podrá actualizar directamente su número telefónico de contacto sin autorización de Servicios Escolares. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-077 | Todos los usuarios (alumnos, profesores, personal y administrador) podrán cambiar su propia contraseña desde su perfil, siempre que conozcan su contraseña actual. | Aprobación expresa del usuario. El restablecimiento cuando olviden la contraseña seguirá el procedimiento de contraseña temporal administrado por el administrador. | 2026-11-10 | Aprobada |
 | D-078 | Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente. El administrador podrá desbloquearla cuando sea necesario. | Aprobación expresa del usuario. El número de intentos y la duración del bloqueo quedan pendientes de definición. | 2026-11-10 | Aprobada |
+| D-079 | El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo. | Aprobación expresa del usuario. El tiempo de inactividad antes del cierre automático queda pendiente de definición. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
