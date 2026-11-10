@@ -592,11 +592,20 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Pendiente de definición:** si se permitirán dos o más profesores responsables o docentes auxiliares en un mismo grupo; si existe límite de carga docente; y cómo se registra la asignación temporal o sustitución de un profesor.
 
+### 6.35 Inscripción única por materia en el mismo periodo
+
+**Decisión confirmada:**
+- Un alumno no podrá mantener dos inscripciones activas a la misma materia dentro del mismo periodo escolar, aunque existan varios grupos disponibles.
+- La restricción también deberá considerar las materias reconocidas como equivalentes para efectos de inscripción, de acuerdo con el catálogo de equivalencias que se valide.
+- Para cambiar de grupo, el alumno deberá utilizar el procedimiento de cambio aprobado; el movimiento conservará la trazabilidad y el historial correspondiente.
+
+**Implicación para el modelo:** se necesitará una validación que impida inscripciones activas duplicadas por alumno, periodo y materia (o equivalencia aplicable), sin impedir que la misma materia se curse en periodos posteriores como un nuevo intento.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.34 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.35 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -607,7 +616,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.34 y resu
 - Separación entre ingreso, reinscripción por periodo e inscripción a materias/grupos.
 - Materias reutilizables en diferentes planes; cada plan tiene su estructura curricular.
 - Una materia puede ofertarse en varios grupos; cada grupo tiene profesor, horario y lista propios.
-- El alumno selecciona grupos; se valida cupo, choque de horario, prerrequisitos y carga académica.
+- El alumno selecciona grupos; se valida cupo, choque de horario, prerrequisitos, carga académica y que no mantenga otra inscripción activa a la misma materia o a una materia equivalente en el periodo.
 - Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
 - Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
@@ -758,6 +767,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-041 | Cada profesor pertenecerá a un solo departamento; un departamento podrá tener varios profesores. La relación será uno a muchos mediante una FK en profesores. | Aprobación expresa del usuario; coincide con la estructura inicial del diagrama E-R. | 2026-11-10 | Aprobada |
 
 | D-042 | Un profesor podrá impartir varias materias y estar asignado a varios grupos durante un periodo; cada grupo tendrá un profesor responsable. La asignación docente se realizará en el grupo/oferta del periodo. | Aprobación expresa del usuario. Docentes auxiliares, sustituciones y límites de carga quedan pendientes. | 2026-11-10 | Aprobada |
+| D-043 | Un alumno no podrá tener dos inscripciones activas a la misma materia —ni a materias equivalentes según el catálogo aplicable— dentro del mismo periodo. Los cambios de grupo se harán mediante el procedimiento autorizado y conservarán la trazabilidad; la materia podrá cursarse de nuevo en periodos posteriores como otro intento. | Aprobación expresa del usuario. La validación concreta de equivalencias depende del catálogo académico que se confirme. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -799,6 +809,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar los campos iniciales del expediente del profesor y la relación del departamento mediante llave foránea.
 - [x] Definir que cada profesor pertenecerá a un único departamento.
 - [x] Aprobar que un profesor pueda impartir varias materias y grupos, con un profesor responsable por grupo.
+- [x] Aprobar inscripción única por materia (considerando equivalencias) para cada alumno en un mismo periodo.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
