@@ -340,6 +340,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 
 **Decisión confirmada:** se combinará una ventana de movimientos con un flujo de autorización para excepciones:
 - Durante una ventana de fechas establecida para cada periodo, el alumno podrá solicitar o realizar cambios de grupo y bajas de materias conforme a las reglas que se definan.
+- El coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas de materias para cada periodo escolar.
 - Fuera de esa ventana, los cambios o bajas requerirán autorización de Servicios Escolares o de coordinación académica, según el tipo de movimiento.
 - Los movimientos deberán conservar trazabilidad: alumno, inscripción afectada, tipo de movimiento, fecha, motivo cuando corresponda, estado de la solicitud y usuario que autorizó o rechazó.
 
@@ -763,7 +764,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Una materia puede ofertarse en varios grupos; cada grupo tiene profesor, horario y lista propios.
 - El alumno selecciona grupos; se valida cupo, choque de horario, prerrequisitos, carga académica y que no mantenga otra inscripción activa a la misma materia o a una materia equivalente en el periodo.
 - Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
-- Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
+- Cambios y bajas durante una ventana configurada por el coordinador académico para cada periodo; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación; al aceptar, el alumno queda inscrito automáticamente y, ante rechazo o vencimiento, se ofrece al siguiente elegible.
 - Antes de ofrecer una vacante, el sistema revalidará que el siguiente alumno FIFO todavía cumpla los requisitos académicos de inscripción.
 - Si un alumno no es elegible al revalidar, no recibirá la oferta; se registrará el motivo, conservará su posición en la lista y el sistema continuará con el siguiente alumno FIFO.
@@ -811,7 +812,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera, la revalidación antes de ofrecer una vacante, la inscripción automática al aceptar y el paso al siguiente alumno FIFO ante rechazo o vencimiento. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
-5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
+5. **Parcialmente respondida:** el coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas para cada periodo. Falta determinar las fechas concretas de cada periodo y qué tipos de movimiento puede realizar directamente el alumno o requieren autorización.
 6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
 7. **Parcialmente respondida:** el kárdex mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; también calificaciones por unidad publicadas e intentos anteriores. Falta definir formato final, promedios, avance curricular y créditos acumulados según reglas del ITP. Las listas escolares mostrarán número de control, nombre, carrera, grupo y estado de inscripción; podrán exportarse a PDF y Excel. Falta definir permisos de consulta/descarga y filtros.
 8. Definir flujo de corrección de calificaciones publicadas en casos excepcionales y plazos de autorización.
@@ -989,6 +990,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-081 | Las contraseñas deberán tener al menos 8 caracteres y podrán combinar letras, números y símbolos, sin exigir una combinación específica. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-082 | No se aprueba exigir que el usuario cambie obligatoriamente la contraseña en el primer inicio de sesión de una cuenta recién creada. El procedimiento para asignar y entregar la contraseña inicial queda pendiente. | Rechazo expreso del usuario a la propuesta de cambio obligatorio en el primer acceso. | 2026-11-10 | Rechazada |
 | D-083 | Cuando un alumno acepte una oferta de vacante dentro de las 24 horas, el sistema lo inscribirá automáticamente en el grupo. Si rechaza la oferta o vence el plazo sin respuesta, la vacante se ofrecerá al siguiente alumno elegible según el orden FIFO. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-084 | El coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas de materias para cada periodo escolar. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -1021,6 +1023,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Definir periodos semestrales y flujo de ingreso, reinscripción e inscripción a grupos.
 - [x] Aprobar selección de grupos por el alumno, validación de cupo y horarios.
 - [x] Aprobar aulas, capacidad, cambios/bajas y lista de espera FIFO con plazo de 24 horas y notificación interna.
+- [x] Aprobar que coordinación académica configure la ventana de cambios de grupo y bajas para cada periodo.
 - [x] Aprobar calificaciones por unidades configurables, publicación, corrección autorizada y conservación de intentos.
 - [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
 - [x] Aprobar el bloqueo temporal por intentos fallidos y el desbloqueo por parte del administrador.
