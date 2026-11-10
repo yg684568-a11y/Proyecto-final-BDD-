@@ -109,7 +109,7 @@ erDiagram
 
 ```mermaid
 erDiagram
-    MATERIA ||--o{ UNIDAD_EVALUACION : define
+    PLAN_MATERIA ||--o{ UNIDAD_EVALUACION : define
     INSCRIPCION ||--o{ CALIFICACION_UNIDAD : obtiene
     UNIDAD_EVALUACION ||--o{ CALIFICACION_UNIDAD : evalua
 
