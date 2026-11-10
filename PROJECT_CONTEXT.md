@@ -265,7 +265,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 
 **Responsabilidad y autorización aprobadas:**
 - Servicios Escolares gestionará el trámite y actualizará la asignación académica del alumno.
-- Todo cambio de carrera requerirá autorización del coordinador académico.
+- Todo cambio de carrera o de plan de estudios requerirá autorización del coordinador académico.
 - El sistema conservará la carrera y el plan anteriores como historial y registrará la nueva asignación como vigente.
 
 **Pendiente de definición/verificación:** fechas efectivas, requisitos, equivalencias/revalidaciones y cómo se reflejan las materias cursadas en el nuevo plan, conforme a los procedimientos del ITP/TecNM.
@@ -758,6 +758,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - Servicios Escolares registra alumnos nuevos, actualiza expedientes y asigna carrera/plan; el administrador se limita a cuentas de acceso, roles y permisos.
 - El número de control del alumno será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - Los cambios de carrera serán tramitados por Servicios Escolares y requerirán autorización del coordinador académico; se conservará la carrera/plan anterior y se registrará la nueva asignación vigente.
+- Los cambios de plan sin cambio de carrera seguirán el mismo procedimiento: trámite por Servicios Escolares, autorización de coordinación académica y conservación del plan anterior como historial.
 - El número de empleado del profesor será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - El correo institucional será obligatorio y único para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
@@ -944,6 +945,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-069 | Un profesor podrá cambiar de departamento durante su trayectoria laboral, pero solo tendrá un departamento vigente a la vez. El sistema conservará el historial de adscripciones anteriores. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-070 | Cada departamento tendrá nombre, clave o código y descripción, todos obligatorios. El nombre y la clave/código serán únicos. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-071 | Los cambios de carrera serán gestionados por Servicios Escolares y requerirán autorización del coordinador académico. El sistema conservará la carrera y el plan anteriores como historial y registrará la nueva asignación como vigente. | Aprobación expresa del usuario. Los requisitos, fechas y equivalencias se verificarán con los procedimientos vigentes del ITP/TecNM. | 2026-11-10 | Aprobada |
+| D-072 | Cuando un alumno cambie de plan de estudios sin cambiar de carrera, Servicios Escolares gestionará el trámite, el coordinador académico deberá autorizarlo y el sistema conservará el plan anterior como historial, registrando el nuevo plan como vigente. | Aprobación expresa del usuario. Los requisitos, fechas y equivalencias se verificarán con los procedimientos vigentes del ITP/TecNM. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -1003,7 +1005,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que ningún perfil, incluido el administrador, pueda eliminar definitivamente las notificaciones.
 - [x] Definir conservación sin vencimiento e historial sencillo y paginado con filtros básicos.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
-- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados, el procedimiento de excepciones a las fechas límite de inscripción y los requisitos/fechas de cambios de carrera.
+- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados, el procedimiento de excepciones a las fechas límite de inscripción y los requisitos/fechas de cambios de carrera o plan.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM, incluidos los calendarios y fechas oficiales de los periodos.
 - [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
