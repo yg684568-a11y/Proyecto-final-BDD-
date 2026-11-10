@@ -608,13 +608,13 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Decisión confirmada:** cada profesor pertenecerá a un solo departamento. Un departamento podrá tener varios profesores.
 
-**Implicación para el modelo relacional:** relación uno a muchos entre `departamentos` y `profesores`; la tabla de profesores tendrá una llave foránea hacia el departamento correspondiente.
+**Implicación para el modelo relacional:** cada profesor tendrá una sola adscripción vigente a la vez. El modelo deberá permitir conservar las adscripciones anteriores y consultar a qué departamento perteneció en cada etapa.
 
 **Administración aprobada:** el coordinador académico podrá registrar, actualizar y desactivar departamentos. No se permitirá eliminar un departamento que tenga profesores asociados; se conservarán sus registros históricos.
 
 **Restricción aprobada:** el nombre del departamento será obligatorio y único. El sistema impedirá registrar dos departamentos con el mismo nombre.
 
-**Pendiente de definición:** si el departamento de un profesor puede cambiar con el tiempo y, en ese caso, si se requiere conservar el historial de adscripciones.
+**Cambio de departamento aprobado:** un profesor podrá cambiar de departamento durante su trayectoria laboral, pero solo tendrá un departamento vigente a la vez. El sistema conservará el historial de adscripciones anteriores para consulta y trazabilidad.
 
 ### 6.34 Asignación de profesores a materias y grupos
 
@@ -752,6 +752,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El coordinador académico registra profesores, actualiza sus expedientes y les asigna departamento; cada profesor puede consultar su propia información institucional, sin modificarla.
 - El coordinador académico registra, actualiza y desactiva departamentos; no podrá eliminar departamentos con profesores asociados y se conservará el historial.
+- Un profesor podrá cambiar de departamento, con una sola adscripción vigente y conservación del historial anterior.
 - El nombre del departamento será obligatorio y único; no se permitirán departamentos duplicados.
 - El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
@@ -762,7 +763,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
+1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -929,6 +930,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-066 | El coordinador académico será responsable de registrar profesores, actualizar sus expedientes y asignarles departamento. Cada profesor podrá consultar su propia información institucional, pero no modificar los datos institucionales de su expediente. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-067 | El coordinador académico podrá registrar, actualizar y desactivar departamentos. No se permitirá eliminar departamentos que tengan profesores asociados y se conservarán sus registros históricos. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-068 | El nombre del departamento será obligatorio y único. El sistema impedirá registrar dos departamentos con el mismo nombre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-069 | Un profesor podrá cambiar de departamento durante su trayectoria laboral, pero solo tendrá un departamento vigente a la vez. El sistema conservará el historial de adscripciones anteriores. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -973,6 +975,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que coordinación académica gestione los expedientes de profesores y que cada profesor solo consulte su propia información.
 - [x] Aprobar el correo institucional obligatorio y único para alumnos y profesores.
 - [x] Definir que cada profesor pertenecerá a un único departamento.
+- [x] Aprobar cambios de departamento con conservación del historial de adscripciones.
 - [x] Aprobar el nombre de departamento obligatorio y único.
 - [x] Aprobar que un profesor pueda impartir varias materias y grupos, con un profesor responsable por grupo.
 - [x] Aprobar inscripción única por materia (considerando equivalencias) para cada alumno en un mismo periodo.
