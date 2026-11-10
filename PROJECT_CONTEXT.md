@@ -541,11 +541,26 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Pendiente de definición:** filtros disponibles, datos adicionales permitidos y tratamiento de listas cuando existan bajas, cambios de grupo o alumnos en lista de espera. La lista oficial del grupo debe reflejar únicamente las inscripciones confirmadas/activas, salvo que se solicite explícitamente un reporte histórico.
 
+### 6.31 Expediente inicial del alumno
+
+**Decisión confirmada:** el expediente inicial del alumno incluirá:
+- Número de control (identificador institucional).
+- Nombre(s).
+- Apellidos.
+- Correo institucional.
+- Teléfono (opcional).
+- Fecha de ingreso.
+- Estado académico.
+
+**Regla de diseño:** la carrera y el plan de estudios no se duplicarán como campos directos de la ficha del alumno; se manejarán mediante relaciones y registros históricos de asignación académica, permitiendo conservar cambios de carrera/plan.
+
+**Criterio de minimización:** almacenar únicamente los datos necesarios para los procesos académicos aprobados. No incorporar datos personales sensibles o adicionales sin un requerimiento claro y justificado.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.30 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.31 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -566,7 +581,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.30 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. Definir los campos obligatorios del expediente del alumno, profesor y demás catálogos.
+1. **Parcialmente respondida:** el expediente inicial del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico. La carrera y el plan se manejarán por relaciones e historial, no duplicados en la ficha. Falta definir los campos del expediente de profesor y otros catálogos.
 2. Detallar permisos por acción (consultar, crear, modificar, autorizar, desactivar) para cada uno de los cinco roles.
 3. Definir el contenido exacto y la presentación de notificaciones internas (bandeja, contador, leído/no leído).
 4. Definir reglas de elegibilidad de la lista de espera y cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -699,6 +714,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-037 | Las listas escolares por grupo mostrarán número de control, nombre, carrera, grupo y estado de inscripción; los profesores podrán consultarlas y exportarlas a PDF y Excel. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-038 | El acceso a listas será por alcance: administrador y Servicios Escolares podrán consultar todas; coordinación solo las carreras que administra; profesores solo sus grupos; alumnos no verán listas completas. Las exportaciones respetarán los mismos permisos. | Aprobación expresa del usuario. Filtros y detalles del reporte quedan pendientes. | 2026-11-10 | Aprobada |
 
+| D-039 | El expediente inicial del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico. La carrera y el plan se manejarán por relaciones e historial, no como datos duplicados en la ficha. | Aprobación expresa del usuario; minimización de datos personales. | 2026-11-10 | Aprobada |
+
 ## 10. Registro de errores y soluciones
 
 | ID | Fecha | Nodo / componente | Error y mensaje exacto | Causa confirmada | Solución aplicada | Verificación |
@@ -735,6 +752,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar validación de prerrequisitos y carga académica.
 - [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
 - [x] Aprobar listas escolares con campos básicos y exportación a PDF/Excel.
+- [x] Aprobar los campos iniciales del expediente del alumno y la regla de no duplicar carrera/plan.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
