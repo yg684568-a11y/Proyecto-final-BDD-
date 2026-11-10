@@ -130,3 +130,10 @@ Estas relaciones se desprenden del alcance aprobado; sus cardinalidades y restri
 7. Revisar normalización y evitar duplicidad de datos antes de crear el esquema físico.
 
 **Importante:** no crear todavía scripts definitivos en `database/schema`. Primero aprobar el diagrama conceptual, el modelo lógico y las restricciones.
+
+
+## Propuesta actualizada
+
+La propuesta de rediseño del E-R está en [diagrama-er-propuesto.md](./diagrama-er-propuesto.md). Incluye tres diagramas Mermaid: estructura académica/usuarios; periodos, grupos, inscripciones/lista de espera; y evaluación, reconocimientos, notificaciones/auditoría.
+
+El documento mantiene el estado de propuesta, no de modelo final aprobado. Debe revisarse con el equipo antes de generar SQL.
