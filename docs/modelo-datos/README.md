@@ -42,10 +42,10 @@ El diagrama actual incluye las entidades `Cursos`, `Horarios`, `Categorias`, `Pr
 
 - Departamento 1:N Profesor: conservar como asignación vigente, agregando historial de cambios de departamento.
 - Alumno 1:N Inscripcion: conservar.
-- Grupo 1:N Inscripcion: establecer para las inscripciones al grupo concreto.
+- GrupoPlanMateria 1:N Inscripcion: cada inscripción se registra contra la combinación válida de grupo y materia del plan.
 - Materia 1:N Grupo: establecer; la misma materia puede ofertarse en distintos grupos y periodos.
 - Grupo 1:N HorarioGrupo: establecer.
-- Materia 1:N UnidadEvaluacion: conservar si los módulos actuales equivalen a unidades de evaluación.
+- PlanMateria 1:N UnidadEvaluacion: cada materia dentro de una versión de plan define sus unidades y ponderaciones.
 - Inscripcion 1:N CalificacionUnidad: conservar la idea, para que las calificaciones pertenezcan a un intento específico.
 - Profesor 1:N Grupo: sustituye la asignación actual Profesor 1:N Curso.
 - Carrera 1:N PlanEstudio y PlanEstudio N:M Materia mediante una entidad intermedia: incorporar.
