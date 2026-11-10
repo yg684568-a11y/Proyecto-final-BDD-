@@ -302,11 +302,12 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Las contraseñas deberán tener al menos 8 caracteres y podrán combinar letras, números y símbolos, sin exigir una combinación específica.
 - Los permisos se asignarán según el rol del usuario.
 - No se implementará verificación en dos pasos en la versión inicial; el acceso utilizará las credenciales y controles de seguridad aprobados.
+- No se exigirá el cambio obligatorio de contraseña en el primer inicio de sesión de una cuenta recién creada.
 - Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente.
 - El administrador podrá desbloquear la cuenta cuando sea necesario.
 - El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo.
 
-**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, alta de cuentas del personal y auditoría de cambios de permisos.
+**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, procedimiento para asignar y entregar la contraseña inicial de cuentas nuevas, alta de cuentas del personal y auditoría de cambios de permisos.
 
 ### 6.17 Lista de espera automática para grupos llenos
 
@@ -984,6 +985,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-079 | El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo. | Aprobación expresa del usuario. El tiempo de inactividad antes del cierre automático queda pendiente de definición. | 2026-11-10 | Aprobada |
 | D-080 | No se implementará verificación en dos pasos en la versión inicial; el inicio de sesión utilizará las credenciales y controles de seguridad aprobados. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-081 | Las contraseñas deberán tener al menos 8 caracteres y podrán combinar letras, números y símbolos, sin exigir una combinación específica. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-082 | No se aprueba exigir que el usuario cambie obligatoriamente la contraseña en el primer inicio de sesión de una cuenta recién creada. El procedimiento para asignar y entregar la contraseña inicial queda pendiente. | Rechazo expreso del usuario a la propuesta de cambio obligatorio en el primer acceso. | 2026-11-10 | Rechazada |
 
 ## 10. Registro de errores y soluciones
 
