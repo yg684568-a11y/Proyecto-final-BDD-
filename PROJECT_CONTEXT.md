@@ -488,54 +488,58 @@ Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos d
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 6.12 y en el registro de decisiones. En resumen:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.27 y resumidas en el registro de decisiones:
 
-- Institución objetivo: Instituto Tecnológico de Puebla (ITP).
+- Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
-- Doce módulos iniciales aprobados.
-- Catálogo de todas las carreras del ITP; datos de prueba limitados.
-- Versiones históricas de planes de estudio y asociación del alumno con su plan.
-- Periodos semestrales ordinarios y periodos extraordinarios/verano.
+- Doce módulos funcionales iniciales.
+- Diseño que soporte todas las carreras y planes de estudio del ITP, con datos de prueba limitados.
+- Versiones históricas de planes; cada alumno conserva su carrera/plan correspondiente y solo una carrera activa a la vez.
+- Periodos semestrales ordinarios (enero–junio y agosto–diciembre), más periodos extraordinarios/verano.
 - Separación entre ingreso, reinscripción por periodo e inscripción a materias/grupos.
-- Una materia puede abrirse en varios grupos; cada grupo tiene profesor, horario y lista propios.
-- El alumno selecciona grupos y horarios; el sistema valida cupo.
-- Calificaciones por unidades con número de unidades y ponderaciones configurables por materia.
+- Materias reutilizables en diferentes planes; cada plan tiene su estructura curricular.
+- Una materia puede ofertarse en varios grupos; cada grupo tiene profesor, horario y lista propios.
+- El alumno selecciona grupos; se valida cupo, choque de horario, prerrequisitos y carga académica.
+- Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
+- Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
+- Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
+- Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
+- Intentos de materias conservados en el kárdex.
+- Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
 
-### 7.2 Requerimientos funcionales todavía por precisar
+### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Respondida:** el sistema debe impedir confirmar una selección de grupos si existen horarios traslapados para el mismo alumno.
-2. **Respondida:** autenticación por nombre de usuario para administrador, número de empleado para personal/profesores y número de control para alumnos; contraseñas con hash, cuentas vinculadas a los registros correspondientes y administración básica de cuentas.
-3. **Respondida:** el usuario podrá cambiar su contraseña; para recuperación, el administrador podrá asignar una contraseña temporal que deberá cambiarse en el siguiente acceso. Se mantendrá un procedimiento sencillo sin correo externo y se registrará el restablecimiento.
-2. **Respondida:** el horario tendrá día, hora de inicio y fin, aula, edificio y modalidad; se administrará un catálogo de aulas y se impedirá asignar la misma aula a dos grupos en el mismo horario.
-3. **Respondida:** el cupo del grupo y la capacidad del aula serán valores independientes; el cupo del grupo no podrá superar la capacidad del aula asignada.
-4. **Respondida:** se permitirán cambios de grupo y bajas durante una ventana establecida; fuera de ella se requerirá autorización de Servicios Escolares o coordinación académica. Los movimientos conservarán trazabilidad y no se borrarán físicamente.
-5. **Respondida:** cuando un grupo esté lleno, el alumno podrá apuntarse a una lista de espera automática. Al liberarse una vacante, se ofrecerá al siguiente alumno, quien deberá confirmarla dentro de un plazo. El orden, plazo, canal de notificación y reglas de elegibilidad quedan pendientes.
-2. ¿Qué datos debe mostrar cada horario (día, hora de inicio, hora de fin, aula, modalidad u otros)?
-3. ¿El cupo será obligatorio para todos los grupos? ¿Quién podrá autorizar excepciones?
-4. ¿Se permitirán cambios de grupo, bajas parciales y listas de espera? ¿En qué ventanas de tiempo?
-5. ¿Qué reglas de seriación, créditos y materias permitidas se deben aplicar al seleccionar materias?
-6. ¿Qué datos y procesos exactos se incluirán en el expediente, kárdex y lista escolar?
-7. ¿Qué reglas del ITP aplican a la captura, modificación, publicación y cálculo de calificaciones?
+1. Definir los campos obligatorios del expediente del alumno, profesor y demás catálogos.
+2. Detallar permisos por acción (consultar, crear, modificar, autorizar, desactivar) para cada uno de los cinco roles.
+3. Definir el contenido exacto y la presentación de notificaciones internas (bandeja, contador, leído/no leído).
+4. Definir reglas de elegibilidad de la lista de espera y cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
+5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
+6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
+7. Definir la información y el formato que mostrarán las listas escolares y el kárdex.
+8. Definir flujo de corrección de calificaciones publicadas en casos excepcionales y plazos de autorización.
+9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
+10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
+11. Definir si una oferta/grupo puede compartirse entre carreras o planes diferentes, cuando la misma materia sea común.
 
-### 7.3 Requerimientos de infraestructura y desarrollo pendientes
+### 7.3 Validación institucional pendiente
 
-8. ¿El profesor exige un motor o tecnología específica para el clúster?
-9. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
-10. ¿Las tres máquinas virtuales estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
-11. ¿Qué virtualizador utilizarán y cómo se comunicarán las VMs (LAN, VPN u otra red)?
-12. ¿Qué lenguaje/framework prefiere o domina el equipo?
-13. ¿Se evaluará también una aplicación web funcional o principalmente la base de datos distribuida?
-14. ¿Cuál es la fecha de entrega y qué hitos intermedios existen?
+- Confirmar el catálogo oficial vigente de carreras, niveles, modalidades, claves y planes del ITP.
+- Verificar calendarios y fechas de periodos, inscripción/reinscripción y ventanas de movimientos.
+- Verificar reglas del TecNM/ITP para seriación, créditos, bajas, repetición, regularización y equivalencias.
+- Verificar lineamiento vigente de evaluación: escala, ponderaciones, fórmula, redondeo, mínimo aprobatorio y oportunidades.
+- Confirmar las funciones que la aplicación del proyecto debe implementar frente a las que ya atienden plataformas institucionales existentes.
 
-### 7.4 Validación institucional pendiente
+### 7.4 Infraestructura y desarrollo pendientes
 
-- Obtener/confirmar el catálogo oficial vigente de carreras, niveles, modalidades y planes del ITP.
-- Verificar calendarios, periodos y reglas institucionales de inscripción/reinscripción.
-- Verificar seriación, créditos, bajas, repetición, regularización y equivalencias.
-- Verificar el lineamiento vigente de evaluación, escala, ponderaciones, redondeo y oportunidades.
-- Distinguir las funciones que el sistema académico del proyecto debe simular de aquellas que corresponden a plataformas institucionales existentes.
+1. ¿El profesor exige un motor o tecnología específica para el clúster?
+2. ¿Qué función técnica tendrá el nodo 1: punto de acceso de la aplicación, coordinador operativo o algún rol distinto?
+3. ¿Las tres máquinas virtuales estarán en una sola computadora o distribuidas entre las computadoras de los integrantes?
+4. ¿Qué virtualizador utilizarán y cómo se comunicarán las VMs (LAN, VPN u otra red)?
+5. ¿Qué lenguaje/framework prefiere o domina el equipo?
+6. ¿Se evaluará también una aplicación web funcional o principalmente la base de datos distribuida?
+7. ¿Cuál es la fecha de entrega y qué hitos intermedios existen?
 
-Registrar las respuestas y su fecha cuando el equipo las confirme. No asumir reglas institucionales no documentadas.
+No asumir reglas institucionales ni decisiones técnicas todavía pendientes. Registrar las respuestas y su fecha cuando el equipo las confirme.
 
 ## 8. Direccionamiento y configuración de nodos
 
@@ -600,18 +604,37 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-001 | Gemini será la IA principal; Claude revisará; ChatGPT asesorará; Antigravity apoyará la implementación. | Acuerdo inicial del equipo. | 2026-11-09 | Aprobada |
 | D-002 | El equipo se compone de Yosef (nodo 1), Andrés (nodo 2) y Leonardo (nodo 3). | Información proporcionada por el equipo. | 2026-11-09 | Confirmada |
 | D-003 | Motor de base de datos y topología del clúster. | Pendiente de evaluación y validación del profesor/equipo. | — | Pendiente |
-| D-004 | El sistema estará basado en el funcionamiento académico del Instituto Tecnológico de Puebla (ITP). | Confirmación del usuario. Las reglas académicas concretas deben verificarse con fuentes institucionales o con el equipo. | 2026-11-09 | Aprobada |
-| D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario sobre los roles y responsabilidades generales propuestos. | 2026-11-09 | Aprobada |
-| D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario a la propuesta de módulos. Los flujos y reglas detallados quedan pendientes. | 2026-11-09 | Aprobada |
-| D-007 | El diseño del catálogo abarcará todas las carreras del ITP y sus planes de estudio; se utilizará un conjunto limitado de datos de prueba. | Confirmación del usuario mediante selección de la opción recomendada. El catálogo vigente se verificará con fuentes institucionales antes de cargar datos. | 2026-11-09 | Aprobada |
-| D-008 | Cada carrera podrá conservar varias versiones de planes de estudio, y los alumnos permanecerán asociados al plan que les corresponda, incluyendo planes anteriores no vigentes. | Aprobación expresa del usuario. Las reglas de cambios de plan/equivalencias quedan pendientes de verificación institucional. | 2026-11-09 | Aprobada |
-| D-009 | El sistema manejará periodos semestrales ordinarios (enero–junio y agosto–diciembre) y permitirá registrar periodos extraordinarios o de verano. | Aprobación expresa del usuario. Las fechas exactas se configurarán por ciclo y se validarán con el calendario vigente del ITP. | 2026-11-09 | Aprobada |
-| D-010 | El sistema distinguirá el ingreso del alumno a una carrera/plan, la reinscripción por periodo y la inscripción a materias/grupos. | Aprobación expresa del usuario. Reglas académicas específicas pendientes de validación institucional. | 2026-11-09 | Aprobada |
-| D-011 | Una materia podrá ofertarse en varios grupos por periodo; cada grupo tendrá su propio profesor, horario y lista de alumnos. | Aprobación expresa del usuario. Reglas de cupo, cambios de grupo y choques de horario quedan pendientes. | 2026-11-09 | Aprobada |
-| D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; el sistema bloqueará inscripciones cuando el grupo alcance su cupo. | Aprobación expresa del usuario. Las reglas de seriación, choques de horario, cambios y bajas quedan pendientes. | 2026-11-09 | Aprobada |
-| D-013 | El profesor registrará varias calificaciones por unidad y el sistema calculará la calificación final de la materia. | Aprobación expresa del usuario. Número de unidades y fórmula/ponderaciones sujetos a validación con la instrumentación didáctica y normativa vigente del TecNM/ITP. | 2026-11-09 | Aprobada |
-| D-014 | El número de unidades y sus ponderaciones serán configurables por materia, según la instrumentación didáctica aplicable. | Aprobación expresa del usuario. Fórmula y restricciones concretas pendientes de validación con las reglas vigentes. | 2026-11-09 | Aprobada |
-| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. La estructura de sesiones/horarios y posibles excepciones se detallará posteriormente. | 2026-11-09 | Aprobada |\n| D-016 | Los horarios registrarán día, inicio, fin, aula, edificio y modalidad; habrá catálogo de aulas y validación para impedir que un aula se asigne a dos grupos en el mismo horario. | Aprobación expresa del usuario. Capacidad, tipos de espacios, recursos y modalidades se detallarán posteriormente. | 2026-11-09 | Aprobada |\n| D-017 | El cupo del grupo no podrá superar la capacidad del aula asignada. El cupo del grupo y la capacidad del aula se administrarán por separado. | Aprobación expresa del usuario. Excepciones y tratamiento de modalidades sin aula física quedan pendientes. | 2026-11-09 | Aprobada |\n| D-018 | Los cambios de grupo y bajas podrán realizarse durante una ventana establecida; fuera de ella requerirán autorización de Servicios Escolares o coordinación académica. Los movimientos conservarán trazabilidad, sin borrar físicamente el registro original. | Aprobación expresa del usuario. Ventanas, autorizaciones específicas y efectos académicos quedan pendientes de definición/verificación. | 2026-11-09 | Aprobada |\n| D-019 | Los grupos llenos admitirán lista de espera automática; al liberarse una vacante, se ofrecerá al siguiente alumno, quien deberá confirmar en un plazo establecido. | Aprobación expresa del usuario. Orden FIFO aprobado; plazo, canal de notificación y elegibilidad quedan pendientes. | 2026-11-09 | Aprobada |
+| D-004 | El sistema estará basado en el funcionamiento académico del Instituto Tecnológico de Puebla (ITP). | Confirmación del usuario; reglas institucionales concretas por verificar. | 2026-11-09 | Aprobada |
+| D-005 | Se utilizarán cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno. | Aprobación expresa del usuario. | 2026-11-09 | Aprobada |
+| D-006 | El alcance funcional inicial incluirá 12 módulos: usuarios y roles, alumnos, profesores, departamentos y carreras, materias, periodos escolares, grupos, inscripciones, horarios, calificaciones, kárdex y listas escolares. | Aprobación expresa del usuario; flujos detallados pendientes. | 2026-11-09 | Aprobada |
+| D-007 | El diseño abarcará todas las carreras del ITP y sus planes de estudio; se utilizará un conjunto limitado de datos de prueba. | Confirmación expresa del usuario; catálogo vigente por verificar. | 2026-11-09 | Aprobada |
+| D-008 | Cada carrera podrá conservar varias versiones de planes de estudio y los alumnos permanecerán asociados al plan que les corresponda, incluidos planes anteriores no vigentes. | Aprobación expresa; cambios de plan/equivalencias por verificar. | 2026-11-09 | Aprobada |
+| D-009 | El sistema manejará periodos semestrales ordinarios (enero–junio y agosto–diciembre) y permitirá periodos extraordinarios o de verano. | Aprobación expresa; fechas exactas por calendario del ITP. | 2026-11-09 | Aprobada |
+| D-010 | Se distinguirá el ingreso del alumno a una carrera/plan, la reinscripción por periodo y la inscripción a materias/grupos. | Aprobación expresa; reglas académicas específicas por verificar. | 2026-11-09 | Aprobada |
+| D-011 | Una materia podrá ofertarse en varios grupos por periodo; cada grupo tendrá profesor, horario y lista de alumnos propios. | Aprobación expresa del usuario. | 2026-11-09 | Aprobada |
+| D-012 | Durante la reinscripción, el alumno seleccionará los grupos, materias y horarios disponibles; se bloquearán inscripciones cuando el grupo alcance su cupo. | Aprobación expresa; reglas académicas relacionadas pendientes. | 2026-11-09 | Aprobada |
+| D-013 | El profesor registrará varias calificaciones por unidad y el sistema calculará la calificación final de la materia. | Aprobación expresa; fórmula sujeta a normativa e instrumentación didáctica. | 2026-11-09 | Aprobada |
+| D-014 | El número de unidades y sus ponderaciones serán configurables por materia. | Aprobación expresa; fórmula y restricciones concretas por verificar. | 2026-11-09 | Aprobada |
+| D-015 | El sistema validará automáticamente que los grupos seleccionados por un alumno no tengan horarios traslapados e impedirá confirmar selecciones conflictivas. | Aprobación expresa del usuario. | 2026-11-09 | Aprobada |
+| D-016 | Los horarios registrarán día, inicio, fin, aula, edificio y modalidad; habrá catálogo de aulas y validación de conflictos de ocupación. | Aprobación expresa del usuario. | 2026-11-09 | Aprobada |
+| D-017 | El cupo del grupo no podrá superar la capacidad del aula asignada; ambos valores se administrarán por separado. | Aprobación expresa; tratamiento de excepciones pendiente. | 2026-11-09 | Aprobada |
+| D-018 | Los cambios de grupo y bajas podrán realizarse durante una ventana establecida; fuera de ella requerirán autorización de Servicios Escolares o coordinación académica. Se conservará trazabilidad, sin borrar físicamente el registro. | Aprobación expresa; fechas y reglas específicas por verificar. | 2026-11-09 | Aprobada |
+| D-019 | Los grupos llenos admitirán lista de espera automática; al liberarse una vacante, se ofrecerá al siguiente alumno, quien deberá confirmar en un plazo establecido. | Aprobación expresa del usuario. | 2026-11-09 | Aprobada |
+| D-020 | La lista de espera utilizará prioridad FIFO (First In, First Out), con base en fecha y hora de registro. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-021 | El alumno tendrá 24 horas para aceptar una vacante; si no responde, se ofrecerá al siguiente alumno FIFO. El plazo será configurable por periodo escolar. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-022 | Las ofertas de vacante se notificarán dentro del sistema; el correo electrónico queda fuera del alcance inicial para este aviso. | Selección expresa del usuario. | 2026-11-10 | Aprobada |
+| D-023 | El plazo de 24 horas comienza cuando el sistema genera la notificación, sin depender de que el alumno la lea o inicie sesión. El aviso muestra materia, grupo, horario y fecha/hora límite. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-024 | Se implementará autenticación con nombre de usuario para administrador, número de empleado para personal/profesores y número de control para alumnos; las cuentas tendrán contraseña, roles/permisos y vinculación al registro correspondiente cuando aplique. Contraseñas almacenadas con hash; el administrador podrá crear/desactivar cuentas y los usuarios cambiar su contraseña. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-025 | La recuperación sencilla de contraseña será gestionada por el administrador mediante una contraseña temporal que el usuario deberá cambiar en el siguiente acceso; se auditará y no se usará correo externo en el alcance inicial. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-026 | Cada alumno tendrá una sola carrera activa a la vez. Los cambios de carrera o plan conservarán la asignación académica anterior como historial. | Aprobación expresa; autorización y equivalencias por verificar con el ITP. | 2026-11-10 | Aprobada |
+| D-027 | Las materias no acreditadas podrán cursarse nuevamente conforme a reglas académicas; cada intento tendrá registro independiente y se conservarán calificaciones anteriores para mostrarlas en el kárdex. | Aprobación expresa; oportunidades y criterios oficiales por verificar. | 2026-11-10 | Aprobada |
+| D-028 | Las calificaciones podrán guardarse como borrador; el profesor las validará y publicará; el alumno solo consultará las publicadas. Las correcciones posteriores deberán quedar auditadas. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-029 | Se utilizará borrado lógico/desactivación o cierre de movimientos para preservar la información histórica y de auditoría. Los registros académicos no se eliminarán físicamente como operación normal. | Aprobación expresa y alineación con la guía del proyecto. | 2026-11-10 | Aprobada |
+| D-030 | El sistema registrará eventos de auditoría (inicio de sesión, altas, modificaciones con valores anterior/nuevo, bajas lógicas, calificaciones y autorizaciones). El administrador verá toda la auditoría; Servicios Escolares y coordinación solo la relacionada con sus funciones. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-031 | Las correcciones de calificaciones publicadas deberán ser solicitadas por el profesor con motivo y autorizadas por el coordinador académico. Se conservarán valores anterior y nuevo, motivo, solicitante, autorizador y fecha/hora. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-032 | Cada plan de estudios tendrá su estructura curricular; cada materia registrará clave, nombre, créditos, semestre recomendado y prerrequisitos cuando correspondan. Una misma materia podrá reutilizarse en varios planes sin duplicar su definición. | Aprobación expresa; catálogo y reglas curriculares por verificar con el ITP. | 2026-11-10 | Aprobada |
+| D-033 | El sistema validará automáticamente los prerrequisitos; bloqueará la inscripción si no se cumplen y permitirá excepciones solo cuando la normativa lo permita, con autorización de coordinación y auditoría. | Aprobación expresa; tipos y reglas exactas por verificar con el ITP. | 2026-11-10 | Aprobada |
+| D-034 | El sistema calculará los créditos seleccionados por el alumno y validará su carga contra el límite configurado para el periodo; bloqueará excesos y admitirá excepciones autorizadas cuando la normativa lo permita. | Aprobación expresa; máximos, mínimos y variantes por verificar con ITP/TecNM. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -638,19 +661,20 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 
 ### Próximas tareas inmediatas
 
-- [x] Definir el tipo de institución: instituto.
-- [x] Definir la institución de referencia: Instituto Tecnológico de Puebla (ITP).
-- [ ] Recopilar y verificar las reglas académicas del ITP que afecten el sistema.
-- [x] Definir los cinco perfiles generales del sistema.
-- [ ] Elaborar y aprobar la matriz detallada de permisos por módulo.
-- [ ] Responder las demás preguntas de requerimientos de la sección 7.
-- [x] Definir que el modelo debe soportar todas las carreras del ITP y sus planes de estudio.
-- [ ] Confirmar el catálogo activo de carreras, modalidad, nivel y planes vigentes para el ciclo de referencia.\n- [x] Definir estructura curricular por plan y reutilización de materias compartidas.
-- [x] Definir que se conservarán planes de estudio anteriores y la asociación del alumno con su plan correspondiente.
-- [ ] Verificar reglas del ITP para cambios de plan, equivalencias y transición entre versiones.
-- [ ] Confirmar el alcance real de las reglas de inscripción/reinscripción y evaluación.
+- [x] Confirmar el tipo y la institución de referencia: instituto / ITP.
+- [x] Aprobar los cinco perfiles y los doce módulos funcionales iniciales.
+- [x] Definir el alcance de carreras, planes versionados y materias compartidas.
+- [x] Definir periodos semestrales y flujo de ingreso, reinscripción e inscripción a grupos.
+- [x] Aprobar selección de grupos por el alumno, validación de cupo y horarios.
+- [x] Aprobar aulas, capacidad, cambios/bajas y lista de espera FIFO con plazo de 24 horas y notificación interna.
+- [x] Aprobar calificaciones por unidades configurables, publicación, corrección autorizada y conservación de intentos.
+- [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
+- [x] Aprobar validación de prerrequisitos y carga académica.
+- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
+- [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM.
+- [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
 - [ ] Revisar y aprobar el modelo E-R corregido.
-- [ ] Elegir el motor y arquitectura de clúster con base en los requisitos del profesor.
+- [ ] Elegir el motor y arquitectura del clúster con base en los requisitos del profesor.
 - [ ] Completar direcciones IP y características de las VMs cuando se conozcan.
 
 ## 12. Reglas para las IA y colaboradores
