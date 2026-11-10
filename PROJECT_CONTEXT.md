@@ -617,7 +617,7 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Decisión confirmada:** inmediatamente antes de ofrecer una vacante, el sistema volverá a validar que el siguiente alumno en el orden FIFO todavía cumpla los requisitos académicos de inscripción definidos para la lista de espera.
 
-**Pendiente de definición:** qué sucede con un alumno que ya no cumple los requisitos al momento de la revalidación (por ejemplo, si se omite temporalmente, se retira de la lista o se notifica para corregir su situación). La aprobación actual confirma la revalidación, no el tratamiento posterior de los casos no elegibles.
+**Tratamiento aprobado para alumnos no elegibles:** si el alumno deja de cumplir algún requisito al momento de la revalidación, el sistema no le enviará la oferta, registrará el motivo de la omisión y continuará con el siguiente alumno según el orden FIFO. El alumno omitido conservará su posición en la lista; por tanto, podrá ser revalidado cuando se libere otra vacante. La forma de notificarle o permitirle corregir su situación queda pendiente.
 
 ## 7. Estado del levantamiento de requerimientos
 
@@ -639,6 +639,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.37 y resu
 - Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
 - Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
 - Antes de ofrecer una vacante, el sistema revalidará que el siguiente alumno FIFO todavía cumpla los requisitos académicos de inscripción.
+- Si un alumno no es elegible al revalidar, no recibirá la oferta; se registrará el motivo, conservará su posición en la lista y el sistema continuará con el siguiente alumno FIFO.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
@@ -789,7 +790,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-042 | Un profesor podrá impartir varias materias y estar asignado a varios grupos durante un periodo; cada grupo tendrá un profesor responsable. La asignación docente se realizará en el grupo/oferta del periodo. | Aprobación expresa del usuario. Docentes auxiliares, sustituciones y límites de carga quedan pendientes. | 2026-11-10 | Aprobada |
 | D-043 | Un alumno no podrá tener dos inscripciones activas a la misma materia —ni a materias equivalentes según el catálogo aplicable— dentro del mismo periodo. Los cambios de grupo se harán mediante el procedimiento autorizado y conservarán la trazabilidad; la materia podrá cursarse de nuevo en periodos posteriores como otro intento. | Aprobación expresa del usuario. La validación concreta de equivalencias depende del catálogo académico que se confirme. | 2026-11-10 | Aprobada |
 | D-044 | Para ingresar a la lista de espera de un grupo lleno, el alumno deberá cumplir los prerrequisitos, no tener choques de horario, no exceder el límite de créditos y no estar inscrito en la misma materia o una equivalente durante el periodo. | Aprobación expresa del usuario. La regla complementa la lista de espera FIFO y el plazo de 24 horas ya aprobados. | 2026-11-10 | Aprobada |
-| D-045 | Antes de ofrecer una vacante, el sistema volverá a validar que el siguiente alumno de la lista FIFO todavía cumpla los requisitos académicos de inscripción. | Aprobación expresa del usuario. Queda pendiente definir el tratamiento de quienes ya no sean elegibles al momento de la revalidación. | 2026-11-10 | Aprobada |
+| D-045 | Antes de ofrecer una vacante, el sistema volverá a validar que el siguiente alumno de la lista FIFO todavía cumpla los requisitos académicos de inscripción. | Aprobación expresa del usuario. El tratamiento de los no elegibles se concreta en D-046. | 2026-11-10 | Aprobada |
+| D-046 | Si un alumno deja de cumplir los requisitos al revalidar una vacante, no recibirá la oferta; el sistema registrará el motivo, conservará su posición en la lista de espera y continuará con el siguiente alumno FIFO. El alumno podrá ser revalidado al liberarse otra vacante. | Aprobación expresa del usuario. La notificación al alumno y el mecanismo para corregir su situación quedan pendientes. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -834,6 +836,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar inscripción única por materia (considerando equivalencias) para cada alumno en un mismo periodo.
 - [x] Aprobar los requisitos académicos para ingresar a la lista de espera de un grupo lleno.
 - [x] Aprobar la revalidación de requisitos académicos antes de ofrecer una vacante de la lista de espera.
+- [x] Definir el tratamiento de alumnos no elegibles al liberar una vacante: registrar motivo, conservar posición y continuar FIFO.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
