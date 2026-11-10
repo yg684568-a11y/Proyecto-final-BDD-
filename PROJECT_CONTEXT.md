@@ -107,7 +107,7 @@ Cambios principales propuestos:
 9. Incorporar cuentas/roles, lista de espera, entradas y ofertas de vacante, notificaciones, auditoría, equivalencias, reconocimientos y prerrequisitos.
 10. Dejar `Categorias` fuera de la propuesta inicial hasta aclarar su función en el sistema.
 
-**Estado:** la propuesta es preliminar. Falta validar atributos, cardinalidades, opcionalidades, tipos de datos, PK/FK, restricciones únicas y normalización antes de aprobar el modelo relacional y crear SQL. Las reglas institucionales de créditos, seriación, evaluación y equivalencias se verificarán con las fuentes vigentes del ITP/TecNM.
+**Estado:** la propuesta E-R y el primer borrador relacional están documentados, pero ambos siguen siendo preliminares. Consultar [diagrama E-R propuesto](docs/modelo-datos/diagrama-er-propuesto.md) y [modelo relacional propuesto](docs/modelo-datos/modelo-relacional-propuesto.md). Falta validar atributos, cardinalidades, opcionalidades, tipos de datos, PK/FK, restricciones únicas y normalización antes de aprobar el modelo relacional y crear SQL. Las reglas institucionales de créditos, seriación, evaluación y equivalencias se verificarán con las fuentes vigentes del ITP/TecNM.
 
 ### 6.3 Modelo propuesto, todavía no aprobado
 
