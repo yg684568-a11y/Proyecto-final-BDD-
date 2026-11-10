@@ -627,11 +627,22 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Implicación para el sistema:** después del cierre no se aceptarán nuevas entradas ni se ofrecerán vacantes mediante esa lista. Se conservará el registro de sus integrantes y movimientos para consulta y auditoría.
 
+### 6.39 Historial auditable de listas de espera
+
+**Decisión confirmada:** el sistema conservará el historial de cada alumno que haya formado parte de una lista de espera, incluyendo:
+- Fecha y hora de ingreso.
+- Posición FIFO asignada.
+- Ofertas de vacantes y respuestas del alumno.
+- Motivos de omisión por falta de elegibilidad.
+- Fecha y motivo de salida de la lista o de su cierre.
+
+**Implicación para el sistema:** los eventos y cambios de estado de la lista deberán conservarse para permitir la revisión y auditoría del orden de atención y de las decisiones tomadas. El historial no se eliminará al cerrar la lista.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.38 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.39 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -650,6 +661,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.38 y resu
 - Si un alumno no es elegible al revalidar, no recibirá la oferta; se registrará el motivo, conservará su posición en la lista y el sistema continuará con el siguiente alumno FIFO.
 - El alumno omitido recibirá una notificación interna con el motivo y la confirmación de que conserva su posición en la lista de espera.
 - Las listas de espera se cerrarán automáticamente al comenzar las clases de la materia o al terminar el periodo escolar, lo que ocurra primero; los alumnos restantes recibirán una notificación interna.
+- El sistema conservará un historial auditable por alumno en las listas de espera: ingreso y posición FIFO, ofertas y respuestas, motivos de omisión, fecha y motivo de salida o cierre.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
@@ -804,6 +816,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-046 | Si un alumno deja de cumplir los requisitos al revalidar una vacante, no recibirá la oferta; el sistema registrará el motivo, conservará su posición en la lista de espera y continuará con el siguiente alumno FIFO. El alumno podrá ser revalidado al liberarse otra vacante. | Aprobación expresa del usuario. La notificación interna al alumno se concreta en D-047; el mecanismo para corregir su situación queda pendiente. | 2026-11-10 | Aprobada |
 | D-047 | Cuando un alumno sea omitido por no cumplir los requisitos al revalidar una vacante, recibirá una notificación interna que indique el motivo y confirme que conserva su posición en la lista de espera. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-048 | La lista de espera de un grupo se cerrará automáticamente al comenzar el periodo de clases de la materia o al terminar el periodo escolar, lo que ocurra primero. Los alumnos que permanezcan en ella recibirán una notificación interna de cierre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-049 | Se conservará un historial auditable de cada alumno que haya formado parte de una lista de espera: fecha y hora de ingreso, posición FIFO, ofertas y respuestas, motivos de omisión, fecha y motivo de salida o cierre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -851,6 +864,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Definir el tratamiento de alumnos no elegibles al liberar una vacante: registrar motivo, conservar posición y continuar FIFO.
 - [x] Aprobar la notificación interna al alumno omitido, indicando el motivo y que conserva su posición en la lista.
 - [x] Aprobar el cierre automático de las listas de espera y la notificación interna a los alumnos restantes.
+- [x] Aprobar el historial auditable de los alumnos en listas de espera y sus movimientos.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
