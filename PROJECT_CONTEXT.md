@@ -128,6 +128,28 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.24 Auditoría del sistema
+
+**Decisión confirmada:** el sistema contará con auditoría de acciones relevantes para mantener trazabilidad académica y administrativa.
+
+**Eventos mínimos a registrar:**
+- Inicios de sesión.
+- Creación de registros.
+- Modificaciones, incluyendo valores anteriores y nuevos cuando corresponda.
+- Bajas lógicas/desactivaciones, con usuario, fecha y motivo.
+- Captura, modificación y publicación de calificaciones.
+- Autorizaciones y rechazos, incluyendo quién tomó la decisión.
+
+**Acceso aprobado:**
+- Administrador: podrá consultar toda la auditoría.
+- Servicios Escolares y coordinación académica: podrán consultar únicamente movimientos relacionados con sus funciones.
+- Los demás perfiles no tendrán acceso general a la auditoría; cualquier consulta adicional deberá definirse mediante permisos explícitos.
+
+**Reglas de integridad:** los usuarios ordinarios no podrán modificar ni eliminar registros de auditoría mediante la aplicación. La estrategia técnica, retención, acceso de administradores de base de datos y protección contra alteración se definirá en el diseño de seguridad.
+
+**Datos mínimos a evaluar para cada evento:** usuario/actor, acción, entidad afectada, identificador del registro, fecha/hora, resultado, motivo cuando aplique y valores anterior/nuevo cuando corresponda. Evitar guardar contraseñas, hashes de contraseñas, tokens o secretos en la auditoría.
+
 ### 6.23 Borrado lógico, bajas y conservación histórica
 
 **Decisión confirmada:** se utilizará borrado lógico para evitar eliminar físicamente información que deba conservarse por razones académicas, administrativas o de auditoría.
