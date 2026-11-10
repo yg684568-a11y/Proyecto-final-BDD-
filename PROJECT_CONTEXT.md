@@ -728,7 +728,11 @@ El sistema impedirá registrar departamentos con nombres o claves/códigos dupli
 
 **Conservación de antecedentes:** se mantendrán las calificaciones y los registros académicos originales; el reconocimiento no sobrescribirá ni eliminará la información de las materias cursadas anteriormente.
 
-**Pendiente de validación institucional:** criterios, autorizaciones y reglas oficiales para determinar qué materias pueden reconocerse o revalidarse, conforme a los procedimientos vigentes del ITP/TecNM.
+**Responsabilidad y autorización aprobadas:**
+- El coordinador académico revisará y autorizará las materias que serán reconocidas como equivalentes o revalidadas.
+- Servicios Escolares registrará el resultado autorizado en el expediente del alumno.
+
+**Pendiente de validación institucional:** criterios académicos oficiales para determinar qué materias pueden reconocerse o revalidarse, conforme a los procedimientos vigentes del ITP/TecNM.
 
 ## 7. Estado del levantamiento de requerimientos
 
@@ -768,6 +772,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Los cambios de carrera serán tramitados por Servicios Escolares y requerirán autorización del coordinador académico; se conservará la carrera/plan anterior y se registrará la nueva asignación vigente.
 - Los cambios de plan sin cambio de carrera seguirán el mismo procedimiento: trámite por Servicios Escolares, autorización de coordinación académica y conservación del plan anterior como historial.
 - Al cambiar de carrera o plan, el sistema permitirá registrar materias reconocidas como equivalentes o revalidadas, conservando las calificaciones y antecedentes académicos originales.
+- El coordinador académico revisa y autoriza las equivalencias/revalidaciones; Servicios Escolares registra el resultado en el expediente del alumno.
 - El número de empleado del profesor será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - El correo institucional será obligatorio y único para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
@@ -869,8 +874,8 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 | Rol | Responsabilidad general aprobada |
 |---|---|
 | Administrador | Gestionar cuentas de acceso, roles y permisos; no gestionar expedientes académicos de alumnos. |
-| Servicios Escolares | Registrar alumnos, actualizar expedientes, gestionar inscripciones y tramitar cambios de carrera; actualizar la asignación tras autorización del coordinador académico. |
-| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; autorizar cambios de carrera y registrar profesores y administrar departamentos. |
+| Servicios Escolares | Registrar alumnos, actualizar expedientes, gestionar inscripciones y tramitar cambios de carrera; registrar en el expediente las equivalencias/revalidaciones autorizadas. |
+| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; autorizar cambios de carrera y aprobar equivalencias/revalidaciones; registrar profesores y administrar departamentos. |
 | Profesor | Consultar listas, registrar calificaciones y consultar su propia información institucional; no puede modificar su expediente. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
 
@@ -956,6 +961,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-071 | Los cambios de carrera serán gestionados por Servicios Escolares y requerirán autorización del coordinador académico. El sistema conservará la carrera y el plan anteriores como historial y registrará la nueva asignación como vigente. | Aprobación expresa del usuario. Los requisitos, fechas y equivalencias se verificarán con los procedimientos vigentes del ITP/TecNM. | 2026-11-10 | Aprobada |
 | D-072 | Cuando un alumno cambie de plan de estudios sin cambiar de carrera, Servicios Escolares gestionará el trámite, el coordinador académico deberá autorizarlo y el sistema conservará el plan anterior como historial, registrando el nuevo plan como vigente. | Aprobación expresa del usuario. Los requisitos, fechas y equivalencias se verificarán con los procedimientos vigentes del ITP/TecNM. | 2026-11-10 | Aprobada |
 | D-073 | Al cambiar de carrera o de plan, el sistema permitirá registrar las materias reconocidas como equivalentes o revalidadas, conservando las calificaciones y antecedentes académicos originales sin sobrescribirlos ni eliminarlos. | Aprobación expresa del usuario. Los criterios y autorizaciones oficiales para reconocer/revalidar materias quedan sujetos a validación con el ITP/TecNM. | 2026-11-10 | Aprobada |
+| D-074 | El coordinador académico revisará y autorizará las materias reconocidas como equivalentes o revalidadas. Servicios Escolares registrará el resultado autorizado en el expediente del alumno. | Aprobación expresa del usuario. Los criterios académicos oficiales de equivalencia/revalidación se verificarán con el ITP/TecNM. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
