@@ -619,11 +619,19 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Tratamiento aprobado para alumnos no elegibles:** si el alumno deja de cumplir algún requisito al momento de la revalidación, el sistema no le enviará la oferta, registrará el motivo de la omisión y continuará con el siguiente alumno según el orden FIFO. El alumno omitido conservará su posición en la lista; por tanto, podrá ser revalidado cuando se libere otra vacante. El alumno omitido recibirá una notificación interna con el motivo por el que no pudo recibir la vacante y se le informará que conserva su posición en la lista. El mecanismo para corregir su situación queda pendiente.
 
+### 6.38 Cierre automático de listas de espera
+
+**Decisión confirmada:** la lista de espera de un grupo se cerrará automáticamente cuando comience el periodo de clases de la materia o cuando termine el periodo escolar, lo que ocurra primero.
+
+**Notificación aprobada:** al cerrarse la lista, el sistema enviará una notificación interna a los alumnos que permanezcan en ella para informarles del cierre.
+
+**Implicación para el sistema:** después del cierre no se aceptarán nuevas entradas ni se ofrecerán vacantes mediante esa lista. Se conservará el registro de sus integrantes y movimientos para consulta y auditoría.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.37 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.38 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -641,6 +649,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.37 y resu
 - Antes de ofrecer una vacante, el sistema revalidará que el siguiente alumno FIFO todavía cumpla los requisitos académicos de inscripción.
 - Si un alumno no es elegible al revalidar, no recibirá la oferta; se registrará el motivo, conservará su posición en la lista y el sistema continuará con el siguiente alumno FIFO.
 - El alumno omitido recibirá una notificación interna con el motivo y la confirmación de que conserva su posición en la lista de espera.
+- Las listas de espera se cerrarán automáticamente al comenzar las clases de la materia o al terminar el periodo escolar, lo que ocurra primero; los alumnos restantes recibirán una notificación interna.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
@@ -794,6 +803,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-045 | Antes de ofrecer una vacante, el sistema volverá a validar que el siguiente alumno de la lista FIFO todavía cumpla los requisitos académicos de inscripción. | Aprobación expresa del usuario. El tratamiento de los no elegibles se concreta en D-046. | 2026-11-10 | Aprobada |
 | D-046 | Si un alumno deja de cumplir los requisitos al revalidar una vacante, no recibirá la oferta; el sistema registrará el motivo, conservará su posición en la lista de espera y continuará con el siguiente alumno FIFO. El alumno podrá ser revalidado al liberarse otra vacante. | Aprobación expresa del usuario. La notificación interna al alumno se concreta en D-047; el mecanismo para corregir su situación queda pendiente. | 2026-11-10 | Aprobada |
 | D-047 | Cuando un alumno sea omitido por no cumplir los requisitos al revalidar una vacante, recibirá una notificación interna que indique el motivo y confirme que conserva su posición en la lista de espera. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-048 | La lista de espera de un grupo se cerrará automáticamente al comenzar el periodo de clases de la materia o al terminar el periodo escolar, lo que ocurra primero. Los alumnos que permanezcan en ella recibirán una notificación interna de cierre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -840,6 +850,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar la revalidación de requisitos académicos antes de ofrecer una vacante de la lista de espera.
 - [x] Definir el tratamiento de alumnos no elegibles al liberar una vacante: registrar motivo, conservar posición y continuar FIFO.
 - [x] Aprobar la notificación interna al alumno omitido, indicando el motivo y que conserva su posición en la lista.
+- [x] Aprobar el cierre automático de las listas de espera y la notificación interna a los alumnos restantes.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
