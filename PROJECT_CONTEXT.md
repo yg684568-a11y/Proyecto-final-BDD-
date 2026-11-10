@@ -263,7 +263,12 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Se registrará la nueva carrera/plan como su asignación activa.
 - No se sobrescribirá ni eliminará la trayectoria académica previa.
 
-**Pendiente de definición/verificación:** quién autoriza cambios de carrera o de plan, fechas efectivas, requisitos, equivalencias/revalidaciones y cómo se reflejan las materias cursadas en el nuevo plan, conforme a los procedimientos del ITP/TecNM.
+**Responsabilidad y autorización aprobadas:**
+- Servicios Escolares gestionará el trámite y actualizará la asignación académica del alumno.
+- Todo cambio de carrera requerirá autorización del coordinador académico.
+- El sistema conservará la carrera y el plan anteriores como historial y registrará la nueva asignación como vigente.
+
+**Pendiente de definición/verificación:** fechas efectivas, requisitos, equivalencias/revalidaciones y cómo se reflejan las materias cursadas en el nuevo plan, conforme a los procedimientos del ITP/TecNM.
 
 ### 6.19 Cambio y recuperación sencilla de contraseñas
 
@@ -752,6 +757,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
 - Servicios Escolares registra alumnos nuevos, actualiza expedientes y asigna carrera/plan; el administrador se limita a cuentas de acceso, roles y permisos.
 - El número de control del alumno será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
+- Los cambios de carrera serán tramitados por Servicios Escolares y requerirán autorización del coordinador académico; se conservará la carrera/plan anterior y se registrará la nueva asignación vigente.
 - El número de empleado del profesor será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - El correo institucional será obligatorio y único para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
@@ -853,8 +859,8 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 | Rol | Responsabilidad general aprobada |
 |---|---|
 | Administrador | Gestionar cuentas de acceso, roles y permisos; no gestionar expedientes académicos de alumnos. |
-| Servicios Escolares | Registrar alumnos nuevos, actualizar expedientes y asignar carrera/plan; gestionar inscripciones y consultar catálogos, periodos y grupos disponibles sin modificar su estructura. |
-| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; registrar profesores y administrar departamentos, además de actualizar expedientes y asignar departamentos. |
+| Servicios Escolares | Registrar alumnos, actualizar expedientes, gestionar inscripciones y tramitar cambios de carrera; actualizar la asignación tras autorización del coordinador académico. |
+| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; autorizar cambios de carrera y registrar profesores y administrar departamentos. |
 | Profesor | Consultar listas, registrar calificaciones y consultar su propia información institucional; no puede modificar su expediente. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
 
@@ -937,6 +943,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-068 | El nombre del departamento será obligatorio y único. El sistema impedirá registrar dos departamentos con el mismo nombre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-069 | Un profesor podrá cambiar de departamento durante su trayectoria laboral, pero solo tendrá un departamento vigente a la vez. El sistema conservará el historial de adscripciones anteriores. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-070 | Cada departamento tendrá nombre, clave o código y descripción, todos obligatorios. El nombre y la clave/código serán únicos. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-071 | Los cambios de carrera serán gestionados por Servicios Escolares y requerirán autorización del coordinador académico. El sistema conservará la carrera y el plan anteriores como historial y registrará la nueva asignación como vigente. | Aprobación expresa del usuario. Los requisitos, fechas y equivalencias se verificarán con los procedimientos vigentes del ITP/TecNM. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -996,7 +1003,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que ningún perfil, incluido el administrador, pueda eliminar definitivamente las notificaciones.
 - [x] Definir conservación sin vencimiento e historial sencillo y paginado con filtros básicos.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
-- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados y el procedimiento de excepciones a las fechas límite de inscripción.
+- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados, el procedimiento de excepciones a las fechas límite de inscripción y los requisitos/fechas de cambios de carrera.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM, incluidos los calendarios y fechas oficiales de los periodos.
 - [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
