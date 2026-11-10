@@ -598,6 +598,10 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Regla aprobada para correo:** el correo institucional será obligatorio y no podrá repetirse entre expedientes de profesores ni de alumnos.
 
+**Responsabilidad operativa aprobada:**
+- El coordinador académico registrará a los profesores, actualizará sus expedientes y les asignará su departamento.
+- Cada profesor podrá consultar su propia información institucional, pero no modificar los datos institucionales de su expediente.
+
 **Pendiente de definición:** si un profesor puede pertenecer a más de un departamento, impartir materias en diferentes carreras o tener varios datos de contacto; revisar también qué campos exige el expediente institucional del ITP.
 
 ### 6.33 Relación entre profesores y departamentos
@@ -742,6 +746,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - El número de empleado del profesor será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - El correo institucional será obligatorio y único para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
+- El coordinador académico registra profesores, actualiza sus expedientes y les asigna departamento; cada profesor puede consultar su propia información institucional, sin modificarla.
 - El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
 - Antes de guardar cambios de horario, el sistema validará conflictos con los alumnos inscritos y la disponibilidad del aula; bloqueará los cambios que generen conflictos.
@@ -751,7 +756,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
+1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -837,8 +842,8 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 |---|---|
 | Administrador | Gestionar cuentas de acceso, roles y permisos; no gestionar expedientes académicos de alumnos. |
 | Servicios Escolares | Registrar alumnos nuevos, actualizar expedientes y asignar carrera/plan; gestionar inscripciones y consultar catálogos, periodos y grupos disponibles sin modificar su estructura. |
-| Coordinador académico | Gestionar carreras, planes de estudio, catálogo de materias, periodos escolares y apertura/configuración de grupos, asignando profesor, horario y cupo. |
-| Profesor | Consultar listas y registrar calificaciones. |
+| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; registrar profesores, actualizar sus expedientes y asignarles departamento. |
+| Profesor | Consultar listas, registrar calificaciones y consultar su propia información institucional; no puede modificar su expediente. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
 
 Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja) se detallarán por módulo en la matriz de acceso. No asumir permisos adicionales hasta aprobar esa matriz.
@@ -915,6 +920,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-063 | El número de control será obligatorio y único para cada alumno. El sistema impedirá registrar dos expedientes con el mismo número de control. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-064 | El número de empleado será obligatorio y único para cada profesor. El sistema impedirá registrar dos expedientes de profesor con el mismo número de empleado. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-065 | El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-066 | El coordinador académico será responsable de registrar profesores, actualizar sus expedientes y asignarles departamento. Cada profesor podrá consultar su propia información institucional, pero no modificar los datos institucionales de su expediente. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -956,6 +962,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar el número de control obligatorio y único para cada alumno.
 - [x] Aprobar los campos iniciales del expediente del profesor y la relación del departamento mediante llave foránea.
 - [x] Aprobar el número de empleado obligatorio y único para cada profesor.
+- [x] Aprobar que coordinación académica gestione los expedientes de profesores y que cada profesor solo consulte su propia información.
 - [x] Aprobar el correo institucional obligatorio y único para alumnos y profesores.
 - [x] Definir que cada profesor pertenecerá a un único departamento.
 - [x] Aprobar que un profesor pueda impartir varias materias y grupos, con un profesor responsable por grupo.
