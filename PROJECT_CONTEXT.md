@@ -436,6 +436,10 @@ Estas fuentes orientan la revisión, pero no confirman por sí solas todas las r
 
 **Decisión confirmada:** una misma materia podrá ofertarse en varios grupos durante un periodo escolar. Cada grupo tendrá su propio profesor asignado, horario y lista de alumnos inscritos.
 
+**Administración aprobada:**
+- El coordinador académico será responsable de abrir/crear los grupos de cada materia en el periodo escolar y asignarles profesor, horario y cupo.
+- Servicios Escolares podrá consultar los grupos disponibles para gestionar las inscripciones, pero no modificar su configuración.
+
 **Implicaciones para el futuro modelo (pendientes de diseño):**
 - Diferenciar la materia del plan de estudios de su oferta concreta en un periodo.
 - El grupo debe pertenecer a una oferta/curso impartido en un periodo y plan/carrera cuando corresponda.
@@ -716,6 +720,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
 - El coordinador académico administra carreras, planes de estudio y catálogo de materias; Servicios Escolares los utiliza sin modificar su estructura.
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
+- El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
@@ -805,8 +810,8 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 | Rol | Responsabilidad general aprobada |
 |---|---|
 | Administrador | Gestionar cuentas, roles y permisos. |
-| Servicios Escolares | Gestionar alumnos, inscripciones y expedientes académicos utilizando los catálogos y periodos autorizados; puede consultar los periodos, pero no modificar su configuración. |
-| Coordinador académico | Gestionar carreras, planes de estudio, catálogo de materias, periodos escolares, grupos, cargas académicas y horarios. |
+| Servicios Escolares | Gestionar alumnos, inscripciones y expedientes académicos; consulta catálogos, periodos y grupos disponibles, sin modificar su estructura ni configuración. |
+| Coordinador académico | Gestionar carreras, planes de estudio, catálogo de materias, periodos escolares y apertura/configuración de grupos, asignando profesor, horario y cupo. |
 | Profesor | Consultar listas y registrar calificaciones. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
 
@@ -875,6 +880,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-054 | Las notificaciones se conservarán sin fecha de vencimiento. El historial será sencillo y paginado, con filtros básicos por fecha o tipo. | Aprobación expresa del usuario. Se mantiene un alcance simple, sin añadir funciones innecesarias de notificaciones. | 2026-11-10 | Aprobada |
 | D-055 | El coordinador académico será responsable de registrar y actualizar carreras, planes de estudio y catálogo de materias. Servicios Escolares utilizará esos catálogos para gestionar expedientes e inscripciones, sin modificar su estructura académica. | Aprobación expresa del usuario. Los permisos detallados por acción y alcance se especificarán en la matriz de acceso. | 2026-11-10 | Aprobada |
 | D-056 | El coordinador académico podrá crear y configurar los periodos escolares, incluyendo fechas de inicio y fin. Servicios Escolares podrá consultar los periodos para gestionar inscripciones, pero no modificar su configuración. | Aprobación expresa del usuario. Las fechas concretas de cada ciclo se verificarán con el calendario vigente del ITP. | 2026-11-10 | Aprobada |
+| D-057 | El coordinador académico será responsable de abrir/crear los grupos de cada materia en un periodo escolar y asignarles profesor, horario y cupo. Servicios Escolares podrá consultar los grupos disponibles para gestionar las inscripciones, sin modificar su configuración. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -928,7 +934,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que ningún perfil, incluido el administrador, pueda eliminar definitivamente las notificaciones.
 - [x] Definir conservación sin vencimiento e historial sencillo y paginado con filtros básicos.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
-- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados.
+- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados para creación y consulta de grupos.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM, incluidos los calendarios y fechas oficiales de los periodos.
 - [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
