@@ -751,6 +751,10 @@ El sistema impedirá registrar departamentos con nombres o claves/códigos dupli
 
 **Decisión confirmada:** desde su perfil, el alumno podrá consultar sus materias inscritas, horarios, calificaciones publicadas y kárdex académico. Estas consultas serán de solo lectura: no podrá modificar calificaciones ni inscripciones directamente desde ellas.
 
+### 6.46 Consultas y funciones del profesor
+
+**Decisión confirmada:** el profesor podrá consultar los grupos que tiene asignados, sus horarios y listas de alumnos. También podrá capturar y publicar las calificaciones de sus propios grupos, siguiendo el flujo de validación, publicación y corrección autorizado. No podrá gestionar grupos que no tenga asignados.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
@@ -781,6 +785,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Las notificaciones se conservarán sin fecha de vencimiento y el historial se mostrará de forma paginada, con filtros básicos por fecha o tipo.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
+- El profesor consulta sus grupos, horarios y listas, y captura/publica calificaciones únicamente de sus propios grupos.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
 - El coordinador académico administra carreras, planes de estudio y catálogo de materias; Servicios Escolares los utiliza sin modificar su estructura.
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
@@ -824,7 +829,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
 10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
 11. **Respondida:** se permitirán grupos compartidos entre carreras/planes cuando la materia sea equivalente y el ITP permita esa oferta común. El grupo se registrará una sola vez y las inscripciones conservarán la carrera/plan del alumno.
-12. **Respondida:** un profesor podrá impartir varias materias y estar asignado a varios grupos por periodo; cada grupo tendrá un profesor responsable. Falta definir si se permiten docentes auxiliares/sustitutos o más de un responsable.
+12. **Parcialmente respondida:** un profesor podrá impartir varias materias y estar asignado a varios grupos por periodo; cada grupo tendrá un profesor responsable. El profesor consulta sus grupos, horarios y listas, y captura/publica sus calificaciones. Queda por decidir si se permitirán docentes auxiliares o sustitutos.
 13. Definir cómo se documenta y valida oficialmente la equivalencia de materias para grupos compartidos.
 
 ### 7.3 Validación institucional pendiente
@@ -997,6 +1002,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-083 | Cuando un alumno acepte una oferta de vacante dentro de las 24 horas, el sistema lo inscribirá automáticamente en el grupo. Si rechaza la oferta o vence el plazo sin respuesta, la vacante se ofrecerá al siguiente alumno elegible según el orden FIFO. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-084 | El coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas de materias para cada periodo escolar. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-085 | El alumno podrá consultar desde su perfil sus materias inscritas, horarios, calificaciones publicadas y kárdex. Estas consultas serán de solo lectura y no permitirán modificar calificaciones ni inscripciones. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-086 | El profesor podrá consultar los grupos que tiene asignados, sus horarios y listas de alumnos, además de capturar y publicar calificaciones de sus propios grupos conforme al flujo de validación y publicación aprobado. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
