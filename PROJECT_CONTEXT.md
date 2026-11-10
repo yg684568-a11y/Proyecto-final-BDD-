@@ -671,6 +671,14 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Conservación e historial aprobados:** las notificaciones permanecerán disponibles sin fecha de vencimiento. El historial se presentará de forma sencilla y paginada; se podrán consultar notificaciones anteriores mediante filtros básicos por fecha o tipo.
 
+### 6.43 Gestión de catálogos académicos
+
+**Decisión confirmada:**
+- El coordinador académico será responsable de registrar y actualizar las carreras, los planes de estudio y el catálogo de materias.
+- Servicios Escolares utilizará esos catálogos para gestionar expedientes e inscripciones, pero no modificará su estructura académica.
+
+**Implicación para permisos:** la administración de estos catálogos corresponde a coordinación académica. El detalle de permisos por acción y los alcances específicos por carrera se completarán en la matriz de acceso.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
@@ -702,12 +710,13 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
+- El coordinador académico administra carreras, planes de estudio y catálogo de materias; Servicios Escolares los utiliza sin modificar su estructura.
 - Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
 1. **Parcialmente respondida:** el expediente del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. El expediente del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
-2. Detallar permisos por acción (consultar, crear, modificar, autorizar, desactivar) para cada uno de los cinco roles.
+2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
 5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
@@ -791,8 +800,8 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 | Rol | Responsabilidad general aprobada |
 |---|---|
 | Administrador | Gestionar cuentas, roles y permisos. |
-| Servicios Escolares | Gestionar alumnos, inscripciones y expedientes académicos. |
-| Coordinador académico | Gestionar carreras, grupos, cargas académicas y horarios. |
+| Servicios Escolares | Gestionar alumnos, inscripciones y expedientes académicos utilizando los catálogos académicos autorizados; no modifica su estructura. |
+| Coordinador académico | Gestionar carreras, planes de estudio, catálogo de materias, grupos, cargas académicas y horarios. |
 | Profesor | Consultar listas y registrar calificaciones. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
 
@@ -859,6 +868,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-052 | Ningún usuario podrá eliminar definitivamente sus notificaciones; estas permanecerán en el historial para consulta y trazabilidad, incluso después de ser marcadas como leídas. | Aprobación expresa del usuario. La restricción incluye explícitamente al administrador según D-053. El plazo de conservación y archivo quedan pendientes. | 2026-11-10 | Aprobada |
 | D-053 | Ningún perfil, incluido el administrador, podrá eliminar definitivamente las notificaciones. La restricción aplica a todos los roles para preservar la trazabilidad de los avisos académicos. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-054 | Las notificaciones se conservarán sin fecha de vencimiento. El historial será sencillo y paginado, con filtros básicos por fecha o tipo. | Aprobación expresa del usuario. Se mantiene un alcance simple, sin añadir funciones innecesarias de notificaciones. | 2026-11-10 | Aprobada |
+| D-055 | El coordinador académico será responsable de registrar y actualizar carreras, planes de estudio y catálogo de materias. Servicios Escolares utilizará esos catálogos para gestionar expedientes e inscripciones, sin modificar su estructura académica. | Aprobación expresa del usuario. Los permisos detallados por acción y alcance se especificarán en la matriz de acceso. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -912,7 +922,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que ningún perfil, incluido el administrador, pueda eliminar definitivamente las notificaciones.
 - [x] Definir conservación sin vencimiento e historial sencillo y paginado con filtros básicos.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
-- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
+- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM.
 - [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
