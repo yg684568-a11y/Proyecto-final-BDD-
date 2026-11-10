@@ -122,6 +122,28 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.18 Autenticación y cuentas de usuario
+
+**Decisión confirmada:** todos los perfiles tendrán cuenta de acceso con contraseña y permisos asociados a su rol.
+
+| Perfil | Identificador de inicio de sesión |
+|---|---|
+| Administrador | Nombre de usuario |
+| Servicios Escolares | Número de empleado |
+| Coordinador académico | Número de empleado |
+| Profesor | Número de empleado |
+| Alumno | Número de control (matrícula) |
+
+**Reglas aprobadas:**
+- El administrador podrá crear y desactivar cuentas.
+- Los usuarios podrán cambiar su contraseña.
+- La cuenta deberá vincularse con el registro de alumno o profesor correspondiente cuando aplique.
+- Las contraseñas nunca se almacenarán en texto plano; se almacenarán usando un algoritmo de hash de contraseñas adecuado.
+- Los permisos se asignarán según el rol del usuario.
+
+**Pendiente de definición:** recuperación de contraseña, política de contraseñas, bloqueo por intentos fallidos, sesiones, segundo factor (si se requiere), alta de cuentas del personal y auditoría de cambios de permisos.
+
 ### 6.17 Lista de espera automática para grupos llenos
 
 **Decisión confirmada:** cuando un grupo alcance su cupo, el alumno podrá solicitar ingresar a una lista de espera. Cuando se libere un lugar, el sistema ofrecerá la vacante al siguiente alumno de la lista y este deberá confirmar su inscripción dentro de un plazo establecido.
@@ -342,6 +364,7 @@ Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 
 ### 7.2 Requerimientos funcionales todavía por precisar
 
 1. **Respondida:** el sistema debe impedir confirmar una selección de grupos si existen horarios traslapados para el mismo alumno.
+2. **Respondida:** autenticación por nombre de usuario para administrador, número de empleado para personal/profesores y número de control para alumnos; contraseñas con hash, cuentas vinculadas a los registros correspondientes y administración básica de cuentas.
 2. **Respondida:** el horario tendrá día, hora de inicio y fin, aula, edificio y modalidad; se administrará un catálogo de aulas y se impedirá asignar la misma aula a dos grupos en el mismo horario.
 3. **Respondida:** el cupo del grupo y la capacidad del aula serán valores independientes; el cupo del grupo no podrá superar la capacidad del aula asignada.
 4. **Respondida:** se permitirán cambios de grupo y bajas durante una ventana establecida; fuera de ella se requerirá autorización de Servicios Escolares o coordinación académica. Los movimientos conservarán trazabilidad y no se borrarán físicamente.
