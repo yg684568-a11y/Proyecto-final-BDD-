@@ -129,6 +129,23 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.25 Estructura de materias dentro de los planes de estudio
+
+**Decisión confirmada:** cada plan de estudios tendrá una estructura curricular propia de materias/asignaturas. Para cada materia se contempla registrar:
+- Clave oficial.
+- Nombre.
+- Créditos.
+- Semestre recomendado.
+- Seriación/prerrequisitos, cuando correspondan.
+
+**Reglas de diseño aprobadas:**
+- Una misma materia podrá formar parte de diferentes planes de estudio.
+- Se evitará duplicar la definición de una materia cuando represente la misma asignatura; cada plan la relacionará con su estructura curricular correspondiente.
+- La relación de la materia con un plan deberá permitir conservar la ubicación curricular (por ejemplo, semestre recomendado) y los datos propios de esa inclusión.
+
+**Pendiente de validación institucional:** catálogo de claves y nombres oficiales, sistema de créditos, seriación, equivalencias entre planes y tratamiento de materias optativas/residencias/servicio social/actividades complementarias, según aplique al plan correspondiente.
+
 ### 6.24 Auditoría del sistema
 
 **Decisión confirmada:** el sistema contará con auditoría de acciones relevantes para mantener trazabilidad académica y administrativa.
@@ -599,7 +616,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [ ] Elaborar y aprobar la matriz detallada de permisos por módulo.
 - [ ] Responder las demás preguntas de requerimientos de la sección 7.
 - [x] Definir que el modelo debe soportar todas las carreras del ITP y sus planes de estudio.
-- [ ] Confirmar el catálogo activo de carreras, modalidad, nivel y planes vigentes para el ciclo de referencia.
+- [ ] Confirmar el catálogo activo de carreras, modalidad, nivel y planes vigentes para el ciclo de referencia.\n- [x] Definir estructura curricular por plan y reutilización de materias compartidas.
 - [x] Definir que se conservarán planes de estudio anteriores y la asociación del alumno con su plan correspondiente.
 - [ ] Verificar reglas del ITP para cambios de plan, equivalencias y transición entre versiones.
 - [ ] Confirmar el alcance real de las reglas de inscripción/reinscripción y evaluación.
