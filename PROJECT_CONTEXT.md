@@ -444,6 +444,8 @@ Estas fuentes orientan la revisión, pero no confirman por sí solas todas las r
 - Antes de guardar un cambio de horario, el sistema verificará que no genere conflictos con los horarios de los alumnos inscritos ni con la disponibilidad del aula. Si detecta un conflicto, impedirá guardar el cambio.
 - El coordinador académico podrá cancelar un grupo cuando sea necesario.
 - Si el grupo tiene alumnos inscritos, deberá registrarse el motivo de cancelación y el sistema notificará a los alumnos afectados para que puedan seleccionar otro grupo disponible.
+- El coordinador académico podrá establecer una fecha límite de inscripción para cada grupo.
+- Una vez alcanzada la fecha límite, el sistema impedirá nuevas inscripciones y nuevas entradas a la lista de espera de ese grupo, salvo autorización de Servicios Escolares o coordinación académica.
 
 **Implicaciones para el futuro modelo (pendientes de diseño):**
 - Diferenciar la materia del plan de estudios de su oferta concreta en un periodo.
@@ -729,6 +731,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
 - Antes de guardar cambios de horario, el sistema validará conflictos con los alumnos inscritos y la disponibilidad del aula; bloqueará los cambios que generen conflictos.
 - El coordinador académico podrá cancelar grupos; si hay alumnos inscritos, registrará el motivo y se notificará a los afectados para que seleccionen otro grupo disponible.
+- El coordinador académico podrá fijar una fecha límite de inscripción por grupo; después de ella se bloquearán nuevas inscripciones y entradas a lista de espera, salvo autorización de Servicios Escolares o coordinación académica.
 - Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
@@ -892,6 +895,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-058 | El coordinador académico podrá modificar el profesor, horario o cupo de un grupo ya abierto. Si existen alumnos inscritos, cada modificación deberá quedar registrada en auditoría y notificarse a los alumnos afectados. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-059 | Antes de guardar un cambio de horario de un grupo, el sistema comprobará que no genere conflictos con los horarios de los alumnos inscritos ni con la disponibilidad del aula. Si detecta un conflicto, impedirá guardar el cambio. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-060 | El coordinador académico podrá cancelar un grupo. Si existen alumnos inscritos, deberá registrar el motivo de cancelación y el sistema notificará a los alumnos afectados para que puedan seleccionar otro grupo disponible. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-061 | El coordinador académico podrá establecer una fecha límite de inscripción para cada grupo. Después de esa fecha, el sistema impedirá nuevas inscripciones y nuevas entradas a la lista de espera, salvo autorización de Servicios Escolares o coordinación académica. | Aprobación expresa del usuario. Los detalles del procedimiento de excepción se definirán en la matriz de permisos y reglas de inscripción. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -945,7 +949,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar que ningún perfil, incluido el administrador, pueda eliminar definitivamente las notificaciones.
 - [x] Definir conservación sin vencimiento e historial sencillo y paginado con filtros básicos.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
-- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados para creación y consulta de grupos.
+- [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2, incluida la matriz de permisos detallados y el procedimiento de excepciones a las fechas límite de inscripción.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM, incluidos los calendarios y fechas oficiales de los periodos.
 - [ ] Responder preguntas de infraestructura y desarrollo de la sección 7.4.
