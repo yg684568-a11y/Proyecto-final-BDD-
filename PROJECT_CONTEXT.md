@@ -300,11 +300,12 @@ Si el alumno cambia de carrera o de plan de estudios:
 - La cuenta deberá vincularse con el registro de alumno o profesor correspondiente cuando aplique.
 - Las contraseñas nunca se almacenarán en texto plano; se almacenarán usando un algoritmo de hash de contraseñas adecuado.
 - Los permisos se asignarán según el rol del usuario.
+- No se implementará verificación en dos pasos en la versión inicial; el acceso utilizará las credenciales y controles de seguridad aprobados.
 - Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente.
 - El administrador podrá desbloquear la cuenta cuando sea necesario.
 - El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo.
 
-**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, política de contraseñas, segundo factor (si se requiere), alta de cuentas del personal y auditoría de cambios de permisos.
+**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, política de contraseñas, alta de cuentas del personal y auditoría de cambios de permisos.
 
 ### 6.17 Lista de espera automática para grupos llenos
 
@@ -797,6 +798,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Autenticación por perfil; todos los usuarios podrán cambiar su contraseña con la actual, y el administrador podrá restablecerla mediante contraseña temporal; permisos por rol, auditoría y borrado lógico.
 - Las cuentas se bloquearán temporalmente después de varios intentos fallidos; el administrador podrá desbloquearlas.
 - Las sesiones se cerrarán automáticamente después de un periodo de inactividad.
+- No se implementará verificación en dos pasos en la versión inicial.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
@@ -978,6 +980,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-077 | Todos los usuarios (alumnos, profesores, personal y administrador) podrán cambiar su propia contraseña desde su perfil, siempre que conozcan su contraseña actual. | Aprobación expresa del usuario. El restablecimiento cuando olviden la contraseña seguirá el procedimiento de contraseña temporal administrado por el administrador. | 2026-11-10 | Aprobada |
 | D-078 | Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente. El administrador podrá desbloquearla cuando sea necesario. | Aprobación expresa del usuario. El número de intentos y la duración del bloqueo quedan pendientes de definición. | 2026-11-10 | Aprobada |
 | D-079 | El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo. | Aprobación expresa del usuario. El tiempo de inactividad antes del cierre automático queda pendiente de definición. | 2026-11-10 | Aprobada |
+| D-080 | No se implementará verificación en dos pasos en la versión inicial; el inicio de sesión utilizará las credenciales y controles de seguridad aprobados. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -1013,6 +1016,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar calificaciones por unidades configurables, publicación, corrección autorizada y conservación de intentos.
 - [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
 - [x] Aprobar el bloqueo temporal por intentos fallidos y el desbloqueo por parte del administrador.
+- [x] Aprobar que la versión inicial no implemente verificación en dos pasos.
 - [x] Aprobar que todos los perfiles puedan cambiar su propia contraseña conociendo la contraseña actual.
 - [x] Aprobar validación de prerrequisitos y carga académica.
 - [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
