@@ -89,20 +89,25 @@ El diagrama entregado contiene las siguientes entidades y atributos visibles. Es
 - **Historiales:** `id_inscripcion`, `fk_id_alumno`, `fk_id_curso`, calificación, fecha de inscripción, fecha fin, intento y estado.
 - **Calf_modulos:** `id_calificación`, `fk_id_inscripcion`, `fk_id_modulo`, calificación del módulo y estado.
 
-### 6.2 Observaciones para revisar en el rediseño
+### 6.2 Revisión del diagrama E-R original del equipo
 
-1. **Historiales / inscripciones:** por los campos `id_inscripcion`, alumno, curso, fecha de inscripción, intento y estado, la entidad parece representar una inscripción o intento de inscripción. Evaluar renombrarla a `inscripciones` y definir cómo se construirá el kárdex sin duplicar información.
-2. **Grupos:** el modelo no muestra una entidad explícita de grupos/secciones. Si un curso puede impartirse a varios grupos, conviene modelar los grupos y asociar a ellos profesor y horarios.
-3. **Periodos escolares:** no aparece una entidad para ciclos o periodos (por ejemplo, semestre o periodo). Confirmar si se necesitan y cómo se identifican.
-4. **Horarios:** el diagrama muestra `hora_fin`, pero no se observa `hora_inicio`. Revisar también si el horario debe relacionarse con el grupo en vez de directamente con el curso.
-5. **Aulas:** no aparece una entidad de aulas/salones. Agregarla solo si el sistema debe asignar espacios físicos.
-6. **Profesor en Cursos:** `Cursos` contiene `fk_id_profesor`. Confirmar si un curso tiene un único profesor siempre o si cada grupo puede tener un profesor distinto. En el segundo caso, la relación probablemente debe trasladarse a grupos.
-7. **Calificaciones de módulos:** revisar nombre de `Calf_modulos`, tipo de dato de la calificación, escala permitida y diferencia entre estado de entrega y resultado (pendiente/entregado frente a aprobado/reprobado).
-8. **Datos de contacto:** confirmar si `Datos_contacto_a` y `Datos_contacto_p` son relaciones 1:1 obligatorias u opcionales y si sus claves foráneas también son claves primarias.
-9. **Estados y borrado lógico:** definir estados válidos y una política de baja lógica/auditoría coherente con la guía. No hacer borrado físico de información académica sin una regla explícita.
-10. **Restricciones:** revisar PK, FK, `UNIQUE`, `NOT NULL`, cardinalidades, índices y reglas para evitar inscripciones duplicadas o calificaciones repetidas indebidamente.
-11. **Usuarios y permisos:** no se observan tablas de acceso, cuentas o roles. Confirmar si la aplicación requiere inicio de sesión para alumnos, profesores y administradores antes de incorporarlas.
-12. **Convenciones:** definir nombres consistentes para tablas y columnas (por ejemplo, minúsculas y `snake_case`, sin espacios ni acentos) al aprobar el nuevo modelo.
+El equipo compartió el diagrama original con estas entidades: `Cursos`, `Horarios`, `Categorias`, `Profesores`, `Datos_contacto_p`, `Departamentos`, `Modulos`, `Calf_modulos`, `Historiales`, `Alumnos` y `Datos_contacto_a`.
+
+**Resultado de la revisión:** se decidió conservar la base útil y rediseñarla para ajustarla al alcance escolar aprobado. La propuesta conceptual y sus tres diagramas están documentados en [docs/modelo-datos/diagrama-er-propuesto.md](docs/modelo-datos/diagrama-er-propuesto.md).
+
+Cambios principales propuestos:
+1. Dividir `Cursos` en `Materia` (catálogo) y `Grupo` (oferta por periodo); el profesor responsable, cupo y fechas pertenecen al grupo.
+2. Incorporar `PeriodoEscolar`, `Carrera`, `PlanEstudio` y `PlanMateria` para representar la estructura curricular y sus versiones.
+3. Reinterpretar `Historiales` como `Inscripcion`, vinculada a alumno, grupo y materia del plan, conservando cada intento y su estado.
+4. Relacionar `HorarioGrupo` con grupo y aula; contemplar día, hora de inicio, hora de fin, edificio y espacio físico.
+5. Incorporar `Aula` con capacidad de alumnos, sin contar al profesor para validar el cupo.
+6. Sustituir la asignación directa `Cursos.fk_id_profesor` por `Grupo.id_profesor`; cada grupo tendrá un único profesor responsable en la primera versión.
+7. Adoptar provisionalmente `Modulos` como `UnidadEvaluacion` y `Calf_modulos` como `CalificacionUnidad`. Separar el valor numérico del estado de captura (borrador/publicado); la calificación final estará asociada a la inscripción.
+8. Integrar correo y teléfono a los expedientes de alumno/profesor, evitando las tablas 1:1 de contacto si no existe otra necesidad.
+9. Incorporar cuentas/roles, lista de espera, entradas y ofertas de vacante, notificaciones, auditoría, equivalencias, reconocimientos y prerrequisitos.
+10. Dejar `Categorias` fuera de la propuesta inicial hasta aclarar su función en el sistema.
+
+**Estado:** la propuesta es preliminar. Falta validar atributos, cardinalidades, opcionalidades, tipos de datos, PK/FK, restricciones únicas y normalización antes de aprobar el modelo relacional y crear SQL. Las reglas institucionales de créditos, seriación, evaluación y equivalencias se verificarán con las fuentes vigentes del ITP/TecNM.
 
 ### 6.3 Modelo propuesto, todavía no aprobado
 
