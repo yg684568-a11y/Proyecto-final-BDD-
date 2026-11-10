@@ -107,7 +107,7 @@ Cambios principales propuestos:
 9. Incorporar cuentas/roles, lista de espera, entradas y ofertas de vacante, notificaciones, auditoría, equivalencias, reconocimientos y prerrequisitos.
 10. Dejar `Categorias` fuera de la propuesta inicial hasta aclarar su función en el sistema.
 
-**Estado:** el E-R, el modelo relacional y la matriz de relaciones ya están alineados en una propuesta preliminar: se documentan 36 tablas/entidades y 55 relaciones explícitas, y no se detectan entidades aisladas. Falta validar tipos/tamaños de datos, algunas restricciones implementables en MariaDB, reglas institucionales y detalles de normalización antes de aprobar el modelo y crear SQL. No se ha generado todavía DDL.
+**Estado tras revisión técnica:** el E-R, el modelo relacional y la matriz documentan 36 entidades base y 55 relaciones; las cuatro vistas Mermaid incluyen todas las entidades sin nodos aislados. Se corrigieron el semestre no aprobado en `alumno`, el edificio innecesario en `departamento`, la obligatoriedad condicional del correo, la notificación obligatoria por oferta y las FK compuestas de movimientos y reconocimientos. Los archivos actualizados están en `docs/modelo-datos/`; la revisión y los pendientes se detallan en `revision-tecnica-modelo.md`. El diseño sigue siendo propuesta lógica y no DDL aprobado. Falta confirmar la política de múltiples roles por persona, así como tipos/tamaños de datos, restricciones y reglas institucionales antes de cerrar el esquema SQL.
 
 ### 6.3 Modelo propuesto, todavía no aprobado
 
