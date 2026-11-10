@@ -137,3 +137,8 @@ Estas relaciones se desprenden del alcance aprobado; sus cardinalidades y restri
 La propuesta de rediseño del E-R está en [diagrama-er-propuesto.md](./diagrama-er-propuesto.md). Incluye tres diagramas Mermaid: estructura académica/usuarios; periodos, grupos, inscripciones/lista de espera; y evaluación, reconocimientos, notificaciones/auditoría.
 
 El documento mantiene el estado de propuesta, no de modelo final aprobado. Debe revisarse con el equipo antes de generar SQL.
+
+## Documentos de diseño
+
+
+- [Modelo relacional propuesto](./modelo-relacional-propuesto.md): tablas candidatas, PK, FK, restricciones y vistas recomendadas.
