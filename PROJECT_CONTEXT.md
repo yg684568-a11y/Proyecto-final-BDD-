@@ -652,11 +652,20 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Pendiente de definición:** reglas de retención, filtros, categorías, prioridad, acciones disponibles desde cada aviso y permisos administrativos sobre las notificaciones.
 
+### 6.41 Marcado de notificaciones como leídas
+
+**Decisión confirmada:**
+- Al abrir una notificación, esta cambiará automáticamente a estado **leída**.
+- El usuario podrá marcar manualmente una notificación como leída.
+- El usuario podrá marcar todas sus notificaciones como leídas.
+
+**Implicación para el sistema:** las acciones actualizarán el estado de lectura y el contador de notificaciones sin leer de la bandeja.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.40 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.41 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -677,6 +686,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.40 y resu
 - Las listas de espera se cerrarán automáticamente al comenzar las clases de la materia o al terminar el periodo escolar, lo que ocurra primero; los alumnos restantes recibirán una notificación interna.
 - El sistema conservará un historial auditable por alumno en las listas de espera: ingreso y posición FIFO, ofertas y respuestas, motivos de omisión, fecha y motivo de salida o cierre.
 - El sistema tendrá una bandeja central de notificaciones internas con contador de pendientes, estado leído/no leído, fecha y hora, e historial; incluirá avisos de vacantes, omisiones, cierres de listas y otros eventos académicos.
+- Al abrir una notificación se marcará automáticamente como leída; el usuario también podrá marcar una notificación individual o todas como leídas.
 - Para entrar a la lista de espera, el alumno debe cumplir prerrequisitos, no tener choques de horario, respetar el límite de créditos y no estar inscrito en la misma materia o una equivalente en ese periodo.
 - Calificaciones por unidades configurables por materia, con borrador, validación, publicación y correcciones autorizadas.
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
@@ -686,7 +696,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.40 y resu
 
 1. **Parcialmente respondida:** el expediente del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. El expediente del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
 2. Detallar permisos por acción (consultar, crear, modificar, autorizar, desactivar) para cada uno de los cinco roles.
-3. **Parcialmente respondida:** se aprobó una bandeja central de notificaciones internas con contador de pendientes, estado leído/no leído, fecha y hora, e historial de avisos de vacantes, omisiones, cierres de listas y otros eventos académicos. Falta definir retención, filtros, categorías, prioridades, acciones disponibles y permisos administrativos.
+3. **Parcialmente respondida:** se aprobó una bandeja central de notificaciones internas con contador de pendientes, estado leído/no leído, fecha y hora e historial. Al abrir un aviso se marcará como leído; el usuario podrá marcar uno o todos como leídos. Falta definir retención, filtros, categorías, prioridades, otras acciones disponibles y permisos administrativos.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
 5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
 6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
@@ -833,6 +843,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-048 | La lista de espera de un grupo se cerrará automáticamente al comenzar el periodo de clases de la materia o al terminar el periodo escolar, lo que ocurra primero. Los alumnos que permanezcan en ella recibirán una notificación interna de cierre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-049 | Se conservará un historial auditable de cada alumno que haya formado parte de una lista de espera: fecha y hora de ingreso, posición FIFO, ofertas y respuestas, motivos de omisión, fecha y motivo de salida o cierre. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-050 | El sistema contará con una bandeja central de notificaciones internas con contador de no leídas, estado leído/no leído, fecha y hora, e historial. Incluirá avisos de vacantes, omisiones, cierres de listas y otros eventos académicos. | Aprobación expresa del usuario. Retención, filtros, categorías, prioridades, acciones y permisos administrativos quedan pendientes. | 2026-11-10 | Aprobada |
+| D-051 | Al abrir una notificación se marcará automáticamente como leída; el usuario podrá marcar manualmente una notificación individual o todas sus notificaciones como leídas. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -882,6 +893,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar el cierre automático de las listas de espera y la notificación interna a los alumnos restantes.
 - [x] Aprobar el historial auditable de los alumnos en listas de espera y sus movimientos.
 - [x] Aprobar el centro de notificaciones internas con contador, estado de lectura, fecha/hora e historial.
+- [x] Aprobar el marcado automático al abrir y las opciones de marcar una o todas como leídas.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
