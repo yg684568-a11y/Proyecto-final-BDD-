@@ -747,6 +747,10 @@ El sistema impedirá registrar departamentos con nombres o claves/códigos dupli
 
 **Pendiente de validación institucional:** criterios académicos oficiales para determinar qué materias pueden reconocerse o revalidarse, conforme a los procedimientos vigentes del ITP/TecNM.
 
+### 6.45 Consulta académica del alumno
+
+**Decisión confirmada:** desde su perfil, el alumno podrá consultar sus materias inscritas, horarios, calificaciones publicadas y kárdex académico. Estas consultas serán de solo lectura: no podrá modificar calificaciones ni inscripciones directamente desde ellas.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
@@ -782,6 +786,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
 - Servicios Escolares registra alumnos nuevos, actualiza expedientes y asigna carrera/plan; el administrador se limita a cuentas de acceso, roles y permisos.
 - El alumno consulta su expediente, pero no modifica directamente número de control, nombre, correo institucional, carrera o plan; solicita correcciones a Servicios Escolares.
+- El alumno puede consultar sus materias inscritas, horarios, calificaciones publicadas y kárdex desde su perfil, sin modificar calificaciones ni inscripciones desde esas consultas.
 - El alumno puede actualizar directamente su teléfono de contacto, sin autorización de Servicios Escolares.
 - El número de control del alumno será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - Los cambios de carrera serán tramitados por Servicios Escolares y requerirán autorización del coordinador académico; se conservará la carrera/plan anterior y se registrará la nueva asignación vigente.
@@ -808,7 +813,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan; el alumno consulta su expediente, actualiza directamente su teléfono y solicita a Servicios Escolares correcciones de los demás datos institucionales. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
+1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan; el alumno consulta su expediente, actualiza directamente su teléfono y solicita a Servicios Escolares correcciones de los demás datos institucionales. También consulta materias inscritas, horarios, calificaciones publicadas y kárdex, sin modificarlos directamente desde estas consultas. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera, la revalidación antes de ofrecer una vacante, la inscripción automática al aceptar y el paso al siguiente alumno FIFO ante rechazo o vencimiento. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -991,6 +996,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-082 | No se aprueba exigir que el usuario cambie obligatoriamente la contraseña en el primer inicio de sesión de una cuenta recién creada. El procedimiento para asignar y entregar la contraseña inicial queda pendiente. | Rechazo expreso del usuario a la propuesta de cambio obligatorio en el primer acceso. | 2026-11-10 | Rechazada |
 | D-083 | Cuando un alumno acepte una oferta de vacante dentro de las 24 horas, el sistema lo inscribirá automáticamente en el grupo. Si rechaza la oferta o vence el plazo sin respuesta, la vacante se ofrecerá al siguiente alumno elegible según el orden FIFO. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-084 | El coordinador académico configurará las fechas de apertura y cierre de la ventana de cambios de grupo y bajas de materias para cada periodo escolar. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-085 | El alumno podrá consultar desde su perfil sus materias inscritas, horarios, calificaciones publicadas y kárdex. Estas consultas serán de solo lectura y no permitirán modificar calificaciones ni inscripciones. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
