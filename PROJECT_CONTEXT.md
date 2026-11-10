@@ -124,6 +124,18 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.20 Carrera activa del alumno e historial de cambios
+
+**Decisión confirmada:** cada alumno podrá tener una sola carrera activa a la vez. El sistema no permitirá que un mismo alumno mantenga dos carreras activas simultáneamente.
+
+Si el alumno cambia de carrera o de plan de estudios:
+- Se conservará el registro histórico de la carrera/plan anterior.
+- Se registrará la nueva carrera/plan como su asignación activa.
+- No se sobrescribirá ni eliminará la trayectoria académica previa.
+
+**Pendiente de definición/verificación:** quién autoriza cambios de carrera o de plan, fechas efectivas, requisitos, equivalencias/revalidaciones y cómo se reflejan las materias cursadas en el nuevo plan, conforme a los procedimientos del ITP/TecNM.
+
 ### 6.19 Cambio y recuperación sencilla de contraseñas
 
 **Decisión confirmada para el alcance inicial:**
