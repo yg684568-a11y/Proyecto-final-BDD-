@@ -103,7 +103,7 @@ erDiagram
 - Los cambios y bajas se conservan en `MovimientoInscripcion`; cada movimiento identifica la inscripción/intento y la combinación de grupo y materia de plan de origen. En un cambio, el destino debe ofrecer esa misma materia de plan; en una baja el destino queda vacío. El historial de movimientos y la continuidad entre grupos se validan transaccionalmente.
 - Un grupo puede no tener lista de espera o tener una; las entradas se ordenan FIFO. Cada entrada se refiere a una materia de plan que el grupo realmente ofrece.
 - Una entrada recibe como máximo una oferta. Si el alumno rechaza o deja vencer su oferta, sale de la lista; si fue omitido por no cumplir requisitos, conserva su posición y se revalida antes de crear una oferta posterior.
-- Cada oferta debe generar exactamente una notificación interna en la misma transacción. Una notificación general puede no estar vinculada a ninguna oferta. Por eso la FK de `notificacion.id_oferta` es opcional, pero una oferta no debe quedar sin su notificación.
+- Cada oferta debe generar exactamente una notificación interna en la misma transacción y dirigirla a la cuenta del alumno asociado a la entrada de lista de espera. La correspondencia oferta–entrada–alumno–cuenta se valida en la transacción. Una notificación general puede no estar vinculada a ninguna oferta. Por eso la FK de `notificacion.id_oferta` es opcional, pero una oferta no debe quedar sin su notificación.
 
 ## Diagrama 3. Evaluación, reconocimientos, correcciones y trazabilidad
 
