@@ -332,6 +332,8 @@ Si el alumno cambia de carrera o de plan de estudios:
 
 **Contenido mínimo del aviso:** materia, grupo, horario y fecha/hora límite para aceptar la vacante. La notificación no equivale a una inscripción confirmada; el alumno debe aceptar expresamente dentro del plazo.
 
+**Confirmación de la vacante aprobada:** cuando el alumno acepte dentro de las 24 horas, el sistema lo inscribirá automáticamente en el grupo. Si rechaza la oferta o vence el plazo sin respuesta, el sistema ofrecerá la vacante al siguiente alumno elegible según el orden FIFO.
+
 **Pendiente de definición:** presentación de notificaciones dentro del sistema (bandeja, contador, estado leído/no leído), qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo.
 
 ### 6.16 Cambios de grupo y bajas de materias
@@ -762,7 +764,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - El alumno selecciona grupos; se valida cupo, choque de horario, prerrequisitos, carga académica y que no mantenga otra inscripción activa a la misma materia o a una materia equivalente en el periodo.
 - Aulas con catálogo, horario y capacidad; el cupo del grupo no puede superar la capacidad del aula.
 - Cambios y bajas durante una ventana; fuera de ella requieren autorización y trazabilidad.
-- Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación.
+- Lista de espera FIFO, con oferta interna y plazo de aceptación de 24 horas desde la generación de la notificación; al aceptar, el alumno queda inscrito automáticamente y, ante rechazo o vencimiento, se ofrece al siguiente elegible.
 - Antes de ofrecer una vacante, el sistema revalidará que el siguiente alumno FIFO todavía cumpla los requisitos académicos de inscripción.
 - Si un alumno no es elegible al revalidar, no recibirá la oferta; se registrará el motivo, conservará su posición en la lista y el sistema continuará con el siguiente alumno FIFO.
 - El alumno omitido recibirá una notificación interna con el motivo y la confirmación de que conserva su posición en la lista de espera.
@@ -808,7 +810,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan; el alumno consulta su expediente, actualiza directamente su teléfono y solicita a Servicios Escolares correcciones de los demás datos institucionales. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
-4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
+4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera, la revalidación antes de ofrecer una vacante, la inscripción automática al aceptar y el paso al siguiente alumno FIFO ante rechazo o vencimiento. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
 5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
 6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
 7. **Parcialmente respondida:** el kárdex mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; también calificaciones por unidad publicadas e intentos anteriores. Falta definir formato final, promedios, avance curricular y créditos acumulados según reglas del ITP. Las listas escolares mostrarán número de control, nombre, carrera, grupo y estado de inscripción; podrán exportarse a PDF y Excel. Falta definir permisos de consulta/descarga y filtros.
@@ -986,6 +988,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-080 | No se implementará verificación en dos pasos en la versión inicial; el inicio de sesión utilizará las credenciales y controles de seguridad aprobados. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-081 | Las contraseñas deberán tener al menos 8 caracteres y podrán combinar letras, números y símbolos, sin exigir una combinación específica. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-082 | No se aprueba exigir que el usuario cambie obligatoriamente la contraseña en el primer inicio de sesión de una cuenta recién creada. El procedimiento para asignar y entregar la contraseña inicial queda pendiente. | Rechazo expreso del usuario a la propuesta de cambio obligatorio en el primer acceso. | 2026-11-10 | Rechazada |
+| D-083 | Cuando un alumno acepte una oferta de vacante dentro de las 24 horas, el sistema lo inscribirá automáticamente en el grupo. Si rechaza la oferta o vence el plazo sin respuesta, la vacante se ofrecerá al siguiente alumno elegible según el orden FIFO. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
