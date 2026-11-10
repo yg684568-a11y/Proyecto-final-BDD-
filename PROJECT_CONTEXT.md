@@ -573,6 +573,8 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Criterio de minimización:** almacenar únicamente los datos necesarios para los procesos académicos aprobados. No incorporar datos personales sensibles o adicionales sin un requerimiento claro y justificado.
 
+**Responsabilidad operativa aprobada:** Servicios Escolares registrará a los alumnos nuevos, actualizará sus expedientes y asignará su carrera y plan de estudios correspondientes. El administrador se encargará de las cuentas de acceso, roles y permisos, no de la gestión académica de los expedientes.
+
 ### 6.32 Expediente inicial del profesor
 
 **Decisión confirmada:** el expediente inicial del profesor incluirá:
@@ -727,6 +729,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - Kárdex acumulativo con carrera/plan, periodo, materia, créditos, grupo, calificación final, intento, estado, calificaciones por unidad publicadas e intentos anteriores.
 - El coordinador académico administra carreras, planes de estudio y catálogo de materias; Servicios Escolares los utiliza sin modificar su estructura.
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
+- Servicios Escolares registra alumnos nuevos, actualiza expedientes y asigna carrera/plan; el administrador se limita a cuentas de acceso, roles y permisos.
 - El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
 - Antes de guardar cambios de horario, el sistema validará conflictos con los alumnos inscritos y la disponibilidad del aula; bloqueará los cambios que generen conflictos.
@@ -736,7 +739,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Parcialmente respondida:** el expediente del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. El expediente del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
+1. **Parcialmente respondida:** el expediente del alumno incluirá número de control, nombre(s), apellidos, correo institucional, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado, nombre(s), apellidos, grado académico, correo institucional, teléfono opcional, fecha de ingreso, departamento y estado. Cada profesor pertenecerá a un solo departamento, que podrá tener varios profesores. Faltan campos de otros catálogos.
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -820,8 +823,8 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 
 | Rol | Responsabilidad general aprobada |
 |---|---|
-| Administrador | Gestionar cuentas, roles y permisos. |
-| Servicios Escolares | Gestionar alumnos, inscripciones y expedientes académicos; consulta catálogos, periodos y grupos disponibles, sin modificar su estructura ni configuración. |
+| Administrador | Gestionar cuentas de acceso, roles y permisos; no gestionar expedientes académicos de alumnos. |
+| Servicios Escolares | Registrar alumnos nuevos, actualizar expedientes y asignar carrera/plan; gestionar inscripciones y consultar catálogos, periodos y grupos disponibles sin modificar su estructura. |
 | Coordinador académico | Gestionar carreras, planes de estudio, catálogo de materias, periodos escolares y apertura/configuración de grupos, asignando profesor, horario y cupo. |
 | Profesor | Consultar listas y registrar calificaciones. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
@@ -896,6 +899,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-059 | Antes de guardar un cambio de horario de un grupo, el sistema comprobará que no genere conflictos con los horarios de los alumnos inscritos ni con la disponibilidad del aula. Si detecta un conflicto, impedirá guardar el cambio. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-060 | El coordinador académico podrá cancelar un grupo. Si existen alumnos inscritos, deberá registrar el motivo de cancelación y el sistema notificará a los alumnos afectados para que puedan seleccionar otro grupo disponible. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-061 | El coordinador académico podrá establecer una fecha límite de inscripción para cada grupo. Después de esa fecha, el sistema impedirá nuevas inscripciones y nuevas entradas a la lista de espera, salvo autorización de Servicios Escolares o coordinación académica. | Aprobación expresa del usuario. Los detalles del procedimiento de excepción se definirán en la matriz de permisos y reglas de inscripción. | 2026-11-10 | Aprobada |
+| D-062 | Servicios Escolares será responsable de registrar alumnos nuevos, actualizar sus expedientes y asignarles la carrera y el plan de estudios correspondientes. El administrador se encargará de las cuentas de acceso, roles y permisos, no de la gestión académica de los expedientes. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
