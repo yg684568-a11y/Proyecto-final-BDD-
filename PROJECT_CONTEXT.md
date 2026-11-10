@@ -740,6 +740,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - Servicios Escolares registra alumnos nuevos, actualiza expedientes y asigna carrera/plan; el administrador se limita a cuentas de acceso, roles y permisos.
 - El número de control del alumno será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - El número de empleado del profesor será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
+- El correo institucional será obligatorio y único para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
