@@ -442,6 +442,8 @@ Estas fuentes orientan la revisión, pero no confirman por sí solas todas las r
 - El coordinador académico podrá modificar el profesor, horario o cupo de un grupo después de su apertura.
 - Si el grupo ya tiene alumnos inscritos, cada modificación deberá registrarse en la auditoría y notificarse a los alumnos afectados.
 - Antes de guardar un cambio de horario, el sistema verificará que no genere conflictos con los horarios de los alumnos inscritos ni con la disponibilidad del aula. Si detecta un conflicto, impedirá guardar el cambio.
+- El coordinador académico podrá cancelar un grupo cuando sea necesario.
+- Si el grupo tiene alumnos inscritos, deberá registrarse el motivo de cancelación y el sistema notificará a los alumnos afectados para que puedan seleccionar otro grupo disponible.
 
 **Implicaciones para el futuro modelo (pendientes de diseño):**
 - Diferenciar la materia del plan de estudios de su oferta concreta en un periodo.
@@ -726,6 +728,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
 - Antes de guardar cambios de horario, el sistema validará conflictos con los alumnos inscritos y la disponibilidad del aula; bloqueará los cambios que generen conflictos.
+- El coordinador académico podrá cancelar grupos; si hay alumnos inscritos, registrará el motivo y se notificará a los afectados para que seleccionen otro grupo disponible.
 - Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
@@ -888,6 +891,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-057 | El coordinador académico será responsable de abrir/crear los grupos de cada materia en un periodo escolar y asignarles profesor, horario y cupo. Servicios Escolares podrá consultar los grupos disponibles para gestionar las inscripciones, sin modificar su configuración. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-058 | El coordinador académico podrá modificar el profesor, horario o cupo de un grupo ya abierto. Si existen alumnos inscritos, cada modificación deberá quedar registrada en auditoría y notificarse a los alumnos afectados. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-059 | Antes de guardar un cambio de horario de un grupo, el sistema comprobará que no genere conflictos con los horarios de los alumnos inscritos ni con la disponibilidad del aula. Si detecta un conflicto, impedirá guardar el cambio. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-060 | El coordinador académico podrá cancelar un grupo. Si existen alumnos inscritos, deberá registrar el motivo de cancelación y el sistema notificará a los alumnos afectados para que puedan seleccionar otro grupo disponible. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
