@@ -135,7 +135,9 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 **Orden aprobado:** la lista de espera utilizará FIFO (First In, First Out): el alumno que se registró primero tendrá prioridad para recibir la vacante. Se debe conservar la fecha y hora de entrada para demostrar el orden.
 
-**Pendiente de definición:** tiempo para aceptar, canal de notificación, vencimiento automático, qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo. No asumir que una notificación equivale a una inscripción confirmada.
+**Plazo aprobado:** el alumno tendrá 24 horas para aceptar la vacante. Si no responde dentro del plazo, perderá esa oportunidad y el sistema ofrecerá el lugar al siguiente alumno según el orden FIFO. El plazo será configurable por periodo escolar.
+
+**Pendiente de definición:** canal de notificación, qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo. No asumir que una notificación equivale a una inscripción confirmada.
 
 ### 6.16 Cambios de grupo y bajas de materias
 
