@@ -1,6 +1,6 @@
 # Matriz completa de relaciones y cardinalidades
 
-**Versión:** 1.0 — revisión integral del E-R.  
+**Versión:** 1.1 — FK compuestas y ajuste de opcionalidad.  
 **Estado:** referencia de diseño para verificar que todas las entidades tengan relaciones explícitas.  
 **Motor previsto:** MariaDB con Galera Cluster.
 
@@ -54,15 +54,15 @@
 | R26 | PeriodoEscolar — VentanaMovimiento | 1:0..1 | `ventana_movimiento.id_periodo → periodo_escolar.id_periodo` UNIQUE | Un periodo puede tener una ventana configurada o ninguna; cada ventana pertenece a un periodo. |
 | R27 | CuentaUsuario — VentanaMovimiento (configurador) | 1:N | `ventana_movimiento.id_usuario_configura → cuenta_usuario.id_usuario` | Se registra quién configuró las fechas. |
 | R28 | Profesor — Grupo | 1:N | `grupo.id_profesor → profesor.id_profesor` | Cada grupo tiene exactamente un profesor responsable en la primera versión; un profesor puede atender muchos grupos. |
-| R29 | Grupo — GrupoPlanMateria | 1:N | `grupo_plan_materia.id_grupo → grupo.id_grupo` | Cada fila asociativa pertenece a un grupo; un grupo debe ofrecer al menos una materia de plan. |
+| R29 | Grupo — GrupoPlanMateria | 1:1..N | `grupo_plan_materia.id_grupo → grupo.id_grupo` | Cada grupo debe ofrecer al menos una materia de plan antes de publicarse; puede ofrecer varias cuando hay equivalencias autorizadas. |
 | R30 | PlanMateria — GrupoPlanMateria | 1:N | `grupo_plan_materia.id_plan_materia → plan_materia.id_plan_materia` | Una materia de plan puede ofertarse en varios grupos. Grupo y PlanMateria forman N:M resuelta por GrupoPlanMateria. |
-| R31 | Grupo — HorarioGrupo | 1:N | `horario_grupo.id_grupo → grupo.id_grupo` | Cada horario pertenece a un único grupo; un grupo presencial tendrá uno o varios bloques de horario. |
+| R31 | Grupo — HorarioGrupo | 1:1..N | `horario_grupo.id_grupo → grupo.id_grupo` | Cada bloque pertenece a un grupo; cada grupo presencial debe tener al menos un bloque de horario antes de abrir inscripciones. |
 | R32 | Aula — HorarioGrupo | 1:N | `horario_grupo.id_aula → aula.id_aula` | Cada bloque se realiza en un aula; un aula puede tener muchos bloques en horarios distintos. |
 | R33 | Alumno — Inscripcion | 1:N | `inscripcion.id_alumno → alumno.id_alumno` | Cada inscripción corresponde a un alumno; el alumno conserva varias inscripciones históricas. |
 | R34 | GrupoPlanMateria — Inscripcion | 1:N | FK compuesta `inscripcion(id_grupo,id_plan_materia) → grupo_plan_materia(id_grupo,id_plan_materia)` | Garantiza que el grupo ofrece la materia del plan que el alumno cursa. |
-| R35 | Inscripcion — MovimientoInscripcion | 1:N | `movimiento_inscripcion.id_inscripcion → inscripcion.id_inscripcion` | Una inscripción puede tener cero o muchos movimientos históricos (cambio de grupo o baja). |
-| R36 | Grupo — MovimientoInscripcion (origen) | 1:N | `movimiento_inscripcion.id_grupo_origen → grupo.id_grupo` | Cada movimiento registra el grupo del que parte. |
-| R37 | Grupo — MovimientoInscripcion (destino) | 1:N opcional | `movimiento_inscripcion.id_grupo_destino → grupo.id_grupo` nullable | Para cambio se indica el nuevo grupo; para una baja queda NULL. |
+| R35 | Inscripcion — MovimientoInscripcion | 1:N | FK compuesta `movimiento_inscripcion(id_inscripcion,id_plan_materia) → inscripcion(id_inscripcion,id_plan_materia)` | Cada movimiento se refiere a un intento de inscripción y conserva su materia del plan; una inscripción puede tener cero o muchos movimientos históricos. |
+| R36 | GrupoPlanMateria — MovimientoInscripcion (origen) | 1:N | FK compuesta `movimiento_inscripcion(id_grupo_origen,id_plan_materia) → grupo_plan_materia(id_grupo,id_plan_materia)` | Cada movimiento registra la combinación de grupo y materia de plan de origen; el grupo debe ofrecer esa materia. |
+| R37 | GrupoPlanMateria — MovimientoInscripcion (destino) | 1:N opcional | FK compuesta `movimiento_inscripcion(id_grupo_destino,id_plan_materia) → grupo_plan_materia(id_grupo,id_plan_materia)` nullable | Para cambio se indica la combinación destino y debe ofrecer la misma materia de plan; para una baja `id_grupo_destino` queda NULL. La continuidad del movimiento se valida transaccionalmente. |
 | R38 | CuentaUsuario — MovimientoInscripcion (solicitante) | 1:N | `movimiento_inscripcion.id_usuario_solicita → cuenta_usuario.id_usuario` | Siempre se registra quién ejecuta/solicita el movimiento, incluido el alumno si lo hace directamente. |
 | R39 | CuentaUsuario — MovimientoInscripcion (autorizador) | 1:N opcional | `movimiento_inscripcion.id_usuario_autoriza → cuenta_usuario.id_usuario` nullable | Solo se llena cuando el movimiento necesita autorización fuera de la ventana. |
 
@@ -75,7 +75,7 @@
 | R42 | Alumno — EntradaListaEspera | 1:N | `entrada_lista_espera.id_alumno → alumno.id_alumno` | Un alumno puede entrar en varias listas de grupos distintos a lo largo del tiempo. |
 | R43 | GrupoPlanMateria — EntradaListaEspera | 1:N | FK compuesta `entrada_lista_espera(id_grupo,id_plan_materia) → grupo_plan_materia(id_grupo,id_plan_materia)` | Garantiza que la lista del grupo ofrece la materia del plan solicitada. Además se verifica que `id_lista` corresponde al mismo `id_grupo`. |
 | R44 | EntradaListaEspera — OfertaVacante | 1:0..1 | `oferta_vacante.id_entrada → entrada_lista_espera.id_entrada` UNIQUE | Una entrada recibe como máximo una oferta: si rechaza o vence, sale; si fue omitida por no elegible, conserva su lugar hasta que pueda revalidarse. |
-| R45 | OfertaVacante — Notificacion | 1:1 de negocio | `notificacion.id_oferta → oferta_vacante.id_oferta` UNIQUE, nullable | Cada oferta genera una notificación interna. Otras notificaciones académicas tienen `id_oferta` NULL. Se crean en una misma transacción. |
+| R45 | OfertaVacante — Notificacion | 1:1 de negocio (cada oferta tiene exactamente una notificación; una notificación se asocia con 0..1 oferta) | `notificacion.id_oferta → oferta_vacante.id_oferta` UNIQUE, nullable | Cada oferta debe generar exactamente una notificación interna en la misma transacción. Otras notificaciones académicas tienen `id_oferta` NULL. La FK y UNIQUE impiden asociar una notificación a más de una oferta y una oferta a más de una notificación; la obligatoriedad de la notificación por oferta se garantiza transaccionalmente. |
 
 ## E. Evaluación, correcciones y reconocimientos
 
@@ -89,7 +89,7 @@
 | R51 | CuentaUsuario — CorreccionCalificacion (autorizador) | 1:N | `correccion_calificacion.id_usuario_autoriza → cuenta_usuario.id_usuario` nullable mientras pendiente | El coordinador académico resuelve la solicitud; se registra la cuenta que autorizó o rechazó. |
 | R52 | Alumno — ReconocimientoMateria | 1:N | `reconocimiento_materia.id_alumno → alumno.id_alumno` | Un alumno puede tener varias materias reconocidas. |
 | R53 | PlanMateria — ReconocimientoMateria (destino) | 1:N | `reconocimiento_materia.id_plan_materia_destino → plan_materia.id_plan_materia` | Cada reconocimiento se aplica a una materia de un plan vigente/histórico. |
-| R54 | Inscripcion — ReconocimientoMateria (origen) | 1:N opcional | `reconocimiento_materia.id_inscripcion_origen → inscripcion.id_inscripcion` nullable | Se indica la inscripción de origen cuando el reconocimiento proviene de una materia cursada dentro del sistema; puede ser NULL para antecedentes externos. |
+| R54 | Inscripcion — ReconocimientoMateria (origen) | 1:N opcional | FK compuesta `reconocimiento_materia(id_alumno,id_inscripcion_origen) → inscripcion(id_alumno,id_inscripcion)` nullable | Se indica la inscripción de origen cuando el reconocimiento proviene de una materia cursada dentro del sistema; puede ser NULL para antecedentes externos. La FK compuesta garantiza que la inscripción corresponda al mismo alumno del reconocimiento. |
 | R55 | CuentaUsuario — ReconocimientoMateria (autorizador) | 1:N | `reconocimiento_materia.id_usuario_autoriza → cuenta_usuario.id_usuario` | El coordinador autoriza; Servicios Escolares registra el resultado en el expediente. |
 
 ## F. Recuento de entidades y verificación de conexión
@@ -103,14 +103,17 @@ Todas las entidades propuestas aparecen en al menos una relación de las seccion
 ## Reglas transversales que no se expresan con cardinalidad solamente
 
 1. Cada persona tendrá como máximo una cuenta. Una cuenta de administrador puede existir sin persona; el resto de perfiles debe vincularse con la persona correspondiente y el subtipo correcto (alumno, profesor o personal).
-2. Un empleado se clasificará como profesor o personal no docente en la primera versión, no en ambos subtipos.
-3. Solo puede existir un plan vigente por alumno y una adscripción vigente por profesor.
-4. Un grupo tendrá un único profesor y al menos una materia de plan asociada.
-5. Una inscripción debe apuntar a la pareja de grupo y materia autorizada en `grupo_plan_materia`.
-6. La materia de una unidad de evaluación debe coincidir con la materia de la inscripción; se valida al guardar la calificación.
-7. La lista y la entrada de espera deben corresponder al mismo grupo; se valida con FK compuesta.
-8. Antes de insertar una inscripción o aceptar una oferta se bloquea/valida el cupo de forma transaccional para evitar sobrecupo.
-9. Las restricciones académicas de inscripción única, créditos, prerrequisitos y equivalencias se validan dentro de la transacción de inscripción.
-10. Los cruces de rol (profesor solo opera sus grupos, alumno solo sus datos) se aplican en autorización de aplicación y vistas, no solamente con FK.
-11. La auditoría usa `entidad` + `id_registro` como referencia polimórfica al objeto auditado; ese par no es FK a una tabla de negocio porque puede apuntar a distintas entidades. La FK normal de auditoría es el usuario actor.
-12. El sistema conserva las notificaciones y los registros académicos; no se usa borrado físico para los movimientos académicos normales.
+2. El correo institucional se centraliza en `persona`, es UNIQUE y debe ser obligatorio para alumnos y profesores; puede ser NULL para otros perfiles según D-065. La obligatoriedad condicional se valida al asignar el subtipo.
+3. Un empleado se clasificará como profesor o personal no docente en la primera versión, no en ambos subtipos; la exclusividad se valida transaccionalmente.
+4. Solo puede existir un plan vigente por alumno y una adscripción vigente por profesor.
+5. Un grupo tendrá un único profesor, al menos una materia de plan asociada y al menos un bloque de horario antes de su publicación.
+6. Una inscripción debe apuntar a la pareja de grupo y materia autorizada en `grupo_plan_materia`.
+7. La materia de una unidad de evaluación debe coincidir con la materia de la inscripción; se valida mediante FK compuesta.
+8. Los movimientos conservan la materia de plan y sus grupos origen/destino deben ofrecerla; la secuencia temporal se valida transaccionalmente.
+9. La lista y la entrada de espera deben corresponder al mismo grupo; se valida con FK compuesta.
+10. Antes de insertar una inscripción o aceptar una oferta se bloquea/valida el cupo de forma transaccional para evitar sobrecupo.
+11. Las restricciones académicas de inscripción única, créditos, prerrequisitos y equivalencias se validan dentro de la transacción de inscripción.
+12. Los cruces de rol (profesor solo opera sus grupos, alumno solo sus datos) se aplican en autorización de aplicación y vistas, no solamente con FK. El esquema actual permite un rol por cuenta; la posibilidad de múltiples roles por persona debe confirmarse antes de DDL.
+13. La auditoría usa `entidad` + `id_registro` como referencia polimórfica al objeto auditado; ese par no es FK a una tabla de negocio porque puede apuntar a distintas entidades. La FK normal de auditoría es el usuario actor.
+14. Cada oferta debe crearse junto con su notificación en una única transacción; las notificaciones generales no llevan `id_oferta`.
+15. El sistema conserva las notificaciones y los registros académicos; no se usa borrado físico para los movimientos académicos normales.
