@@ -610,6 +610,8 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Implicación para el modelo relacional:** relación uno a muchos entre `departamentos` y `profesores`; la tabla de profesores tendrá una llave foránea hacia el departamento correspondiente.
 
+**Administración aprobada:** el coordinador académico podrá registrar, actualizar y desactivar departamentos. No se permitirá eliminar un departamento que tenga profesores asociados; se conservarán sus registros históricos.
+
 **Pendiente de definición:** si el departamento de un profesor puede cambiar con el tiempo y, en ese caso, si se requiere conservar el historial de adscripciones.
 
 ### 6.34 Asignación de profesores a materias y grupos
@@ -747,6 +749,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.43 y resu
 - El correo institucional será obligatorio y único para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente.
 - El coordinador académico registra profesores, actualiza sus expedientes y les asigna departamento; cada profesor puede consultar su propia información institucional, sin modificarla.
+- El coordinador académico registra, actualiza y desactiva departamentos; no podrá eliminar departamentos con profesores asociados y se conservará el historial.
 - El coordinador académico abre los grupos de cada materia y asigna profesor, horario y cupo; Servicios Escolares consulta la oferta disponible para gestionar inscripciones.
 - El coordinador académico puede modificar profesor, horario o cupo de grupos abiertos; si hay alumnos inscritos, el cambio se audita y se notifica a los afectados.
 - Antes de guardar cambios de horario, el sistema validará conflictos con los alumnos inscritos y la disponibilidad del aula; bloqueará los cambios que generen conflictos.
@@ -842,7 +845,7 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 |---|---|
 | Administrador | Gestionar cuentas de acceso, roles y permisos; no gestionar expedientes académicos de alumnos. |
 | Servicios Escolares | Registrar alumnos nuevos, actualizar expedientes y asignar carrera/plan; gestionar inscripciones y consultar catálogos, periodos y grupos disponibles sin modificar su estructura. |
-| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; registrar profesores, actualizar sus expedientes y asignarles departamento. |
+| Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; registrar profesores y administrar departamentos, además de actualizar expedientes y asignar departamentos. |
 | Profesor | Consultar listas, registrar calificaciones y consultar su propia información institucional; no puede modificar su expediente. |
 | Alumno | Consultar materias, horarios, calificaciones y kárdex. |
 
@@ -921,6 +924,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-064 | El número de empleado será obligatorio y único para cada profesor. El sistema impedirá registrar dos expedientes de profesor con el mismo número de empleado. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-065 | El correo institucional será obligatorio y único en el sistema para alumnos y profesores; no se permitirán direcciones repetidas entre ambos tipos de expediente. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-066 | El coordinador académico será responsable de registrar profesores, actualizar sus expedientes y asignarles departamento. Cada profesor podrá consultar su propia información institucional, pero no modificar los datos institucionales de su expediente. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-067 | El coordinador académico podrá registrar, actualizar y desactivar departamentos. No se permitirá eliminar departamentos que tengan profesores asociados y se conservarán sus registros históricos. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
