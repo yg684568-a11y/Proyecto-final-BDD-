@@ -1044,6 +1044,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-093 | Se utilizarán tres máquinas virtuales, una por integrante y alojada en su respectiva computadora, con VirtualBox, Radmin VPN y Ubuntu o Lubuntu como sistema operativo. Las versiones y configuraciones exactas quedan pendientes. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-094 | El proyecto incluirá una aplicación web funcional conectada a la base de datos distribuida. | Requisito confirmado por el usuario. | 2026-11-10 | Aprobada |
 | D-095 | La fecha de entrega del proyecto final será el 18 de noviembre de 2026. | Fecha confirmada por el usuario. | 2026-11-10 | Aprobada |
+| D-096 | Cada cuenta de usuario tendrá exactamente un solo rol asignado. No se admitirán múltiples roles simultáneos en una misma cuenta; `cuenta_usuario.id_rol` será obligatorio y referenciará un único registro de `rol`. | Confirmación expresa del usuario. | 2026-11-09 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
