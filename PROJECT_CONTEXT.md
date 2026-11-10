@@ -123,6 +123,19 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.19 Cambio y recuperación sencilla de contraseñas
+
+**Decisión confirmada para el alcance inicial:**
+- El usuario podrá cambiar su contraseña desde su cuenta.
+- Si la olvida, solicitará apoyo al administrador.
+- El administrador podrá asignar/generar una contraseña temporal.
+- En el siguiente inicio de sesión, el usuario deberá cambiar esa contraseña temporal antes de continuar.
+- Se registrará el restablecimiento para auditoría.
+- No se integrará por ahora un servicio externo de correo para recuperación.
+
+**Pendiente de definición:** procedimiento de verificación de identidad antes de restablecer una contraseña, política mínima de contraseñas, vigencia de la contraseña temporal y eventos exactos que se guardarán en auditoría. La contraseña temporal debe tratarse como credencial de un solo uso y no guardarse en registros de auditoría.
+
 ### 6.18 Autenticación y cuentas de usuario
 
 **Decisión confirmada:** todos los perfiles tendrán cuenta de acceso con contraseña y permisos asociados a su rol.
@@ -365,6 +378,7 @@ Las decisiones aprobadas hasta ahora están documentadas en las secciones 6.4 a 
 
 1. **Respondida:** el sistema debe impedir confirmar una selección de grupos si existen horarios traslapados para el mismo alumno.
 2. **Respondida:** autenticación por nombre de usuario para administrador, número de empleado para personal/profesores y número de control para alumnos; contraseñas con hash, cuentas vinculadas a los registros correspondientes y administración básica de cuentas.
+3. **Respondida:** el usuario podrá cambiar su contraseña; para recuperación, el administrador podrá asignar una contraseña temporal que deberá cambiarse en el siguiente acceso. Se mantendrá un procedimiento sencillo sin correo externo y se registrará el restablecimiento.
 2. **Respondida:** el horario tendrá día, hora de inicio y fin, aula, edificio y modalidad; se administrará un catálogo de aulas y se impedirá asignar la misma aula a dos grupos en el mismo horario.
 3. **Respondida:** el cupo del grupo y la capacidad del aula serán valores independientes; el cupo del grupo no podrá superar la capacidad del aula asignada.
 4. **Respondida:** se permitirán cambios de grupo y bajas durante una ventana establecida; fuera de ella se requerirá autorización de Servicios Escolares o coordinación académica. Los movimientos conservarán trazabilidad y no se borrarán físicamente.
