@@ -130,6 +130,21 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.26 Validación de prerrequisitos académicos
+
+**Decisión confirmada:** el sistema validará automáticamente los prerrequisitos antes de permitir que un alumno seleccione/inscriba una materia.
+
+**Flujo aprobado:**
+1. Consultar el plan de estudios asociado al alumno.
+2. Identificar los prerrequisitos establecidos para la materia que desea cursar.
+3. Verificar en el historial académico del alumno si cada prerrequisito está acreditado conforme a las reglas aplicables.
+4. Si cumple, permitir que continúe con la selección del grupo, sujeto a cupo y horario.
+5. Si no cumple, bloquear la inscripción y mostrar el motivo.
+6. Permitir excepciones únicamente cuando la normativa y el procedimiento del ITP lo permitan, con autorización de coordinación académica y registro de auditoría.
+
+**Pendiente de validación institucional:** reglas exactas de seriación, materias que pueden cursarse simultáneamente, tipos de prerrequisito (materia aprobada, créditos, semestre, promedio u otro), equivalencias y facultades de autorización de excepciones. No asumir que todos los prerrequisitos son simples relaciones entre dos materias.
+
 ### 6.25 Estructura de materias dentro de los planes de estudio
 
 **Decisión confirmada:** cada plan de estudios tendrá una estructura curricular propia de materias/asignaturas. Para cada materia se contempla registrar:
