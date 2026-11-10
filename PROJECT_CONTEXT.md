@@ -273,7 +273,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 ### 6.19 Cambio y recuperación sencilla de contraseñas
 
 **Decisión confirmada para el alcance inicial:**
-- El usuario podrá cambiar su contraseña desde su cuenta.
+- Todos los usuarios (alumnos, profesores, personal y administrador) podrán cambiar su propia contraseña desde su perfil, siempre que conozcan su contraseña actual.
 - Si la olvida, solicitará apoyo al administrador.
 - El administrador podrá asignar/generar una contraseña temporal.
 - En el siguiente inicio de sesión, el usuario deberá cambiar esa contraseña temporal antes de continuar.
@@ -301,7 +301,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Las contraseñas nunca se almacenarán en texto plano; se almacenarán usando un algoritmo de hash de contraseñas adecuado.
 - Los permisos se asignarán según el rol del usuario.
 
-**Pendiente de definición:** recuperación de contraseña, política de contraseñas, bloqueo por intentos fallidos, sesiones, segundo factor (si se requiere), alta de cuentas del personal y auditoría de cambios de permisos.
+**Pendiente de definición:** política de contraseñas, bloqueo por intentos fallidos, sesiones, segundo factor (si se requiere), alta de cuentas del personal y auditoría de cambios de permisos.
 
 ### 6.17 Lista de espera automática para grupos llenos
 
@@ -791,7 +791,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - Antes de guardar cambios de horario, el sistema validará conflictos con los alumnos inscritos y la disponibilidad del aula; bloqueará los cambios que generen conflictos.
 - El coordinador académico podrá cancelar grupos; si hay alumnos inscritos, registrará el motivo y se notificará a los afectados para que seleccionen otro grupo disponible.
 - El coordinador académico podrá fijar una fecha límite de inscripción por grupo; después de ella se bloquearán nuevas inscripciones y entradas a lista de espera, salvo autorización de Servicios Escolares o coordinación académica.
-- Autenticación por perfil, recuperación sencilla, permisos por rol, auditoría y borrado lógico.
+- Autenticación por perfil; todos los usuarios podrán cambiar su contraseña con la actual, y el administrador podrá restablecerla mediante contraseña temporal; permisos por rol, auditoría y borrado lógico.
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
@@ -970,6 +970,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-074 | El coordinador académico revisará y autorizará las materias reconocidas como equivalentes o revalidadas. Servicios Escolares registrará el resultado autorizado en el expediente del alumno. | Aprobación expresa del usuario. Los criterios académicos oficiales de equivalencia/revalidación se verificarán con el ITP/TecNM. | 2026-11-10 | Aprobada |
 | D-075 | El alumno podrá consultar su expediente, pero no modificar directamente su número de control, nombre, correo institucional, carrera o plan de estudios. Las correcciones o actualizaciones de esos datos deberán solicitarse a Servicios Escolares. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 | D-076 | El alumno podrá actualizar directamente su número telefónico de contacto sin autorización de Servicios Escolares. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-077 | Todos los usuarios (alumnos, profesores, personal y administrador) podrán cambiar su propia contraseña desde su perfil, siempre que conozcan su contraseña actual. | Aprobación expresa del usuario. El restablecimiento cuando olviden la contraseña seguirá el procedimiento de contraseña temporal administrado por el administrador. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -1004,6 +1005,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar aulas, capacidad, cambios/bajas y lista de espera FIFO con plazo de 24 horas y notificación interna.
 - [x] Aprobar calificaciones por unidades configurables, publicación, corrección autorizada y conservación de intentos.
 - [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
+- [x] Aprobar que todos los perfiles puedan cambiar su propia contraseña conociendo la contraseña actual.
 - [x] Aprobar validación de prerrequisitos y carga académica.
 - [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
 - [x] Aprobar listas escolares con campos básicos y exportación a PDF/Excel.
