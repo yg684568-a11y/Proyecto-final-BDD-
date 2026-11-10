@@ -139,7 +139,11 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 **Canal aprobado:** la notificación de una vacante se mostrará dentro del sistema (notificación interna al iniciar sesión). El correo electrónico no forma parte del alcance inicial para este aviso.
 
-**Pendiente de definición:** presentación de notificaciones dentro del sistema (bandeja, contador, estado leído/no leído), qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo. No asumir que una notificación equivale a una inscripción confirmada.
+**Inicio del plazo aprobado:** las 24 horas comienzan desde la fecha y hora en que el sistema genera la notificación, independientemente de que el alumno inicie sesión o la lea.
+
+**Contenido mínimo del aviso:** materia, grupo, horario y fecha/hora límite para aceptar la vacante. La notificación no equivale a una inscripción confirmada; el alumno debe aceptar expresamente dentro del plazo.
+
+**Pendiente de definición:** presentación de notificaciones dentro del sistema (bandeja, contador, estado leído/no leído), qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo.
 
 ### 6.16 Cambios de grupo y bajas de materias
 
