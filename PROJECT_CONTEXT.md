@@ -172,7 +172,15 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 4. El alumno solo podrá consultar calificaciones publicadas.
 5. Si se requiere una corrección después de publicar, deberá seguir un procedimiento controlado y quedar registrada para auditoría.
 
-**Reglas de trazabilidad pendientes de detalle:** conservar quién capturó, quién publicó, quién solicitó/autorizó una corrección, fecha y hora del cambio, valores anteriores/nuevos y motivo. Definir si la corrección requiere autorización de coordinación o Servicios Escolares según el caso.
+**Correcciones posteriores a la publicación — flujo aprobado:**
+1. El profesor solicita la corrección e indica el motivo.
+2. El coordinador académico revisa la solicitud.
+3. Si la aprueba, se aplica la corrección.
+4. El sistema conserva la calificación anterior, la nueva, el motivo, quién solicitó, quién autorizó y las fechas/horas de cada acción.
+
+El profesor no podrá cambiar directamente una calificación publicada sin este flujo de autorización.
+
+**Pendiente de detalle:** definir si existen casos excepcionales en los que también deba intervenir Servicios Escolares, los plazos de atención y el formato de la solicitud.
 
 ### 6.21 Materias no acreditadas y múltiples intentos
 
