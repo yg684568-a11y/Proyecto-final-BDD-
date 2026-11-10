@@ -125,6 +125,19 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.21 Materias no acreditadas y múltiples intentos
+
+**Decisión confirmada:** cuando un alumno no acredite una materia, se conservará la calificación obtenida y podrá volver a inscribirse en esa materia en otro periodo, conforme a las reglas académicas aplicables. Cada vez que curse nuevamente la materia se registrará un intento independiente.
+
+**Reglas aprobadas para el historial:**
+- No sobrescribir calificaciones de intentos anteriores.
+- Conservar cada intento con su periodo, grupo, calificaciones por unidad y resultado final.
+- El kárdex mostrará los intentos anteriores y el resultado de cada uno.
+- El número/orden del intento deberá poder identificarse de forma consistente.
+
+**Pendiente de validación institucional:** cuántas oportunidades se permiten, diferencias entre curso ordinario/recursamiento/regularización, criterios de acreditación, cómo se calcula el promedio y qué calificación/resultado se considera para efectos oficiales. No asumir que el último o el mejor intento reemplaza automáticamente a los anteriores.
+
 ### 6.20 Carrera activa del alumno e historial de cambios
 
 **Decisión confirmada:** cada alumno podrá tener una sola carrera activa a la vez. El sistema no permitirá que un mismo alumno mantenga dos carreras activas simultáneamente.
