@@ -50,12 +50,12 @@ Estas reglas no quedan garantizadas únicamente por las cardinalidades del E-R:
 
 ## 5. Decisiones que aún deben confirmarse
 
-- **Múltiples roles por persona:** el modelo actual permite un rol por cuenta mediante `cuenta_usuario.id_rol`. D-005 enumera cinco perfiles, pero no determina si una persona puede acumular más de uno. Confirmar este comportamiento antes de DDL; si se requieren múltiples roles se deberá sustituir la FK simple por una tabla asociativa `cuenta_rol`.
+- **Un solo rol por cuenta (D-096):** decisión confirmada. `cuenta_usuario.id_rol` será NOT NULL y cada cuenta tendrá exactamente un rol. No se creará una tabla `cuenta_rol` ni se admitirán roles simultáneos en una misma cuenta.
 - **Interpretación de módulos:** confirmar que los `Modulos` del diagrama original correspondan a unidades de evaluación.
 - **Reglas académicas institucionales:** créditos, intentos, seriación, ponderaciones, promedio y equivalencias deben verificarse con el ITP/TecNM.
 
 ## 6. Validación para la siguiente fase
 
-**Resultado:** el modelo está preparado para iniciar el diseño del DDL de MariaDB como siguiente etapa de trabajo, siempre que el equipo acepte las decisiones pendientes indicadas y mantenga las reglas transaccionales como parte del diseño físico y de la aplicación.
+**Resultado:** la decisión de un solo rol por cuenta quedó aprobada y documentada como D-096. El modelo está preparado para iniciar el diseño del DDL de MariaDB como siguiente etapa, manteniendo pendientes la interpretación de módulos y la verificación de reglas académicas institucionales, además de las validaciones transaccionales descritas.
 
 Esta revisión no constituye una prueba ejecutada contra MariaDB ni una aprobación institucional del modelo. Todavía no se ha generado ni ejecutado SQL.
