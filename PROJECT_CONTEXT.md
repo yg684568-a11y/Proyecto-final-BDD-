@@ -280,7 +280,7 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Se registrará el restablecimiento para auditoría.
 - No se integrará por ahora un servicio externo de correo para recuperación.
 
-**Pendiente de definición:** procedimiento de verificación de identidad antes de restablecer una contraseña, política mínima de contraseñas, vigencia de la contraseña temporal y eventos exactos que se guardarán en auditoría. La contraseña temporal debe tratarse como credencial de un solo uso y no guardarse en registros de auditoría.
+**Pendiente de definición:** procedimiento de verificación de identidad antes de restablecer una contraseña, vigencia de la contraseña temporal y eventos exactos que se guardarán en auditoría. La contraseña temporal debe tratarse como credencial de un solo uso y no guardarse en registros de auditoría.
 
 ### 6.18 Autenticación y cuentas de usuario
 
@@ -299,13 +299,14 @@ Si el alumno cambia de carrera o de plan de estudios:
 - Los usuarios podrán cambiar su contraseña.
 - La cuenta deberá vincularse con el registro de alumno o profesor correspondiente cuando aplique.
 - Las contraseñas nunca se almacenarán en texto plano; se almacenarán usando un algoritmo de hash de contraseñas adecuado.
+- Las contraseñas deberán tener al menos 8 caracteres y podrán combinar letras, números y símbolos, sin exigir una combinación específica.
 - Los permisos se asignarán según el rol del usuario.
 - No se implementará verificación en dos pasos en la versión inicial; el acceso utilizará las credenciales y controles de seguridad aprobados.
 - Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente.
 - El administrador podrá desbloquear la cuenta cuando sea necesario.
 - El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo.
 
-**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, política de contraseñas, alta de cuentas del personal y auditoría de cambios de permisos.
+**Pendiente de definición:** número de intentos que activará el bloqueo, duración del bloqueo, tiempo de inactividad antes del cierre automático de sesión, alta de cuentas del personal y auditoría de cambios de permisos.
 
 ### 6.17 Lista de espera automática para grupos llenos
 
@@ -796,6 +797,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - El coordinador académico podrá cancelar grupos; si hay alumnos inscritos, registrará el motivo y se notificará a los afectados para que seleccionen otro grupo disponible.
 - El coordinador académico podrá fijar una fecha límite de inscripción por grupo; después de ella se bloquearán nuevas inscripciones y entradas a lista de espera, salvo autorización de Servicios Escolares o coordinación académica.
 - Autenticación por perfil; todos los usuarios podrán cambiar su contraseña con la actual, y el administrador podrá restablecerla mediante contraseña temporal; permisos por rol, auditoría y borrado lógico.
+- Las contraseñas tendrán un mínimo de 8 caracteres y podrán combinar letras, números y símbolos, sin una combinación obligatoria.
 - Las cuentas se bloquearán temporalmente después de varios intentos fallidos; el administrador podrá desbloquearlas.
 - Las sesiones se cerrarán automáticamente después de un periodo de inactividad.
 - No se implementará verificación en dos pasos en la versión inicial.
@@ -981,6 +983,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-078 | Después de varios intentos fallidos de inicio de sesión, la cuenta se bloqueará temporalmente. El administrador podrá desbloquearla cuando sea necesario. | Aprobación expresa del usuario. El número de intentos y la duración del bloqueo quedan pendientes de definición. | 2026-11-10 | Aprobada |
 | D-079 | El sistema cerrará automáticamente la sesión cuando el usuario permanezca inactivo durante cierto tiempo. | Aprobación expresa del usuario. El tiempo de inactividad antes del cierre automático queda pendiente de definición. | 2026-11-10 | Aprobada |
 | D-080 | No se implementará verificación en dos pasos en la versión inicial; el inicio de sesión utilizará las credenciales y controles de seguridad aprobados. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-081 | Las contraseñas deberán tener al menos 8 caracteres y podrán combinar letras, números y símbolos, sin exigir una combinación específica. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
