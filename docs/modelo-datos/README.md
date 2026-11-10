@@ -134,7 +134,7 @@ Estas relaciones se desprenden del alcance aprobado; sus cardinalidades y restri
 
 ## Propuesta actualizada
 
-La propuesta de rediseño del E-R está en [diagrama-er-propuesto.md](./diagrama-er-propuesto.md). Incluye tres diagramas Mermaid: estructura académica/usuarios; periodos, grupos, inscripciones/lista de espera; y evaluación, reconocimientos, notificaciones/auditoría.
+La propuesta de rediseño del E-R está en [diagrama-er-propuesto.md](./diagrama-er-propuesto.md). Incluye cuatro diagramas Mermaid con las relaciones entre identidad/seguridad, estructura académica, grupos/inscripciones, lista de espera, evaluación, notificaciones y auditoría. La [matriz R01–R55](./relaciones-y-cardinalidades.md) especifica cardinalidades, opcionalidad y FKs.
 
 El documento mantiene el estado de propuesta, no de modelo final aprobado. Debe revisarse con el equipo antes de generar SQL.
 
