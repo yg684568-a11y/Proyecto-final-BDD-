@@ -126,6 +126,18 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 
 
+
+### 6.22 Captura, validación y publicación de calificaciones
+
+**Decisión confirmada:** el flujo de calificaciones será:
+1. El profesor captura las calificaciones por unidad.
+2. Puede guardar los datos como borrador sin que sean visibles para el alumno.
+3. El profesor revisa/valida la captura y publica las calificaciones.
+4. El alumno solo podrá consultar calificaciones publicadas.
+5. Si se requiere una corrección después de publicar, deberá seguir un procedimiento controlado y quedar registrada para auditoría.
+
+**Reglas de trazabilidad pendientes de detalle:** conservar quién capturó, quién publicó, quién solicitó/autorizó una corrección, fecha y hora del cambio, valores anteriores/nuevos y motivo. Definir si la corrección requiere autorización de coordinación o Servicios Escolares según el caso.
+
 ### 6.21 Materias no acreditadas y múltiples intentos
 
 **Decisión confirmada:** cuando un alumno no acredite una materia, se conservará la calificación obtenida y podrá volver a inscribirse en esa materia en otro periodo, conforme a las reglas académicas aplicables. Cada vez que curse nuevamente la materia se registrará un intento independiente.
