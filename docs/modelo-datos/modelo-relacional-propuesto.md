@@ -23,7 +23,7 @@
 | `permiso` | **PK** `id_permiso`, `codigo`, `descripcion` | — | `codigo` UNIQUE. |
 | `rol_permiso` | **PK/FK** `id_rol`, **PK/FK** `id_permiso` | `id_rol → rol`; `id_permiso → permiso` | PK compuesta (`id_rol`, `id_permiso`). Resuelve la relación N:M entre roles y permisos. |
 | `persona` | **PK** `id_persona`, `nombres`, `apellidos`, `correo_institucional`, `telefono` nullable | — | `correo_institucional` UNIQUE y NOT NULL. Centraliza los datos comunes y garantiza que el correo no se repita entre alumnos y empleados. |
-| `alumno` | **PK** `id_alumno`, **FK/UNIQUE** `id_persona`, `numero_control`, `fecha_ingreso`, `estado_academico` | `id_persona → persona` | `id_persona` UNIQUE; `numero_control` UNIQUE y NOT NULL. Cada alumno tiene exactamente una persona asociada. |
+| `alumno` | **PK** `id_alumno`, **FK/UNIQUE** `id_persona`, `numero_control`, `fecha_ingreso`, `semestre`, `estado_academico` | `id_persona → persona` | `id_persona` UNIQUE; `numero_control` UNIQUE y NOT NULL. Cada alumno tiene exactamente una persona asociada. |
 | `empleado` | **PK** `id_empleado`, **FK/UNIQUE** `id_persona`, `numero_empleado`, `fecha_ingreso`, `estado` | `id_persona → persona` | `id_persona` UNIQUE; `numero_empleado` UNIQUE y NOT NULL. Unifica el número de empleado de profesores y personal administrativo. |
 | `profesor` | **PK** `id_profesor`, **FK/UNIQUE** `id_empleado`, `grado_academico` | `id_empleado → empleado` | Cada profesor es un empleado; un empleado puede no ser profesor. |
 | `personal` | **PK** `id_personal`, **FK/UNIQUE** `id_empleado`, `tipo_personal` | `id_empleado → empleado` | Para personal no docente, como Servicios Escolares y coordinación académica. En la primera versión un empleado no se registra simultáneamente como profesor y personal. |
@@ -34,7 +34,7 @@
 
 | Tabla | Columnas (PK marcada con **PK**) | FK | Restricciones principales |
 |---|---|---|---|
-| `departamento` | **PK** `id_departamento`, `clave`, `nombre`, `descripcion` | — | `clave` y `nombre` UNIQUE; ambos obligatorios. |
+| `departamento` | **PK** `id_departamento`, `clave`, `nombre`, `descripcion`, `edificio` | — | `clave` y `nombre` UNIQUE; ambos obligatorios. |
 | `adscripcion_profesor` | **PK** `id_adscripcion`, **FK** `id_profesor`, **FK** `id_departamento`, `fecha_inicio`, `fecha_fin` nullable, `vigente` | `id_profesor → profesor`; `id_departamento → departamento` | Historial. Solo una adscripción vigente por profesor; imponer con índice/columna generada o validación transaccional. |
 | `carrera` | **PK** `id_carrera`, `clave`, `nombre`, `estado` | — | `clave` UNIQUE. Catálogo oficial y claves pendientes de verificar. |
 | `plan_estudio` | **PK** `id_plan`, **FK** `id_carrera`, `clave_version`, `vigencia_inicio`, `vigencia_fin` nullable, `estado` | `id_carrera → carrera` | UNIQUE (`id_carrera`, `clave_version`). Versiones anteriores se conservan. |

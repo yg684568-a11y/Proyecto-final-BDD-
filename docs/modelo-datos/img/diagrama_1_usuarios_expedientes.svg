@@ -108,7 +108,7 @@
 <text x="478.0" y="441.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
 <text x="492.5" y="441.0" font-size="12" font-family="DejaVu Sans Mono">debe_cambiar_password</text>
 <text x="659.2" y="441.0" font-size="12" font-family="DejaVu Sans Mono">BOOLEAN</text>
-<rect x="40.0" y="292.0" width="371.2" height="158.0" fill="#fff" stroke="#000" stroke-width="2"/>
+<rect x="40.0" y="292.0" width="371.2" height="174.0" fill="#fff" stroke="#000" stroke-width="2"/>
 <text x="225.6" y="308.0" font-size="13" font-weight="bold" text-anchor="middle" font-family="DejaVu Sans">Alumno</text>
 <line x1="40.0" y1="316.0" x2="411.2" y2="316.0" stroke="#000" stroke-width="2"/>
 <text x="48.0" y="329.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
@@ -134,8 +134,11 @@
 <text x="62.5" y="425.0" font-size="12" font-family="DejaVu Sans Mono">fecha_ingreso</text>
 <text x="222.0" y="425.0" font-size="12" font-family="DejaVu Sans Mono">DATE</text>
 <text x="48.0" y="441.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
-<text x="62.5" y="441.0" font-size="12" font-family="DejaVu Sans Mono">estado_academico</text>
-<text x="222.0" y="441.0" font-size="12" font-family="DejaVu Sans Mono">ENUM('activo','inactivo')</text>
+<text x="62.5" y="441.0" font-size="12" font-family="DejaVu Sans Mono">semestre</text>
+<text x="222.0" y="441.0" font-size="12" font-family="DejaVu Sans Mono">TINYINT</text>
+<text x="48.0" y="457.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
+<text x="62.5" y="457.0" font-size="12" font-family="DejaVu Sans Mono">estado_academico</text>
+<text x="222.0" y="457.0" font-size="12" font-family="DejaVu Sans Mono">ENUM('activo','inactivo')</text>
 <rect x="990.0" y="308.0" width="371.2" height="174.0" fill="#fff" stroke="#000" stroke-width="2"/>
 <text x="1175.6" y="324.0" font-size="13" font-weight="bold" text-anchor="middle" font-family="DejaVu Sans">Profesor</text>
 <line x1="990.0" y1="332.0" x2="1361.2" y2="332.0" stroke="#000" stroke-width="2"/>
@@ -189,7 +192,7 @@
 <text x="998.0" y="657.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
 <text x="1012.5" y="657.0" font-size="12" font-family="DejaVu Sans Mono">vigente</text>
 <text x="1157.5" y="657.0" font-size="12" font-family="DejaVu Sans Mono">BOOLEAN</text>
-<rect x="1280.0" y="572.0" width="233.5" height="94.0" fill="#fff" stroke="#000" stroke-width="2"/>
+<rect x="1280.0" y="572.0" width="233.5" height="110.0" fill="#fff" stroke="#000" stroke-width="2"/>
 <text x="1396.8" y="588.0" font-size="13" font-weight="bold" text-anchor="middle" font-family="DejaVu Sans">Departamento</text>
 <line x1="1280.0" y1="596.0" x2="1513.5" y2="596.0" stroke="#000" stroke-width="2"/>
 <text x="1288.0" y="609.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
@@ -205,6 +208,9 @@
 <text x="1288.0" y="657.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
 <text x="1302.5" y="657.0" font-size="12" font-family="DejaVu Sans Mono">descripcion</text>
 <text x="1425.8" y="657.0" font-size="12" font-family="DejaVu Sans Mono">TEXT</text>
+<text x="1288.0" y="673.0" font-size="12" font-family="DejaVu Sans Mono">•</text>
+<text x="1302.5" y="673.0" font-size="12" font-family="DejaVu Sans Mono">edificio</text>
+<text x="1425.8" y="673.0" font-size="12" font-family="DejaVu Sans Mono">VARCHAR(30)</text>
 <text x="20" y="700" font-size="11" font-family="DejaVu Sans Mono" fill="#222">UNIQUE: Rol.nombre · Permiso.codigo · Cuenta_usuario(identificador_acceso, fk_id_alumno, fk_id_profesor) · Alumno(numero_control, correo_institucional)</text>
 <text x="20" y="716" font-size="11" font-family="DejaVu Sans Mono" fill="#222">        Profesor(numero_empleado, correo_institucional) · Departamento(clave, nombre) · Rol_permiso: PK compuesta (fk_id_rol, fk_id_permiso)</text>
 <text x="20" y="732" font-size="11" font-family="DejaVu Sans Mono" fill="#222">Reglas: una cuenta se liga a un alumno O a un profesor (no ambos); un solo plan vigente por alumno y una sola adscripción vigente por profesor; PK sustitutas AUTO_INCREMENT.</text>

@@ -3,6 +3,8 @@
 **Estado:** propuesta para revisión del equipo, no aprobada. Tamaños de campo y valores de `ENUM` son provisionales.
 **Base:** diagrama original del equipo, `diagrama-er-propuesto.md` y `modelo-relacional-propuesto.md`.
 
+> **Nota:** estas imágenes siguen el formato del diagrama original y se hicieron antes de separar `persona`/`empleado`/`personal`/`sesion_usuario`. Para el modelo vigente ver `modelo-relacional-propuesto.md` y `relaciones-y-cardinalidades.md`. Cambios recientes: `Departamento.edificio` y `Alumno.semestre`.
+
 Leyenda: `•` obligatorio, `°` opcional (NULL), subrayado = PK, `1`/`n` = cardinalidad, caja punteada = tabla definida en otro diagrama.
 
 ## 1. Usuarios, expedientes y departamentos
