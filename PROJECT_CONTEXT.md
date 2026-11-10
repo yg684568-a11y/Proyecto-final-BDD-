@@ -519,11 +519,24 @@ Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos d
 
 **Pendiente de definición/verificación:** formato final del kárdex, promedio general y por periodo, avance curricular, créditos acumulados, equivalencias y reglas institucionales para calcularlos. No inferir cómo el ITP determina promedios o avance oficial.
 
+### 6.30 Listas escolares por grupo
+
+**Decisión confirmada:** los profesores podrán consultar las listas de los grupos que tengan asignados. Cada lista mostrará, como mínimo:
+- Número de control del alumno.
+- Nombre del alumno.
+- Carrera.
+- Grupo.
+- Estado de inscripción.
+
+**Exportación aprobada:** las listas podrán descargarse en formato PDF y Excel.
+
+**Pendiente de definición:** permisos de consulta y descarga para cada rol, filtros disponibles, datos adicionales permitidos y tratamiento de listas cuando existan bajas, cambios de grupo o alumnos en lista de espera. La lista oficial del grupo debe reflejar únicamente las inscripciones confirmadas/activas, salvo que se solicite explícitamente un reporte histórico.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.29 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.30 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -550,7 +563,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.29 y resu
 4. Definir reglas de elegibilidad de la lista de espera y cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
 5. Definir duración y fechas de la ventana de cambios/bajas, así como qué tipos de movimiento requieren autorización.
 6. Definir los atributos finales de horarios, modalidades y aulas; aclarar si la capacidad de aula incluye al profesor y cómo se representan sesiones remotas.
-7. **Parcialmente respondida:** el kárdex mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; también calificaciones por unidad publicadas e intentos anteriores. Falta definir formato final, promedios, avance curricular y créditos acumulados según reglas del ITP. La información exacta de las listas escolares sigue pendiente.
+7. **Parcialmente respondida:** el kárdex mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; también calificaciones por unidad publicadas e intentos anteriores. Falta definir formato final, promedios, avance curricular y créditos acumulados según reglas del ITP. Las listas escolares mostrarán número de control, nombre, carrera, grupo y estado de inscripción; podrán exportarse a PDF y Excel. Falta definir permisos de consulta/descarga y filtros.
 8. Definir flujo de corrección de calificaciones publicadas en casos excepcionales y plazos de autorización.
 9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
 10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
@@ -674,6 +687,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 
 | D-036 | El kárdex será acumulativo y mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; permitirá consultar calificaciones por unidad publicadas e intentos anteriores. | Aprobación expresa del usuario. Promedios, avance curricular y formato oficial quedan pendientes de verificación con el ITP. | 2026-11-10 | Aprobada |
 
+| D-037 | Las listas escolares por grupo mostrarán número de control, nombre, carrera, grupo y estado de inscripción; los profesores podrán consultarlas y exportarlas a PDF y Excel. | Aprobación expresa del usuario. Permisos de descarga y filtros quedan pendientes. | 2026-11-10 | Aprobada |
+
 ## 10. Registro de errores y soluciones
 
 | ID | Fecha | Nodo / componente | Error y mensaje exacto | Causa confirmada | Solución aplicada | Verificación |
@@ -709,6 +724,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar autenticación, recuperación sencilla, borrado lógico y auditoría.
 - [x] Aprobar validación de prerrequisitos y carga académica.
 - [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
+- [x] Aprobar listas escolares con campos básicos y exportación a PDF/Excel.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM.
