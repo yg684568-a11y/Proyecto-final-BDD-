@@ -137,7 +137,9 @@ con cursos asociados a grupos, profesores asignados según las reglas académica
 
 **Plazo aprobado:** el alumno tendrá 24 horas para aceptar la vacante. Si no responde dentro del plazo, perderá esa oportunidad y el sistema ofrecerá el lugar al siguiente alumno según el orden FIFO. El plazo será configurable por periodo escolar.
 
-**Pendiente de definición:** canal de notificación, qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo. No asumir que una notificación equivale a una inscripción confirmada.
+**Canal aprobado:** la notificación de una vacante se mostrará dentro del sistema (notificación interna al iniciar sesión). El correo electrónico no forma parte del alcance inicial para este aviso.
+
+**Pendiente de definición:** presentación de notificaciones dentro del sistema (bandeja, contador, estado leído/no leído), qué sucede si el alumno deja de cumplir requisitos académicos y cómo se sincroniza la lista con bajas/cambios de grupo. No asumir que una notificación equivale a una inscripción confirmada.
 
 ### 6.16 Cambios de grupo y bajas de materias
 
