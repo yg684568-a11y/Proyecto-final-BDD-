@@ -581,11 +581,22 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Pendiente de definición:** si el departamento de un profesor puede cambiar con el tiempo y, en ese caso, si se requiere conservar el historial de adscripciones.
 
+### 6.34 Asignación de profesores a materias y grupos
+
+**Decisión confirmada:**
+- Un profesor podrá impartir varias materias.
+- Un profesor podrá estar asignado a varios grupos durante un periodo escolar.
+- Cada grupo tendrá un profesor responsable.
+
+**Implicación para el modelo:** la asignación docente se realizará en la oferta/grupo del periodo, no directamente en la definición general de la materia. De este modo, la misma materia puede abrir varios grupos con profesores distintos y un profesor puede atender varios grupos.
+
+**Pendiente de definición:** si se permitirán dos o más profesores responsables o docentes auxiliares en un mismo grupo; si existe límite de carga docente; y cómo se registra la asignación temporal o sustitución de un profesor.
+
 ## 7. Estado del levantamiento de requerimientos
 
 ### 7.1 Decisiones funcionales confirmadas
 
-Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.33 y resumidas en el registro de decisiones:
+Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.34 y resumidas en el registro de decisiones:
 
 - Instituto Tecnológico de Puebla (ITP) como institución de referencia.
 - Cinco perfiles: administrador, Servicios Escolares, coordinador académico, profesor y alumno.
@@ -617,7 +628,8 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.33 y resu
 9. Verificar las reglas oficiales para recursamiento, número de oportunidades y efecto de cada intento en el historial/promedio.
 10. Verificar la seriación, equivalencias, materias simultáneas, carga máxima/mínima y excepciones académicas.
 11. **Respondida:** se permitirán grupos compartidos entre carreras/planes cuando la materia sea equivalente y el ITP permita esa oferta común. El grupo se registrará una sola vez y las inscripciones conservarán la carrera/plan del alumno.
-12. Definir cómo se documenta y valida oficialmente la equivalencia de materias para grupos compartidos.
+12. **Respondida:** un profesor podrá impartir varias materias y estar asignado a varios grupos por periodo; cada grupo tendrá un profesor responsable. Falta definir si se permiten docentes auxiliares/sustitutos o más de un responsable.
+13. Definir cómo se documenta y valida oficialmente la equivalencia de materias para grupos compartidos.
 
 ### 7.3 Validación institucional pendiente
 
@@ -745,6 +757,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 
 | D-041 | Cada profesor pertenecerá a un solo departamento; un departamento podrá tener varios profesores. La relación será uno a muchos mediante una FK en profesores. | Aprobación expresa del usuario; coincide con la estructura inicial del diagrama E-R. | 2026-11-10 | Aprobada |
 
+| D-042 | Un profesor podrá impartir varias materias y estar asignado a varios grupos durante un periodo; cada grupo tendrá un profesor responsable. La asignación docente se realizará en el grupo/oferta del periodo. | Aprobación expresa del usuario. Docentes auxiliares, sustituciones y límites de carga quedan pendientes. | 2026-11-10 | Aprobada |
+
 ## 10. Registro de errores y soluciones
 
 | ID | Fecha | Nodo / componente | Error y mensaje exacto | Causa confirmada | Solución aplicada | Verificación |
@@ -784,6 +798,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar los campos iniciales del expediente del alumno y la regla de no duplicar carrera/plan.
 - [x] Aprobar los campos iniciales del expediente del profesor y la relación del departamento mediante llave foránea.
 - [x] Definir que cada profesor pertenecerá a un único departamento.
+- [x] Aprobar que un profesor pueda impartir varias materias y grupos, con un profesor responsable por grupo.
 - [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
