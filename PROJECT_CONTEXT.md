@@ -584,6 +584,8 @@ Las descargas PDF y Excel respetarán los mismos permisos.
 
 **Responsabilidad operativa aprobada:** Servicios Escolares registrará a los alumnos nuevos, actualizará sus expedientes y asignará su carrera y plan de estudios correspondientes. El administrador se encargará de las cuentas de acceso, roles y permisos, no de la gestión académica de los expedientes.
 
+**Consulta y corrección de datos aprobadas:** el alumno podrá consultar su expediente, pero no modificar directamente el número de control, nombre, correo institucional, carrera o plan de estudios. Cuando necesite corregir o actualizar alguno de estos datos, deberá solicitarlo a Servicios Escolares.
+
 ### 6.32 Expediente inicial del profesor
 
 **Decisión confirmada:** el expediente inicial del profesor incluirá:
@@ -768,6 +770,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 - El coordinador académico administra carreras, planes de estudio y catálogo de materias; Servicios Escolares los utiliza sin modificar su estructura.
 - El coordinador académico crea y configura los periodos escolares, incluidas sus fechas de inicio y fin; Servicios Escolares puede consultarlos para gestionar inscripciones.
 - Servicios Escolares registra alumnos nuevos, actualiza expedientes y asigna carrera/plan; el administrador se limita a cuentas de acceso, roles y permisos.
+- El alumno consulta su expediente, pero no modifica directamente número de control, nombre, correo institucional, carrera o plan; solicita correcciones a Servicios Escolares.
 - El número de control del alumno será obligatorio y único; no se permitirán expedientes duplicados con el mismo número.
 - Los cambios de carrera serán tramitados por Servicios Escolares y requerirán autorización del coordinador académico; se conservará la carrera/plan anterior y se registrará la nueva asignación vigente.
 - Los cambios de plan sin cambio de carrera seguirán el mismo procedimiento: trámite por Servicios Escolares, autorización de coordinación académica y conservación del plan anterior como historial.
@@ -789,7 +792,7 @@ Las decisiones aprobadas están desarrolladas en las secciones 6.4 a 6.44 y resu
 
 ### 7.2 Requerimientos funcionales pendientes de detalle
 
-1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
+1. **Parcialmente respondida:** el expediente del alumno incluirá número de control obligatorio y único, nombre(s), apellidos, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso y estado académico; la carrera/plan se manejarán mediante relaciones e historial. Servicios Escolares registra alumnos nuevos, actualiza sus expedientes y asigna carrera/plan; el alumno consulta su expediente y solicita correcciones de datos institucionales a Servicios Escolares, sin modificarlos directamente. El administrador gestiona cuentas de acceso, roles y permisos. El expediente del profesor incluirá número de empleado obligatorio y único, nombre(s), apellidos, grado académico, correo institucional obligatorio y único, teléfono opcional, fecha de ingreso, departamento y estado. El coordinador académico registra y actualiza estos expedientes y asigna el departamento; cada profesor solo consulta su propia información institucional. Cada profesor tendrá un solo departamento vigente a la vez, podrá cambiar de adscripción y se conservará su historial. El nombre del departamento será obligatorio y único. Faltan campos de otros catálogos.
 2. **Parcialmente respondida:** coordinación académica administra carreras, planes de estudio y catálogo de materias; Servicios Escolares utiliza estos catálogos sin modificar su estructura. Falta detallar permisos por acción (consultar, crear, modificar, autorizar y desactivar) para cada rol y módulo.
 3. **Definida para el alcance inicial:** bandeja sencilla de notificaciones internas, contador de no leídas, estado leído/no leído, fecha y hora, historial paginado sin vencimiento y filtros básicos por fecha o tipo. Al abrir un aviso se marca como leído; el usuario podrá marcar una o todas como leídas. Ningún perfil, incluido el administrador, podrá eliminarlas definitivamente. No se prevén más funciones de notificaciones en el alcance inicial.
 4. **Parcialmente respondida:** se aprobaron los requisitos para ingresar a la lista de espera y su revalidación antes de ofrecer una vacante, así como el tratamiento y aviso a alumnos no elegibles. Falta definir cómo se gestionan cambios/bajas mientras existe una oferta pendiente.
@@ -877,7 +880,7 @@ El equipo aprobó los siguientes 12 módulos como alcance inicial del sistema. S
 | Servicios Escolares | Registrar alumnos, actualizar expedientes, gestionar inscripciones y tramitar cambios de carrera; registrar en el expediente las equivalencias/revalidaciones autorizadas. |
 | Coordinador académico | Gestionar carreras, planes, materias, periodos, grupos y horarios; autorizar cambios de carrera y aprobar equivalencias/revalidaciones; registrar profesores y administrar departamentos. |
 | Profesor | Consultar listas, registrar calificaciones y consultar su propia información institucional; no puede modificar su expediente. |
-| Alumno | Consultar materias, horarios, calificaciones y kárdex. |
+| Alumno | Consultar materias, horarios, calificaciones, kárdex y su expediente; solicitar a Servicios Escolares correcciones de datos institucionales. No modifica directamente esos datos. |
 
 Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja) se detallarán por módulo en la matriz de acceso. No asumir permisos adicionales hasta aprobar esa matriz.
 
@@ -962,6 +965,7 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 | D-072 | Cuando un alumno cambie de plan de estudios sin cambiar de carrera, Servicios Escolares gestionará el trámite, el coordinador académico deberá autorizarlo y el sistema conservará el plan anterior como historial, registrando el nuevo plan como vigente. | Aprobación expresa del usuario. Los requisitos, fechas y equivalencias se verificarán con los procedimientos vigentes del ITP/TecNM. | 2026-11-10 | Aprobada |
 | D-073 | Al cambiar de carrera o de plan, el sistema permitirá registrar las materias reconocidas como equivalentes o revalidadas, conservando las calificaciones y antecedentes académicos originales sin sobrescribirlos ni eliminarlos. | Aprobación expresa del usuario. Los criterios y autorizaciones oficiales para reconocer/revalidar materias quedan sujetos a validación con el ITP/TecNM. | 2026-11-10 | Aprobada |
 | D-074 | El coordinador académico revisará y autorizará las materias reconocidas como equivalentes o revalidadas. Servicios Escolares registrará el resultado autorizado en el expediente del alumno. | Aprobación expresa del usuario. Los criterios académicos oficiales de equivalencia/revalidación se verificarán con el ITP/TecNM. | 2026-11-10 | Aprobada |
+| D-075 | El alumno podrá consultar su expediente, pero no modificar directamente su número de control, nombre, correo institucional, carrera o plan de estudios. Las correcciones o actualizaciones de esos datos deberán solicitarse a Servicios Escolares. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -1000,6 +1004,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
 - [x] Aprobar listas escolares con campos básicos y exportación a PDF/Excel.
 - [x] Aprobar los campos iniciales del expediente del alumno y la regla de no duplicar carrera/plan.
+- [x] Aprobar que el alumno consulte su expediente y solicite correcciones institucionales a Servicios Escolares.
 - [x] Aprobar el número de control obligatorio y único para cada alumno.
 - [x] Aprobar los campos iniciales del expediente del profesor y la relación del departamento mediante llave foránea.
 - [x] Aprobar el número de empleado obligatorio y único para cada profesor.
