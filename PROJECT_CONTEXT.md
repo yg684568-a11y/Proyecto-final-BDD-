@@ -530,7 +530,16 @@ Consulta inicial de páginas oficiales del ITP, realizada el 2026-11-09. Estos d
 
 **Exportación aprobada:** las listas podrán descargarse en formato PDF y Excel.
 
-**Pendiente de definición:** permisos de consulta y descarga para cada rol, filtros disponibles, datos adicionales permitidos y tratamiento de listas cuando existan bajas, cambios de grupo o alumnos en lista de espera. La lista oficial del grupo debe reflejar únicamente las inscripciones confirmadas/activas, salvo que se solicite explícitamente un reporte histórico.
+**Acceso aprobado:**
+- Administrador: todas las listas.
+- Servicios Escolares: todos los grupos.
+- Coordinador académico: grupos de las carreras que administra.
+- Profesor: únicamente sus propios grupos.
+- Alumno: no puede consultar listas completas de otros estudiantes.
+
+Las descargas PDF y Excel respetarán los mismos permisos.
+
+**Pendiente de definición:** filtros disponibles, datos adicionales permitidos y tratamiento de listas cuando existan bajas, cambios de grupo o alumnos en lista de espera. La lista oficial del grupo debe reflejar únicamente las inscripciones confirmadas/activas, salvo que se solicite explícitamente un reporte histórico.
 
 ## 7. Estado del levantamiento de requerimientos
 
@@ -687,7 +696,8 @@ Los permisos específicos (crear, consultar, modificar, autorizar y dar de baja)
 
 | D-036 | El kárdex será acumulativo y mostrará carrera, plan, periodo, materia, créditos, grupo, calificación final, intento y estado; permitirá consultar calificaciones por unidad publicadas e intentos anteriores. | Aprobación expresa del usuario. Promedios, avance curricular y formato oficial quedan pendientes de verificación con el ITP. | 2026-11-10 | Aprobada |
 
-| D-037 | Las listas escolares por grupo mostrarán número de control, nombre, carrera, grupo y estado de inscripción; los profesores podrán consultarlas y exportarlas a PDF y Excel. | Aprobación expresa del usuario. Permisos de descarga y filtros quedan pendientes. | 2026-11-10 | Aprobada |
+| D-037 | Las listas escolares por grupo mostrarán número de control, nombre, carrera, grupo y estado de inscripción; los profesores podrán consultarlas y exportarlas a PDF y Excel. | Aprobación expresa del usuario. | 2026-11-10 | Aprobada |
+| D-038 | El acceso a listas será por alcance: administrador y Servicios Escolares podrán consultar todas; coordinación solo las carreras que administra; profesores solo sus grupos; alumnos no verán listas completas. Las exportaciones respetarán los mismos permisos. | Aprobación expresa del usuario. Filtros y detalles del reporte quedan pendientes. | 2026-11-10 | Aprobada |
 
 ## 10. Registro de errores y soluciones
 
@@ -725,6 +735,7 @@ No registrar una causa como confirmada si solo es una hipótesis. Añadir comand
 - [x] Aprobar validación de prerrequisitos y carga académica.
 - [x] Aprobar kárdex acumulativo con información académica e intentos históricos.
 - [x] Aprobar listas escolares con campos básicos y exportación a PDF/Excel.
+- [x] Aprobar permisos diferenciados para consulta y descarga de listas.
 - [ ] Precisar los requerimientos funcionales que permanecen abiertos en la sección 7.2.
 - [x] Aprobar grupos compartidos entre carreras/planes cuando exista equivalencia y autorización del ITP.
 - [ ] Verificar reglas y catálogos académicos vigentes del ITP/TecNM.
